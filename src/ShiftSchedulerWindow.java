@@ -1,6 +1,8 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JRadioButton;
+import java.awt.BorderLayout;
 
 public class ShiftSchedulerWindow {
 
@@ -36,6 +38,9 @@ public class ShiftSchedulerWindow {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JRadioButton rdbtnTest = new JRadioButton("Test");
+		frame.getContentPane().add(rdbtnTest, BorderLayout.NORTH);
 	}
 
 }
