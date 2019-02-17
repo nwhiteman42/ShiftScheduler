@@ -1,6 +1,7 @@
 
 public class ShiftScheduler {
-		String name;
-		String password;
-		String job;
-		}
+
+	public static void main(String[] args) {
+
+	}
+}
