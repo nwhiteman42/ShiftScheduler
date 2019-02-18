@@ -5,7 +5,6 @@ public class ShiftScheduler {
 		System.out.println("Bye");
 		System.out.println("Bye");
 		System.out.println("Bye");
-		System.out.println("Bye");
 		System.out.println("Potato");
 	}
 }
