@@ -21,6 +21,7 @@ public class TimeEntry {
 		return day;
 	}
 	
+	@SuppressWarnings("unused")
 	private String setDay(String day) {
 		String oldDay = this.day;
 		this.day = day;
@@ -31,6 +32,7 @@ public class TimeEntry {
 		return startTime;
 	}
 	
+	@SuppressWarnings("unused")
 	private int setStartTime(int startTime) {
 		int oldStartTime = this.startTime;
 		this.startTime = startTime;
@@ -41,6 +43,7 @@ public class TimeEntry {
 		return endTime;
 	}
 	
+	@SuppressWarnings("unused")
 	private int setEndTime(int endTime) {
 		int oldEndTime = this.endTime;
 		this.endTime = endTime;
