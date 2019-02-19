@@ -10,6 +10,7 @@ class TimeEntryTest {
 		assertEquals("Default Constructor : Day = ", "Sunday", test.getDay());
 		assertEquals("Default Constructor : Start Time = ", 0, test.getStartTime());
 		assertEquals("Default Constructor : End Time = ", "2359", test.getEndTime());
+		
 	}
 
 	@Test
