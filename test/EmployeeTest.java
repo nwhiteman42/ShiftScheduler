@@ -10,7 +10,9 @@ class EmployeeTest {
 	TimeEntry tuesday = new TimeEntry("Tuesday", 8000, 1400);
 	TimeEntry wensday = new TimeEntry("Wensday", 8000, 1400);
 	TimeEntry thursday = new TimeEntry("Thursday", 8000, 1400);
+	
 	TimeEntry[] aval = new TimeEntry[] {sunday, monday, tuesday};
+	
 	Employee x = new Employee("bob","cock",aval);
 	
 	@Test
