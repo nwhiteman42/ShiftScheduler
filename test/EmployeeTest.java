@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 class EmployeeTest {
 	
 	//setup
-	TimeEntry sunday = new TimeEntry("Sunday", 8000, 1400);
-	TimeEntry monday = new TimeEntry("Monday", 8000, 1400);
-	TimeEntry tuesday = new TimeEntry("Tuesday", 8000, 1400);
-	TimeEntry wensday = new TimeEntry("Wensday", 8000, 1400);
-	TimeEntry thursday = new TimeEntry("Thursday", 8000, 1400);
+	TimeEntry sunday = new TimeEntry("Sunday", 800, 1400);
+	TimeEntry monday = new TimeEntry("Monday", 800, 1400);
+	TimeEntry tuesday = new TimeEntry("Tuesday", 800, 1400);
+	TimeEntry wensday = new TimeEntry("Wensday", 800, 1400);
+	TimeEntry thursday = new TimeEntry("Thursday", 800, 1400);
 	
 	TimeEntry[] aval = new TimeEntry[] {sunday, monday, tuesday};
 	
