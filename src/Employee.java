@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Employee {
 
@@ -38,15 +39,42 @@ public class Employee {
 		this.job = job;
 		return oldJob;
 	}
-	
+
 	public TimeEntry[] getAvailability() {
 		return availability;
 	}
-	
+
 	@SuppressWarnings("unused")
 	private TimeEntry[] setAvailability(TimeEntry[] availability) {
 		TimeEntry[] oldAvailability = availability;
 		this.availability = availability;
-		return oldAvailability ;
+		return oldAvailability;
+	}
+
+	private TimeEntry[] sortAvailability() {
+		TimeEntry[] array = new TimeEntry[7];
+		for (int x = 0; x < 7; x++) {
+			if (availability[x].getDay() == "Sunday")
+				array[0] = availability[x];
+			else if (availability[x].getDay() == "Monday")
+				array[1] = availability[x];
+			else if (availability[x].getDay() == "Tuesday")
+				array[2] = availability[x];
+			else if (availability[x].getDay() == "Wednesday")
+				array[3] = availability[x];
+			else if (availability[x].getDay() == "Thursday")
+				array[4] = availability[x];
+			else if (availability[x].getDay() == "Friday")
+				array[5] = availability[x];
+			else if (availability[x].getDay() == "Saturday")
+				array[6] = availability[x];
+			else {
+				System.out.println("Invalid Day ERROR ALERT");
+				return new TimeEntry[7];
+			}
+		}
+		availability = array;
+		return array;
+		
 	}
 }

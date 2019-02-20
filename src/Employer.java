@@ -10,6 +10,7 @@ public class Employer extends Employee {
 	 * 
 	 * @return: if the addition succeeded
 	 */
+	@SuppressWarnings("unused")
 	private boolean addEmployee( Employee e ) {
 		int len1 = employees.size();
 		employees.add(e);
@@ -27,6 +28,7 @@ public class Employer extends Employee {
 	 * 
 	 * @return: if the removal worked
 	 */
+	@SuppressWarnings("unused")
 	private boolean removeEmployee( Employee e ) {
 		int len1 = employees.size();
 		employees.remove( e );
@@ -44,6 +46,7 @@ public class Employer extends Employee {
 	 * 
 	 * @return: the Employee object attached to that name
 	 */
+	@SuppressWarnings("unused")
 	private Employee getEmployee( String name ) {
 		Employee find = new Employee();
 		for ( Employee e : employees ) {
