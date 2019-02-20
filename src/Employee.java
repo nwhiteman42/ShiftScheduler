@@ -75,5 +75,6 @@ public class Employee {
 		}
 		availability = array;
 		return array;
+		
 	}
 }
