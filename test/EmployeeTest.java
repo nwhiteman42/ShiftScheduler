@@ -13,6 +13,7 @@ class EmployeeTest {
 	
 	TimeEntry[] aval = new TimeEntry[] {sunday, monday, tuesday};
 	
+	
 	Employee x = new Employee("bob","cock",aval);
 	
 	@Test
