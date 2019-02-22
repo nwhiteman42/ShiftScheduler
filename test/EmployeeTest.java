@@ -14,7 +14,7 @@ class EmployeeTest {
 	TimeEntry[] aval = new TimeEntry[] {sunday, monday, tuesday};
 	
 	
-	Employee x = new Employee("bob","cock",aval);
+	Employee x = new Employee("bob","cook",aval);
 	
 	@Test
 	void testEmployee() {
@@ -32,7 +32,7 @@ class EmployeeTest {
 
 	@Test
 	void testGetJob() {
-		assertEquals("cock", x.getJob(), "Job's do not match");
+		assertEquals("cook", x.getJob(), "Job's do not match");
 	}
 
 	@Test
