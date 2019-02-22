@@ -45,6 +45,15 @@ class TimeEntryTest {
 		test = new TimeEntry("Friday", 2359, 300);
 		assertEquals("Default Constructor : Start Time = ", 2359, test.getStartTime());
 	}
+	
+	@Test
+	void testGetStartTimeFail() {
+		try {
+			test = new TimeEntry("Friday", 2400, 300);
+			fail("Expected an IndexOutOfBoundsException to be thrown");
+		} catch (IndexOutOfBoundsException e) {	
+		}
+	}
 
 	@Test
 	void testGetEndTime() {
@@ -62,6 +71,16 @@ class TimeEntryTest {
 	void testGetEndTime3() {
 		test = new TimeEntry("Friday", 0, 333);
 		assertEquals("Default Constructor : Start Time = ", 333, test.getEndTime());
+	}
+	
+	@Test
+	void testGetEndTimeFail() {
+		try {
+			test = new TimeEntry("Friday", 2300, 2400);
+			fail("Expected an IndexOutOfBoundsException to be thrown");
+		} catch (IndexOutOfBoundsException e) {
+			
+		}
 	}
 	
 	

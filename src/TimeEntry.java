@@ -14,7 +14,13 @@ public class TimeEntry {
 	public TimeEntry(String day, int startTime, int endTime) {
 		this.day = day;
 		this.startTime = startTime;
+		if( startTime < 0 || startTime > 2359) {
+			throw new IndexOutOfBoundsException("Invalid Time Inputted ");
+		}
 		this.endTime = endTime;
+		if( endTime < 0 || endTime > 2359) {
+			throw new IndexOutOfBoundsException("Invalid Time Inputted ");
+		}
 	}
 	
 	public String getDay() {
