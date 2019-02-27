@@ -23,7 +23,7 @@ public class Employee {
 	}
 
 	@SuppressWarnings("unused")
-	private String setName(String name) {
+	public String setName(String name) {
 		String oldName = this.name;
 		this.name = name;
 		return oldName;
@@ -34,7 +34,7 @@ public class Employee {
 	}
 
 	@SuppressWarnings("unused")
-	private String setJob(String job) {
+	public String setJob(String job) {
 		String oldJob = this.job;
 		this.job = job;
 		return oldJob;
@@ -45,15 +45,18 @@ public class Employee {
 	}
 
 	@SuppressWarnings("unused")
-	private TimeEntry[] setAvailability(TimeEntry[] availability) {
+	public TimeEntry[] setAvailability(TimeEntry[] availability) {
 		TimeEntry[] oldAvailability = availability;
 		this.availability = availability;
 		return oldAvailability;
 	}
-
-	private TimeEntry[] sortAvailability() {
+	
+	/* Sorts days in TimeEntry array to be in order from Sunday to Monday
+	 * 
+	 */
+	public TimeEntry[] sortAvailability(int TimeEntryLength) {
 		TimeEntry[] array = new TimeEntry[7];
-		for (int x = 0; x < 7; x++) {
+		for (int x = 0; x < TimeEntryLength; x++) {
 			if (availability[x].getDay() == "Sunday")
 				array[0] = availability[x];
 			else if (availability[x].getDay() == "Monday")
