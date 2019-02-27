@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/*
+ * @author: Dalton Aird
+ * 
+ * Class  that serves as the "Admin" class, or the boss of the employees. Can control shifts, 
+ * manage employees and delete users. 
+ */
 public class Employer extends Employee {
 	private ArrayList<Employee> employees = new ArrayList<>();
 	
