@@ -26,7 +26,7 @@ class EmployeeTest {
 
 	@Test
 	void testSetName(){
-		assertEquals("bob", x.setName("Tim"));
+		assertEquals("bob",x.setName("Tim"));
 		assertEquals("Tim", x.getName());
 	}
 	
