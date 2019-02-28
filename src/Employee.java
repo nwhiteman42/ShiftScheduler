@@ -51,33 +51,36 @@ public class Employee {
 		return oldAvailability;
 	}
 	
-	/* Sorts days in TimeEntry array to be in order from Sunday to Monday
+	/* Sorts days in TimeEntry array to be in order from Sunday to Saturday
 	 * 
 	 */
 	public TimeEntry[] sortAvailability(int TimeEntryLength) {
 		TimeEntry[] array = new TimeEntry[7];
 		for (int x = 0; x < TimeEntryLength; x++) {
-			if (availability[x].getDay() == "Sunday")
+			if (availability[x].getDay().equalsIgnoreCase("Sunday"))
 				array[0] = availability[x];
-			else if (availability[x].getDay() == "Monday")
+			else if (availability[x].getDay().equalsIgnoreCase("Monday"))
 				array[1] = availability[x];
-			else if (availability[x].getDay() == "Tuesday")
+			else if (availability[x].getDay().equalsIgnoreCase("Tuesday"))
 				array[2] = availability[x];
-			else if (availability[x].getDay() == "Wednesday")
+			else if (availability[x].getDay().equalsIgnoreCase("Wednesday"))
 				array[3] = availability[x];
-			else if (availability[x].getDay() == "Thursday")
+			else if (availability[x].getDay().equalsIgnoreCase("Thursday"))
 				array[4] = availability[x];
-			else if (availability[x].getDay() == "Friday")
+			else if (availability[x].getDay().equalsIgnoreCase("Friday"))
 				array[5] = availability[x];
-			else if (availability[x].getDay() == "Saturday")
+			else if (availability[x].getDay().equalsIgnoreCase("Saturday"))
 				array[6] = availability[x];
+			else if (availability[x] == null) {
+				
+			}
 			else {
 				System.out.println("Invalid Day ERROR ALERT");
 				return new TimeEntry[7];
 			}
 		}
 		availability = array;
-		return array;
+		return availability;
 		
 	}
 }

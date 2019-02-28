@@ -8,9 +8,10 @@ class EmployeeTest {
 	TimeEntry sunday = new TimeEntry("Sunday", 800, 1400);
 	TimeEntry monday = new TimeEntry("Monday", 800, 1400);
 	TimeEntry tuesday = new TimeEntry("Tuesday", 800, 1400);
-	TimeEntry wensday = new TimeEntry("Wensday", 800, 1400);
+	TimeEntry wednesday = new TimeEntry("Wednesday", 800, 1400);
 	TimeEntry thursday = new TimeEntry("Thursday", 800, 1400);
-	
+	TimeEntry friday = new TimeEntry("Friday", 800, 1400);
+	TimeEntry saturday = new TimeEntry("Saturday", 800, 1400);
 	TimeEntry[] aval = new TimeEntry[] {sunday, monday, tuesday};
 	
 	
@@ -44,10 +45,14 @@ class EmployeeTest {
 	
 	@Test
 	void testSortAvailability() {
-		TimeEntry[] avalUnsorted = new TimeEntry[]{wensday, monday, tuesday, sunday};
-		TimeEntry[] avalSorted = new TimeEntry[] {sunday, monday, tuesday, wensday};
+		TimeEntry[] avalUnsorted = new TimeEntry[]{wednesday, tuesday, sunday, thursday, friday, saturday};
+		TimeEntry[] avalSorted = new TimeEntry[] {sunday, null, tuesday, wednesday, thursday, friday, saturday};
 		x.setAvailability(avalUnsorted);
-		assertEquals(avalSorted, x.sortAvailability(avalUnsorted.length));
+		x.sortAvailability(avalUnsorted.length);
+		for (int i = 0; i < avalUnsorted.length; i++) {
+			assertEquals(avalSorted[i], x.getAvailability()[i]);
+		}
+		
 	}
 	
 	
