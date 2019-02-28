@@ -42,13 +42,13 @@ class EmployeeTest {
 		assertEquals(aval2, x.setAvailability(aval2));
 	}
 	
-//	@Test
-//	void testSortAvailability() {
-//		TimeEntry[] avalUnsorted = new TimeEntry[]{wensday, monday, tuesday, sunday};
-//		TimeEntry[] avalSorted = new TimeEntry[] {sunday, monday, tuesday, wensday};
-//		x.setAvailability(avalUnsorted);
-//		assertEquals(avalSorted, x.sortAvailability(avalUnsorted.length));
-//	}
+	@Test
+	void testSortAvailability() {
+		TimeEntry[] avalUnsorted = new TimeEntry[]{wensday, monday, tuesday, sunday};
+		TimeEntry[] avalSorted = new TimeEntry[] {sunday, monday, tuesday, wensday};
+		x.setAvailability(avalUnsorted);
+		assertEquals(avalSorted, x.sortAvailability(avalUnsorted.length));
+	}
 	
 	
 	@Test
