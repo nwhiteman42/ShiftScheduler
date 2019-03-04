@@ -27,6 +27,15 @@ class EmployerTest {
 	}
 	
 	@Test
+	void testSetSeniority() {
+		TimeEntry fillerday = new TimeEntry("Monday", 800, 1200);
+		TimeEntry[] time = new TimeEntry[] {fillerday};
+		Employee e = new Employee("Ricky", "Driver", time, 0);
+		e.setSeniority(50);
+		assertEquals(50,e.getSeniority(), "Seniority was not set correctly");
+	}
+	
+	@Test
 	void testRemoveOneEmployee( ) {
 		boolean flag = false;
 		TimeEntry[ ] times = null;
