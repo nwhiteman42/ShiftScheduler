@@ -5,17 +5,20 @@ public class Employee {
 	String name;
 	String job;
 	TimeEntry availability[];
+	int seniority;
 
 	public Employee() {
 		name = "Employee";
 		job = "Job";
 		availability = new TimeEntry[7];
+		seniority = 0;
 	}
 
-	public Employee(String name, String job, TimeEntry availability[]) {
+	public Employee(String name, String job, TimeEntry availability[], int seniority) {
 		this.name = name;
 		this.job = job;
 		this.availability = availability;
+		this.seniority = seniority;
 	}
 
 	public String getName() {
@@ -49,6 +52,15 @@ public class Employee {
 		TimeEntry[] oldAvailability = availability;
 		this.availability = availability;
 		return oldAvailability;
+	}
+	
+	public int getSeniority() {
+		return seniority;
+	}
+	public int setSeniority(int seniority) {
+		int oldSeniority = this.seniority;
+		this.seniority = seniority;
+		return oldSeniority;
 	}
 	
 	/* Sorts days in TimeEntry array to be in order from Sunday to Saturday
