@@ -26,6 +26,15 @@ public class Employer extends Employee {
 		}
 		return true;
 	}
+
+	/* Sets the seniority of a given Employee
+	 * 
+	 * @param seniority, integer representing seniority, the higher the value the greater the seniority
+	 * @param e, and employee who's seniority will be set
+	 */
+	public void setSeniority(int seniority, Employee e) {
+		e.setSeniority(seniority);
+	}
 	
 	/*
 	 * Removes an employee from the list; returns true if it worked, false if it failed
