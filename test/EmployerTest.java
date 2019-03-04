@@ -30,7 +30,7 @@ class EmployerTest {
 	void testRemoveOneEmployee( ) {
 		boolean flag = false;
 		TimeEntry[ ] times = null;
-		Employee e = new Employee( "Jon", "IT", times );
+		Employee e = new Employee( "Jon", "IT", times, 0 );
 		testing.addEmployee( e );
 		for ( int i = 0; i < 10; i++ ) {
 			testing.addEmployee( new Employee( ) );
