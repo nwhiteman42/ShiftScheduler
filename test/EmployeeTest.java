@@ -15,11 +15,11 @@ class EmployeeTest {
 	TimeEntry[] aval = new TimeEntry[] {sunday, monday, tuesday};
 	
 	
-	Employee x = new Employee("bob","cook",aval);
+	Employee x = new Employee("bob","cook",aval, 1);
 	
 	@Test
 	void testEmployee() {
-		Employee test = new Employee("Rick", "Baker", aval);
+		Employee test = new Employee("Rick", "Baker", aval, 2);
 		assertEquals("Rick", test.getName(),"Failed as name's don't match");
 		assertEquals("Baker", test.getJob(), "Failed as job's don't match");
 		assertEquals(aval, test.getAvailability(), "Failed as  avalibility doesn't match");
@@ -69,6 +69,16 @@ class EmployeeTest {
 	@Test
 	void testGetAvailability() {
 		assertEquals(aval,x.getAvailability(),"Availability does not match");
+	}
+	
+	@Test
+	void testGetSeniority() {
+		assertEquals(x.getSeniority(), 1);
+	}
+	void testSetSeniority() {
+		assertEquals(x.setSeniority(99), 1);
+		assertEquals(x.getSeniority(), 99);
+		
 	}
 
 }
