@@ -78,7 +78,6 @@ class EmployeeTest {
 	void testSetSeniority() {
 		assertEquals(x.setSeniority(99), 1);
 		assertEquals(x.getSeniority(), 99);
-		
 	}
 
 }
