@@ -1,10 +1,10 @@
+/opencsv-4.5.jar
 /Employee.class
+/EmployeeTest.class
 /Employer.class
+/EmployerTest.class
 /ShiftScheduler.class
 /ShiftSchedulerWindow$1.class
 /ShiftSchedulerWindow.class
 /TimeEntry.class
-/opencsv-4.5.jar
-/EmployeeTest.class
-/EmployerTest.class
 /TimeEntryTest.class
