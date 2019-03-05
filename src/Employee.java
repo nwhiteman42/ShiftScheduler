@@ -7,6 +7,9 @@ public class Employee {
 	TimeEntry availability[];
 	int seniority;
 
+	/*
+	 * Class to hold Employees, acts as User. 
+	 */
 	public Employee() {
 		name = "Employee";
 		job = "Job";
@@ -21,6 +24,9 @@ public class Employee {
 		this.seniority = seniority;
 	}
 
+	/*
+	 * Various getters and setters
+	 */
 	public String getName() {
 		return name;
 	}
@@ -63,8 +69,12 @@ public class Employee {
 		return oldSeniority;
 	}
 	
-	/* Sorts days in TimeEntry array to be in order from Sunday to Saturday
-	 * 
+	/*
+	 *  Sorts days in TimeEntry array to be in order from Sunday to Saturday
+	 *  
+	 *  @param TimeEntryLength - the length of the TimeEntry array we are using
+	 *  
+	 *  @return the sorted array into a week's span
 	 */
 	public TimeEntry[] sortAvailability(int TimeEntryLength) {
 		TimeEntry[] array = new TimeEntry[7];

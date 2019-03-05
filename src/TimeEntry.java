@@ -1,4 +1,6 @@
-
+/*
+ * Class to handle the avaiblible times an employee can work for each day
+ */
 public class TimeEntry {
 	
 	public String day;
@@ -23,6 +25,9 @@ public class TimeEntry {
 		}
 	}
 	
+	/*
+	 * Various getters and setters
+	 */
 	public String getDay() {
 		return day;
 	}
