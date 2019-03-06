@@ -73,7 +73,15 @@ public class Employer extends Employee {
 		}
 		return find;
 	}
-	
+	/*
+	 * Merges 2 arrays to main array
+	 * 
+	 * @param: array - array to be sorted into
+	 * 
+	 * @param: temp1 - left side of array
+	 * 
+	 * @param: temp2 - right side of array
+	 */
 	public void merge(Employee array[], Employee temp1[], Employee temp2[]) {
 		int i = 0;
 		int j = 0;
@@ -100,7 +108,11 @@ public class Employer extends Employee {
 			k++;
 		}
 	}
-	
+	/*
+	 * Sort Method based on Merge Sort
+	 * 
+	 * @param: array - array to be sorted
+	 */
 	public void sort(Employee[] array) {
 		Employee[] array1;
 		Employee[] array2;
@@ -117,7 +129,9 @@ public class Employer extends Employee {
 		sort(array2);
 		merge(array, array1, array2);
 	}
-	
+	/*
+	 * Caller Method for Sort - Convert employee list to array and back
+	 */
 	public void mergeSort() {
 		Object temp[] = employees.toArray();
 		Employee arr[] = new Employee[temp.length];
