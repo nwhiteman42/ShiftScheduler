@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-
+import java.util.*;
 /*
  * @author: Dalton Aird
  * 
@@ -8,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Employer extends Employee {
 	private ArrayList<Employee> employees = new ArrayList<>();
+	
 	
 	/*
 	 * Adds new employee to the list; returns true if it worked, false if it failed
@@ -24,6 +24,7 @@ public class Employer extends Employee {
 		if ( len1 >= len2 ) {
 			return false;
 		}
+		mergeSort();
 		return true;
 	}
 
@@ -73,6 +74,59 @@ public class Employer extends Employee {
 		return find;
 	}
 	
+	public void merge(Employee array[], Employee temp1[], Employee temp2[]) {
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		while (i < temp1.length && j < temp2.length) {
+			if (temp1[i].getSeniority() < temp2[j].getSeniority()) {
+				array[k] = temp1[i];
+				i++;
+				k++;
+			} else {
+				array[k] = temp2[j];
+				j++;
+				k++;
+			}
+		}
+		while (i < temp1.length) {
+			array[k] = temp1[i];
+			i++;
+			k++;
+		}
+		while (j < temp2.length) {
+			array[k] = temp2[j];
+			j++;
+			k++;
+		}
+	}
+	
+	public void sort(Employee[] array) {
+		Employee[] array1;
+		Employee[] array2;
+		
+		if( array.length == 1) { return; }
+		
+		int mid = array.length / 2;
+		
+		array1 = Arrays.copyOfRange( array, 0, mid);
+		
+		array2 = Arrays.copyOfRange( array, mid, array.length);
+		
+		sort(array1);
+		sort(array2);
+		merge(array, array1, array2);
+	}
+	
+	public void mergeSort() {
+		Object temp[] = employees.toArray();
+		Employee arr[] = new Employee[temp.length];
+		System.arraycopy(temp, 0, arr, 0, temp.length);
+		sort(arr);
+		List<Employee> list = Arrays.asList(arr);
+		this.employees = new ArrayList<>(list);
+	}
+
 	//TODO: editScheudle
 	//TODO: massEmail
 	//TODO: deleteUser
