@@ -48,4 +48,21 @@ class EmployerTest {
 		assertTrue( flag );
 	}
 	
+	@Test
+	void testEmailWithAttachment() throws InterruptedException {
+		String[] email = new String[] {"mtsayles@mtu.edu"};
+		String subject = "test";
+		String body = "This is for testing purpose";
+		String attachment = "C:/Users/wilma/git/ShiftScheduler/test/test.jpg";
+		assertEquals(1, testing.massEmail(email, attachment, subject, body));
+	}
+	
+	@Test
+	void testEmailWithoutAttachment() throws InterruptedException{
+		String[] email = new String[] {"mtsayles@mtu.edu"};
+		String subject = "test";
+		String body = "This is for testing purpose";
+		assertEquals(1, testing.massEmail(email, null, subject, body));
+	}
+
 }

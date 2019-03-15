@@ -1,4 +1,17 @@
 import java.util.*;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 /*
  * @author: Dalton Aird
  * 
@@ -141,7 +154,86 @@ public class Employer extends Employee {
 		this.employees = new ArrayList<>(list);
 	}
 
+	/*This method will send a mass email out to all emails contained in an array.
+	 * @param attachment, a file to attach
+	 * @param subject, what will be in the subject line of the email
+	 * @param body, text that will be in the body of the email 
+	 * @return, the number of email that were sent out
+	 */
+	public int massEmail(String[] emails, String attachment, String subject, String body) throws InterruptedException {
+		
+		//setup
+		String from = "possiblefortsp";
+		String password = "343Guiltyspark";
+		int count = 0; //Counter for number of emails sent out
+		
+		//set properties this set of properties uses gmail as a host to send the emails from
+		Properties p = System.getProperties();
+		String host = "smtp.gmail.com";
+		p.put("mail.smtp.starttls.enable", "true");
+		p.put("mail.smtp.host", host);
+		p.put("mail.smtp.user", from);
+		p.put("mail.smtp.password", password);
+		p.put("mail.smtp.port", "587");
+		p.put("mail.smtp.auth","true");
+		
+		Session s = Session.getDefaultInstance(p); //Create session
+		
+		try {
+			//If there is an attachment send emails with attachment if not send with just body text
+			if(attachment != null) {
+			MimeBodyPart mBP = new MimeBodyPart(); //Message body part
+			//attach file to email
+			String file = attachment;
+			DataSource source = new FileDataSource(file);
+			mBP.setDataHandler(new DataHandler(source));
+			mBP.setFileName(file);
+		
+			Multipart multipart = new MimeMultipart();
+			multipart.addBodyPart(mBP);
+			//Email message and details
+			MimeMessage m = new MimeMessage(s);
+			m.setFrom(new InternetAddress(from));
+			m.setSubject(subject);
+			m.setText(body);
+			m.setContent(multipart);
+			
+			Transport t = s.getTransport("smtp");
+			t.connect(host, from, password);
+			
+			for(int i = 0; i < emails.length; i++) {
+			Thread.sleep(5000);
+			m.setRecipient(Message.RecipientType.TO, new InternetAddress(emails[i]));
+			t.sendMessage(m, m.getAllRecipients());
+			System.out.println("Message sent");
+			count++;
+				}
+			t.close();
+			}
+			else {
+			MimeMessage m = new MimeMessage(s);
+			m.setFrom(new InternetAddress(from));
+			m.setSubject(subject);
+			m.setText(body);
+	
+			Transport t = s.getTransport("smtp");
+			t.connect(host, from, password);
+			
+			for(int i = 0; i < emails.length; i++) {
+			Thread.sleep(5000);
+			m.setRecipient(Message.RecipientType.TO, new InternetAddress(emails[i]));
+			t.sendMessage(m, m.getAllRecipients());
+			System.out.println("Message sent");
+			count++;
+				}
+			t.close();
+			}
+			
+		} catch (MessagingException x) {
+			x.printStackTrace();
+		}
+		return count;
+	}	
 	//TODO: editScheudle
-	//TODO: massEmail
 	//TODO: deleteUser
 }
