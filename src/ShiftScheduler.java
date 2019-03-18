@@ -12,8 +12,11 @@ public class ShiftScheduler {
 
 	public static void addData(String output) {
 		File file = new File(output);
-		Scanner scan = new Scanner(System.in);
+		File file2 = new File("C:\\Users\\Cameron\\Documents\\C Programs\\DO NOT FUCKING DELETE.txt");
+		Scanner scan;
 		try {
+			
+			scan = new Scanner(file2);
 			
 			FileWriter outputFile = new FileWriter(file);
 			
@@ -23,9 +26,9 @@ public class ShiftScheduler {
 			// creating a List containing data
 			List<String[]> data = new ArrayList<String[]>();
 			
-			int numberOfRows = 25;
-			System.out.println("Enter Data");
-			for ( int i = 0; i < numberOfRows; i++) {
+			// int numberOfRows = 25;
+			// System.out.println("Enter Data");
+			while (scan.hasNextLine()) {
 				String row = scan.nextLine();
 				String[] rowData = row.split(" ");
 				data.add(rowData);

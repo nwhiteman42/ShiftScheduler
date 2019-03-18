@@ -6,6 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="src/opencsv-4.5.jar"/>
 	<classpathentry kind="lib" path="src/mysql-connector-java-8.0.15.jar"/>
-	<classpathentry kind="lib" path="C:/Users/wilma/Downloads/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cameron/Downloads/javax.mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
