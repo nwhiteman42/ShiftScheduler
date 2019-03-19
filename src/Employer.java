@@ -236,4 +236,8 @@ public class Employer extends Employee {
 	}	
 	//TODO: editScheudle
 	//TODO: deleteUser
+
+	public ArrayList<Employee> getEmployees() {
+		return employees;
+	}
 }
