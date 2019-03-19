@@ -2,7 +2,11 @@
 
 import java.sql.*;
 
-class MysqlCon{
+class MysqlCon {
+	
+	/*
+	 * Removes data from the "Employee_Data" list
+	 */
 	public void removeEmployee(int id) throws SQLException {
 	Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
@@ -10,6 +14,11 @@ class MysqlCon{
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.execute();
 	}
+	
+	
+	/*
+	 * Inserts data into the "Employee_Data" list
+	 */
 	public void insertIntoEmployee(int id, String name, String job) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
@@ -23,6 +32,42 @@ class MysqlCon{
 		con.close();
 	}
 	
+	
+	
+	/*
+	 * Removes data from the "Employee_Shifts" list
+	 */
+	public void removeEmployeeShift(int id) throws SQLException {
+	Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+		
+		String query = "delete from Employee_Shifts where Employee_ID = " + id;
+		PreparedStatement ps = con.prepareStatement(query);
+		ps.execute();
+	}
+	
+	
+	/*
+	 * Inserts data into the "Employee_Shifts" list
+	 */
+	public void insertIntoEmployeeShift(int id, String name, String startTime, String endTime) throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+		
+		String query = "insert into Employee_Shifts (Employee_ID, Employee_Name, Start_Time, End_Time)" + " values(?,?,?,?)";
+		PreparedStatement ps = con.prepareStatement(query);
+		ps.setInt(1,id);
+		ps.setString(2, name);
+		ps.setString(3, startTime);
+		ps.setString(4, endTime);
+		
+		ps.execute();
+		con.close();
+	}
+	
+	
+	
+	/*
+	 * Retrieves data from database and prints 
+	 */
 	public void retriveData() {
 		try {
 			Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
@@ -51,8 +96,10 @@ class MysqlCon{
 	
 	public static void main(String args[]) throws SQLException {
 		MysqlCon x = new MysqlCon();
-		x.insertIntoEmployee(31, "Filler", "AlbumFiller");
-		x.removeEmployee(31);
+		//x.insertIntoEmployee(41, "Fill", "AlbumFill");
+		x.insertIntoEmployeeShift(22, "Darious Slay", "2019-03-18 6:00", "2019-03-18 12:00");
+		//x.removeEmployee(31);
+		//x.removeEmployeeShift(22);
 		x.retriveData();
 	}
 }
