@@ -83,6 +83,24 @@ class TimeEntryTest {
 		}
 	}
 	
+	@Test
+	void setDay() {
+		test = new TimeEntry("Monday", 0, 0);
+		String answer = test.setDay("Friday");
+		assertEquals(answer, "Monday");
+	}
 	
-
+	@Test
+	void setStartTime() {
+		test = new TimeEntry("Monday", 0, 0);
+		int answer = test.setStartTime(50);
+		assertEquals(answer, 0);
+	}
+	
+	@Test
+	void setEndTime() {
+		test = new TimeEntry("Monday", 0, 50);
+		int answer = test.setEndTime(1200);
+		assertEquals(answer, 50);
+	}
 }
