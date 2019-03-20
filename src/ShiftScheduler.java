@@ -60,6 +60,7 @@ public class ShiftScheduler {
 		Desktop desktop = Desktop.getDesktop();
 		if(file.exists()) desktop.open(file);
 	}
+	
 	public static void addDataArray(ArrayList<Employee> array, String output) throws Exception {
 		File file = new File(output);
 		try {
@@ -68,7 +69,7 @@ public class ShiftScheduler {
 			
 			// creating a CSVWriter separated by ";"
 			@SuppressWarnings("deprecation")
-			CSVWriter csv = new CSVWriter(outputFile, ';', CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER);
+			CSVWriter csv = new CSVWriter(outputFile, ',', CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER);
 			
 			//New List to store strings
 			String[][] data = new String[25][8];
@@ -160,6 +161,9 @@ public class ShiftScheduler {
 			}
 			
 			csv.close();
+			
+			showFile(output);
+			
 		} catch ( IOException e ) {
 			e.printStackTrace();
 		}
