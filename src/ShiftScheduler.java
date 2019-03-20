@@ -12,7 +12,7 @@ public class ShiftScheduler {
 
 	public static void addData(String output) {
 		File file = new File(output);
-		File file2 = new File("C:\\Users\\Cameron\\Documents\\C Programs\\DO NOT FUCKING DELETE.txt");
+		File file2 = new File("DO NOT DELETE.txt");
 		Scanner scan;
 		try {
 			

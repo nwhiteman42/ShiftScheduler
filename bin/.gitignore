@@ -1,3 +1,5 @@
+/mysql-connector-java-8.0.15.jar
+/opencsv-4.5.jar
 /Employee.class
 /EmployeeTest.class
 /Employer.class
@@ -8,6 +10,3 @@
 /ShiftSchedulerWindow.class
 /TimeEntry.class
 /TimeEntryTest.class
-/mysql-connector-java-8.0.15.jar
-/opencsv-4.5.jar
-/test.jpg
