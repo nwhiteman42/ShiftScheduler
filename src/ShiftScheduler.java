@@ -1,4 +1,6 @@
 import com.opencsv.CSVWriter;
+
+import java.awt.Desktop;
 import java.io.*; 
 import java.util.*; 
 
@@ -38,24 +40,38 @@ public class ShiftScheduler {
 			
 			
 			csv.close();
+			
+			showFile(output);
 		}
 		catch ( IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public static void showFile(String fileName) throws IOException {
+		File file = new File(fileName);
+		
+		if ( !Desktop.isDesktopSupported()) {
+			System.out.print("Desktop is not supported");
+			return;
+		}
+		
+		Desktop desktop = Desktop.getDesktop();
+		if(file.exists()) desktop.open(file);
+	}
 	public static void addDataArray(ArrayList<Employee> array, String output) throws Exception {
 		File file = new File(output);
 		try {
 		
 			FileWriter outputFile = new FileWriter(file);
 			
-			// creating a CSVWriter seperated by ";"
+			// creating a CSVWriter separated by ";"
+			@SuppressWarnings("deprecation")
 			CSVWriter csv = new CSVWriter(outputFile, ';', CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER);
 			
 			//New List to store strings
 			String[][] data = new String[25][8];
-			//Hardcoding the first row and column
+			//Hard-coding the first row and column
 			data[0][0] = "Time";
 			data[0][1] = "Sunday";
 			data[0][2] = "Monday";
