@@ -45,6 +45,7 @@ public class ShiftScheduler {
 		}
 		catch ( IOException e) {
 			e.printStackTrace();
+			
 		}
 	}
 	
