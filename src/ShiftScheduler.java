@@ -23,7 +23,7 @@ public class ShiftScheduler {
 			FileWriter outputFile = new FileWriter(file);
 			
 			// creating CSV Writer separated by ";"
-			CSVWriter csv = new CSVWriter(outputFile, ';', CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+			CSVWriter csv = new CSVWriter(outputFile, ',', CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
 			
 			// creating a List containing data
 			List<String[]> data = new ArrayList<String[]>();
