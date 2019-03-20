@@ -49,15 +49,16 @@ class MysqlCon {
 	/*
 	 * Inserts data into the "Employee_Shifts" list
 	 */
-	public void insertIntoEmployeeShift(int id, String name, String startTime, String endTime) throws SQLException {
+	public void insertIntoEmployeeShift(int id, String name, String day, String startTime, String endTime) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
-		String query = "insert into Employee_Shifts (Employee_ID, Employee_Name, Start_Time, End_Time)" + " values(?,?,?,?)";
+		String query = "insert into Employee_Shifts (Employee_ID, Employee_Name, Day, Start_Time, End_Time)" + " values(?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setInt(1,id);
 		ps.setString(2, name);
-		ps.setString(3, startTime);
-		ps.setString(4, endTime);
+		ps.setString(3, day);
+		ps.setString(4, startTime);
+		ps.setString(5, endTime);
 		
 		ps.execute();
 		con.close();
@@ -84,7 +85,7 @@ class MysqlCon {
 				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
 
 			while(rb.next())
-				System.out.println(rb.getInt(1) + "  " + rb.getString(2) + "  " + rb.getString(3) + "  " + rb.getString(4));
+				System.out.println(rb.getInt(1) + "  " + rb.getString(2) + "  " + rb.getString(3) + "  " + rb.getString(4) + "  " + rb.getString(5));
 
 			con.close();
 		}
@@ -97,7 +98,7 @@ class MysqlCon {
 	public static void main(String args[]) throws SQLException {
 		MysqlCon x = new MysqlCon();
 		//x.insertIntoEmployee(41, "Fill", "AlbumFill");
-		x.insertIntoEmployeeShift(22, "Darious Slay", "2019-03-18 6:00", "2019-03-18 12:00");
+		x.insertIntoEmployeeShift(4, "Phil Swift", "Friday", "11:00", "20:00");
 		//x.removeEmployee(31);
 		//x.removeEmployeeShift(22);
 		x.retriveData();
