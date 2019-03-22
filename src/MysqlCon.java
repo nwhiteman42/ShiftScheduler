@@ -97,10 +97,10 @@ class MysqlCon {
 	
 	public static void main(String args[]) throws SQLException {
 		MysqlCon x = new MysqlCon();
-		//x.insertIntoEmployee(41, "Fill", "AlbumFill");
-		x.insertIntoEmployeeShift(4, "Phil Swift", "Friday", "11:00", "20:00");
-		//x.removeEmployee(31);
-		//x.removeEmployeeShift(22);
+		x.insertIntoEmployee(6, "Fill", "AlbumFill");
+		x.insertIntoEmployeeShift(8, "Phil Swift", "Friday", "11:00", "20:00");
+		x.removeEmployee(6);
+		x.removeEmployeeShift(8);
 		x.retriveData();
 	}
 }
