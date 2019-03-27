@@ -9,6 +9,7 @@ public class ShiftScheduler {
 	private static final String CSV_FILE_PATH = "./result.csv";
 	
 	public static void main( String[] args) {
+	
 		addData(CSV_FILE_PATH);
 	}
 
@@ -109,10 +110,10 @@ public class ShiftScheduler {
 			for ( int i = 0; i < array.size(); i++) {
 				//Getting all the needed information
 				String name = array.get(i).getName( );
+				int index2 = 0;
 				TimeEntry[ ] times = array.get(i).getAvailability( );
-				int index2;
 				for ( int j = 0; j < times.length; j++ ) {
-					TimeEntry temp = times[i];
+					TimeEntry temp = times[j];
 					String day = temp.getDay();
 					switch ( day ) {
 					case "Sunday": 
@@ -140,13 +141,13 @@ public class ShiftScheduler {
 						throw new Exception("Not valid day");
 					}
 					
-					int timeStart = times[i].startTime;
-					int timeEnd = times[i].endTime;
-					timeStart = timeStart/100;
-					timeEnd = timeEnd/100;
+					int timeStart = times[j].startTime;
+					int timeEnd = times[j].endTime;
+					timeStart = (timeStart/100) + 1;
+					timeEnd = (timeEnd/100) + 1;
 					
 					while ( timeStart < timeEnd ) {
-						if ( data[timeStart][index2] != null ) {
+						if ( data[timeStart][index2] == null ) {
 							data[timeStart][index2] = name;
 							timeStart++;
 						} else {
@@ -156,7 +157,7 @@ public class ShiftScheduler {
 				}
 			}
 			
-			for ( int i = 0; i < 8; i++ ) {
+			for ( int i = 0; i < 25; i++ ) {
 				csv.writeNext(data[i]);
 			}
 			

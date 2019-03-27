@@ -1,6 +1,8 @@
 /*
  * Class to handle the avaiblible times an employee can work for each day
  */
+
+//TODO: add method to see if number goes over 60 min.
 public class TimeEntry {
 	
 	public String day;
