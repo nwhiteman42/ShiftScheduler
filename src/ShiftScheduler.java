@@ -151,6 +151,7 @@ public class ShiftScheduler {
 							data[timeStart][index2] = name;
 							timeStart++;
 						} else {
+							data[timeStart][index2] = data[timeStart][index2] + " // " + name;
 							timeStart++;
 						}
 					}

@@ -4,6 +4,8 @@ import java.sql.*;
 
 class MysqlCon {
 	
+	
+	
 	/*
 	 * Removes data from the "Employee_Data" list
 	 */
