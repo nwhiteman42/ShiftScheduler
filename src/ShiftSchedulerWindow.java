@@ -8,11 +8,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class ShiftSchedulerWindow {
 
 	private JFrame frame;
 	private JTable table;
+	private JMenuItem mntmExit;
 
 	/**
 	 * Launch the application.
@@ -77,7 +81,26 @@ public class ShiftSchedulerWindow {
 		});
 		frame.getContentPane().add(btnEmailSchedule, "cell 0 2");
 		
-		frame.getContentPane().add(table, "cell 2 0 3 4,grow");
+		JMenuBar menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		mntmExit = new JMenuItem("Exit");
+		mnFile.add(mntmExit);
+		
+		JMenu mnAbout = new JMenu("About");
+		menuBar.add(mnAbout);
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		mnAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+			}
+			});
 	}
-
 }
