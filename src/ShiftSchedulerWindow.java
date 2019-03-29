@@ -7,10 +7,12 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
 
 public class ShiftSchedulerWindow {
 
 	private JFrame frame;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -42,8 +44,8 @@ public class ShiftSchedulerWindow {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[]", "[][]"));
-		
+		frame.getContentPane().setLayout(new MigLayout("", "[][][][][grow]", "[][][][grow]"));
+		Employer emp = new Employer();
 		JButton btnMakeSchedule = new JButton("Make Schedule");
 		btnMakeSchedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -57,6 +59,25 @@ public class ShiftSchedulerWindow {
 			}
 		});
 		frame.getContentPane().add(btnMakeSchedule, "cell 0 1");
+		
+		JButton btnEmailSchedule = new JButton("Email Schedule");
+		btnEmailSchedule.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String[] emails = new String[] {"mtsayles@mtu.edu", "nhwhitem@mtu.edu"};
+				String subject = "New Schedule";
+				String body = "Here is your schdeule dummies.  Come to work!";
+				String attachment = "testShift1.csv";
+				try {
+					emp.massEmail(emails, attachment, subject, body);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		frame.getContentPane().add(btnEmailSchedule, "cell 0 2");
+		
+		frame.getContentPane().add(table, "cell 2 0 3 4,grow");
 	}
 
 }
