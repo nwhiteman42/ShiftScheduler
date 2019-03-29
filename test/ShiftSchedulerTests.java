@@ -27,8 +27,8 @@ public class ShiftSchedulerTests {
 	TimeEntry[] aval = new TimeEntry[] {sunday, monday, tuesday};
 	TimeEntry[] aval2 = new TimeEntry[] {sunday2, tuesday2, wednesday2, thursday2, friday2, saturday2};
 	
-	Employee x = new Employee("John", "Fluffer", aval, 4);
-	Employee x2 = new Employee("Mia Khalfia", "Entertainer", aval2, 1);
+	Employee x = new Employee(1,"John", "Fluffer", aval, 4);
+	Employee x2 = new Employee(2,"Mia Khalfia", "Entertainer", aval2, 1);
 	
 	@Test
 	public void addDataArray() throws Exception {

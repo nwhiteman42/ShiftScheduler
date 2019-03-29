@@ -1,12 +1,41 @@
 
 
 import java.sql.*;
+import java.util.ArrayList;
 
-class MysqlCon {
+class MysqlCon { 
+	
+	public ArrayList<Employee> getEmployees() throws SQLException{
+		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+		String query = "select Employee_ID, Employee_name, Employee_Title, seniority from Employee_Data";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		ArrayList<Employee> e = new ArrayList<Employee>();
+		while(rs.next()) {
+			Employee x = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), getEmployeeAval(rs.getInt(1)), rs.getInt(4));
+			e.add(x);
+		}
+		return e;
+	}
+	
+	public TimeEntry[] getEmployeeAval(int id) throws SQLException{
+		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+		String query = "select Day, Start_Time, End_Time from Employee_Shifts where Employee_id = " + id;
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		TimeEntry[] aval = new TimeEntry[7];
+		int count = 0;
+		while(rs.next()) {
+			TimeEntry x = new TimeEntry(rs.getString(1), rs.getInt(2), rs.getInt(3));
+			aval[count] = x;
+			count++;
+		}
+		return aval;	
+	}
 	
 	
 	
-	/*
+	/* 
 	 * Removes data from the "Employee_Data" list
 	 */
 	public void removeEmployee(int id) throws SQLException {

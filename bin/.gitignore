@@ -4,6 +4,10 @@
 /EmployeeTest.class
 /Employer.class
 /EmployerTest.class
+/LoginPage$1.class
+/LoginPage$2.class
+/LoginPage$3.class
+/LoginPage.class
 /MysqlCon.class
 /ShiftScheduler.class
 /ShiftSchedulerTests.class
@@ -17,7 +21,3 @@
 /TimeEntryTest.class
 /mysql-connector-java-8.0.15.jar
 /opencsv-4.5.jar
-/LoginPage$1.class
-/LoginPage.class
-/LoginPage$2.class
-/LoginPage$3.class

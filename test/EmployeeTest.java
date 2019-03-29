@@ -15,11 +15,11 @@ class EmployeeTest {
 	TimeEntry[] aval = new TimeEntry[] {sunday, monday, tuesday};
 	
 	
-	Employee x = new Employee("bob","cook",aval, 1);
+	Employee x = new Employee(1,"bob","cook",aval, 1);
 	
 	@Test
 	void testEmployee() {
-		Employee test = new Employee("Rick", "Baker", aval, 2);
+		Employee test = new Employee(2,"Rick", "Baker", aval, 2);
 		assertEquals("Rick", test.getName(),"Failed as name's don't match");
 		assertEquals("Baker", test.getJob(), "Failed as job's don't match");
 		assertEquals(aval, test.getAvailability(), "Failed as  avalibility doesn't match");

@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Employee {
-
+	int id;
 	String name;
 	String job;
 	TimeEntry availability[];
@@ -11,13 +11,15 @@ public class Employee {
 	 * Class to hold Employees, acts as User. 
 	 */
 	public Employee() {
+		id = 0;
 		name = "Employee";
 		job = "Job";
 		availability = new TimeEntry[7];
 		seniority = 0;
 	}
 
-	public Employee(String name, String job, TimeEntry availability[], int seniority) {
+	public Employee(int id, String name, String job, TimeEntry availability[], int seniority) {
+		this.id = id;
 		this.name = name;
 		this.job = job;
 		this.availability = availability;
