@@ -14,6 +14,10 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class LoginPage {
@@ -85,6 +89,26 @@ public class LoginPage {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String username = textField.getText();
+				//char[] password = passwordField.getPassword();
+				String user = null;
+				//char[] pass = null;
+				try {
+					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+					String query = "SELECT username FROM emp_cred";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setString(1,  user);
+					System.out.println(user);
+					//ps.setCharacterStream(2, pass);
+					boolean flag = username.equals(user);
+					if (flag) {
+						System.out.print(user);
+						System.exit(0);
+					}
+				} catch (SQLException e) {
+					//TODO: Make exception page
+				}
+				
 			}
 		});
 		btnLogin.setBounds(107, 180, 89, 23);
