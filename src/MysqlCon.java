@@ -12,25 +12,28 @@ class MysqlCon {
 		ResultSet rs = stmt.executeQuery(query);
 		ArrayList<Employee> e = new ArrayList<Employee>();
 		while(rs.next()) {
-			Employee x = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), getEmployeeAval(rs.getInt(1)), rs.getInt(4));
+			Employee x = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), getEmployeeAval(rs.getInt(1), rs.getString(2)), rs.getInt(4));
 			e.add(x);
 		}
 		return e;
 	}
 	
-	public TimeEntry[] getEmployeeAval(int id) throws SQLException{
+	public TimeEntry[] getEmployeeAval(int id, String name) throws SQLException{
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-		String query = "select Day, Start_Time, End_Time from Employee_Shifts where Employee_id = " + id;
+		String query = "select Day, Start_Time, End_Time from Employee_Shifts where Employee_id = " + id +" and Employee_name =" +"'"+name+"'";
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
-		TimeEntry[] aval = new TimeEntry[7];
-		int count = 0;
+		//Load into array list then into array with size of number of elements to eliminate having to deal with null values
+		ArrayList<TimeEntry> aval = new ArrayList<TimeEntry>();
 		while(rs.next()) {
 			TimeEntry x = new TimeEntry(rs.getString(1), rs.getInt(2), rs.getInt(3));
-			aval[count] = x;
-			count++;
+			aval.add(x);
 		}
-		return aval;	
+		TimeEntry[] time = new TimeEntry[aval.size()];
+		for(int x = 0; x< aval.size(); x++) {
+			time[x] = aval.get(x);
+		}
+		return time;	
 	}
 	
 	
@@ -128,10 +131,13 @@ class MysqlCon {
 	
 	public static void main(String args[]) throws SQLException {
 		MysqlCon x = new MysqlCon();
-		x.insertIntoEmployee(6, "Fill", "AlbumFill");
-		x.insertIntoEmployeeShift(8, "Phil Swift", "Friday", "11:00", "20:00");
-		x.removeEmployee(6);
-		x.removeEmployeeShift(8);
-		x.retriveData();
+		ArrayList<Employee> e = x.getEmployees();
+		for(int i = 0; i < e.size(); i++) {
+			System.out.println(e.get(i).getName() +" "+ e.get(i).getJob() + " " + e.get(i).getSeniority());
+			TimeEntry t[] = e.get(i).getAvailability();
+			for(int z = 0; z < t.length; z++) {
+				System.out.println(t[z].getDay() +" "+ t[z].getStartTime() + " " + t[z].getEndTime());
+			}
+		}
 	}
 }
