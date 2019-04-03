@@ -6,10 +6,13 @@ import java.awt.BorderLayout;
 import javax.swing.JTextArea;
 import javax.swing.JCheckBox;
 import java.awt.TextArea;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Font;
 
 public class AboutWindow {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -37,7 +40,7 @@ public class AboutWindow {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,8 +48,11 @@ public class AboutWindow {
 		JCheckBox chckbxCheckThisIf = new JCheckBox("Check This If You are Cool");
 		frame.getContentPane().add(chckbxCheckThisIf, BorderLayout.SOUTH);
 		
-		TextArea textArea = new TextArea();
-		frame.getContentPane().add(textArea, BorderLayout.CENTER);
+		JTextPane txtpnHelloHelloHell = new JTextPane();
+		txtpnHelloHelloHell.setEditable(false);
+		txtpnHelloHelloHell.setFont(new Font("Arial Black", Font.PLAIN, 16));
+		txtpnHelloHelloHell.setText("\t              Shift Scheduler\n \t          Team 1 - The Team\n                            Nathan Whiteman\n                                   Joe Poti\n                              Mason Sayles\n              \t\t    Dalton Aird\n                          Cameron Alverez");
+		frame.getContentPane().add(txtpnHelloHelloHell, BorderLayout.CENTER);
 	}
 
 }
