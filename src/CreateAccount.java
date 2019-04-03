@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JButton;
 
 public class CreateAccount {
 
@@ -21,6 +22,8 @@ public class CreateAccount {
 	private JPasswordField passwordField;
 	private JLabel lblNewLabel;
 	private JLabel lblCreateAccount;
+	private JTextField textField;
+	private JLabel lblConfirmEmail;
 
 	/**
 	 * Launch the application.
@@ -55,51 +58,68 @@ public class CreateAccount {
 		frame.getContentPane().setLayout(null);
 		
 		txtFirstName = new JTextField();
-		txtFirstName.setBounds(60, 90, 86, 20);
+		txtFirstName.setBounds(86, 90, 112, 20);
 		frame.getContentPane().add(txtFirstName);
 		txtFirstName.setColumns(10);
 		
 		txtLastName = new JTextField();
-		txtLastName.setBounds(178, 90, 86, 20);
+		txtLastName.setBounds(208, 90, 112, 20);
 		frame.getContentPane().add(txtLastName);
 		txtLastName.setColumns(10);
 		
 		txtUsername = new JTextField();
-		txtUsername.setBounds(60, 146, 86, 20);
+		txtUsername.setBounds(86, 146, 112, 20);
 		frame.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
 		pwdPassword = new JPasswordField();
-		pwdPassword.setBounds(60, 207, 86, 20);
+		pwdPassword.setBounds(86, 207, 112, 20);
 		frame.getContentPane().add(pwdPassword);
 		
 		lblFirstName = new JLabel("First name");
-		lblFirstName.setBounds(60, 75, 65, 14);
+		lblFirstName.setBounds(86, 75, 65, 14);
 		frame.getContentPane().add(lblFirstName);
 		
 		lblLastName = new JLabel("Last name");
-		lblLastName.setBounds(178, 75, 68, 14);
+		lblLastName.setBounds(208, 75, 68, 14);
 		frame.getContentPane().add(lblLastName);
 		
-		lblUsername = new JLabel("Username");
-		lblUsername.setBounds(60, 133, 65, 14);
+		lblUsername = new JLabel("Email");
+		lblUsername.setBounds(86, 133, 65, 14);
 		frame.getContentPane().add(lblUsername);
 		
 		lblPassword = new JLabel("Password");
-		lblPassword.setBounds(60, 193, 61, 14);
+		lblPassword.setBounds(86, 193, 61, 14);
 		frame.getContentPane().add(lblPassword);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(60, 265, 86, 20);
+		passwordField.setBounds(208, 207, 112, 20);
 		frame.getContentPane().add(passwordField);
 		
 		lblNewLabel = new JLabel("Confirm Password");
-		lblNewLabel.setBounds(60, 249, 86, 14);
+		lblNewLabel.setBounds(208, 193, 112, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		lblCreateAccount = new JLabel("Create Account");
 		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCreateAccount.setBounds(60, 25, 166, 26);
+		lblCreateAccount.setBounds(128, 25, 166, 26);
 		frame.getContentPane().add(lblCreateAccount);
+		
+		textField = new JTextField();
+		textField.setBounds(208, 146, 112, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		lblConfirmEmail = new JLabel("Confirm Email");
+		lblConfirmEmail.setBounds(208, 133, 86, 14);
+		frame.getContentPane().add(lblConfirmEmail);
+		
+		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setBounds(335, 337, 89, 23);
+		frame.getContentPane().add(btnConfirm);
+		
+		JButton btnGoBack = new JButton("Go Back");
+		btnGoBack.setBounds(231, 337, 89, 23);
+		frame.getContentPane().add(btnGoBack);
 	}
 }
