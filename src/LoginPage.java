@@ -13,10 +13,13 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
@@ -24,7 +27,7 @@ public class LoginPage {
 
 	private JFrame frame;
 	private JLabel txtLogin;
-	private JLabel txtUsername;
+	private JLabel txtEmail;
 	private JPasswordField passwordField;
 	private JLabel txtPassword;
 	private JTextField textField;
@@ -67,10 +70,10 @@ public class LoginPage {
 		txtLogin.setBounds(200, 37, 43, 20);
 		frame.getContentPane().add(txtLogin);
 		
-		txtUsername = new JLabel();
-		txtUsername.setText("Username:");
-		txtUsername.setBounds(92, 99, 62, 20);
-		frame.getContentPane().add(txtUsername);
+		txtEmail = new JLabel();
+		txtEmail.setText("Email: ");
+		txtEmail.setBounds(92, 99, 62, 20);
+		frame.getContentPane().add(txtEmail);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(176, 132, 134, 20);
@@ -81,6 +84,12 @@ public class LoginPage {
 		txtPassword.setBounds(94, 132, 65, 20);
 		frame.getContentPane().add(txtPassword);
 		
+
+		JLabel lblError = new JLabel("Username or password incorrect");
+		lblError.setForeground(Color.WHITE);
+		lblError.setBounds(129, 68, 181, 14);
+		frame.getContentPane().add(lblError);
+		
 		textField = new JTextField();
 		textField.setBounds(176, 99, 134, 20);
 		frame.getContentPane().add(textField);
@@ -89,22 +98,16 @@ public class LoginPage {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String username = textField.getText();
-				//char[] password = passwordField.getPassword();
-				String user = null;
-				//char[] pass = null;
+				String em = textField.getText();
+				char[] pass = passwordField.getPassword();
 				try {
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-					String query = "SELECT username FROM emp_cred";
+					String query = "SELECT password FROM emp_cred where password =" +"'"+ pass.toString() +"'";
 					PreparedStatement ps = con.prepareStatement(query);
-					ps.setString(1,  user);
-					System.out.println(user);
-					//ps.setCharacterStream(2, pass);
-					boolean flag = username.equals(user);
-					if (flag) {
-						System.out.print(user);
-						System.exit(0);
-					}
+					ResultSet rs = ps.executeQuery();
+					//rs.equals( 1 );
+					lblError.setForeground(Color.RED);
+					
 				} catch (SQLException e) {
 					//TODO: Make exception page
 				}
@@ -126,5 +129,7 @@ public class LoginPage {
 		JButton btnForgotPassword = new JButton("Forgot Password");
 		btnForgotPassword.setBounds(292, 227, 132, 23);
 		frame.getContentPane().add(btnForgotPassword);
+		
 	}
+
 }
