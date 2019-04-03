@@ -46,6 +46,7 @@ public class CreateAccount {
 	 */
 	public CreateAccount() {
 		initialize();
+		
 	}
 
 	/**
@@ -101,7 +102,7 @@ public class CreateAccount {
 		frame.getContentPane().add(lblNewLabel);
 		
 		lblCreateAccount = new JLabel("Create Account");
-		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblCreateAccount.setBounds(128, 25, 166, 26);
 		frame.getContentPane().add(lblCreateAccount);
 		
@@ -115,7 +116,7 @@ public class CreateAccount {
 		frame.getContentPane().add(lblConfirmEmail);
 		
 		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.setBounds(335, 337, 89, 23);
+		btnConfirm.setBounds(330, 337, 89, 23);
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnGoBack = new JButton("Go Back");
