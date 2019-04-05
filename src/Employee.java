@@ -73,7 +73,7 @@ public class Employee {
 	
 	/*
 	 *  Sorts days in TimeEntry array to be in order from Sunday to Saturday
-	 *  
+	 *   
 	 *  @param TimeEntryLength - the length of the TimeEntry array we are using
 	 *  
 	 *  @return the sorted array into a week's span

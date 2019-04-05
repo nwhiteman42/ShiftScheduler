@@ -47,20 +47,21 @@ class MysqlCon {
 		String query = "delete from Employee_Data where Employee_ID = " + id;
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.execute();
-	}
+	} 
 	
 	
 	/*
 	 * Inserts data into the "Employee_Data" list
 	 */
-	public void insertIntoEmployee(int id, String name, String job) throws SQLException {
+	public void insertIntoEmployee(int id, String name, String job,int seniority) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
-		String query = "insert into Employee_Data (Employee_ID, Employee_Name, Employee_Title)" + " values(?,?,?)";
+		String query = "insert into Employee_Data (Employee_ID, Employee_Name, Employee_Title, seniority )" + " values(?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setInt(1,id);
 		ps.setString(2, name);
 		ps.setString(3, job);
+		ps.setInt(4, seniority);
 		
 		ps.execute();
 		con.close();
@@ -130,14 +131,6 @@ class MysqlCon {
 	
 	
 	public static void main(String args[]) throws SQLException {
-		MysqlCon x = new MysqlCon();
-		ArrayList<Employee> e = x.getEmployees();
-		for(int i = 0; i < e.size(); i++) {
-			System.out.println(e.get(i).getName() +" "+ e.get(i).getJob() + " " + e.get(i).getSeniority());
-			TimeEntry t[] = e.get(i).getAvailability();
-			for(int z = 0; z < t.length; z++) {
-				System.out.println(t[z].getDay() +" "+ t[z].getStartTime() + " " + t[z].getEndTime());
-			}
-		}
+		
 	}
 }
