@@ -6,16 +6,24 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.junit.Test;
 
 public class MysqlConTests {
 	MysqlCon x = new MysqlCon();
+	
 	@Test
-	public void insertIntoEmployeeTest() throws SQLException {
-		//Returns false as result from ps.execute is a update number rather than result set
-		assertEquals(false,x.insertIntoEmployee(500, "Test", "Tester", 4), "Failed to execute");
-
+	public void insertEmployeeTest() throws SQLException{
+		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+		x.insertIntoEmployee(500, "Test", "Tester", 1);
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery("select count(*) from Employee_Data where Employee_ID =  500");
+		int x = 0;
+		while(rs.next()) {
+			x = rs.getInt(1);
+		}
+		assertEquals(1, x, "Failed");
 	}
 	@Test
 	public void removeEmployeeTest() throws SQLException {

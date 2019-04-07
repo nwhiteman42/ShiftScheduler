@@ -68,7 +68,7 @@ public class LoginPage {
 		
 		txtLogin = new JLabel();
 		txtLogin.setText("Login:");
-		txtLogin.setBounds(200, 37, 43, 20);
+		txtLogin.setBounds(204, 12, 43, 20);
 		frame.getContentPane().add(txtLogin);
 		
 		txtEmail = new JLabel();
@@ -77,23 +77,27 @@ public class LoginPage {
 		frame.getContentPane().add(txtEmail);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(176, 132, 134, 20);
+		passwordField.setBounds(204, 133, 134, 20);
 		frame.getContentPane().add(passwordField);
 		
 		txtPassword = new JLabel();
 		txtPassword.setText("Password:");
-		txtPassword.setBounds(94, 132, 65, 20);
+		txtPassword.setBounds(94, 132, 82, 20);
 		frame.getContentPane().add(txtPassword);
 		
 
 		JLabel lblError = new JLabel("Username or password incorrect");
 		lblError.setForeground(Color.WHITE);
-		lblError.setBounds(129, 68, 181, 14);
+		lblError.setBounds(107, 69, 252, 14);
 		frame.getContentPane().add(lblError);
 		
+		JLabel lblAuthenticated = new JLabel("Authenticated");
+		lblAuthenticated.setForeground(Color.WHITE);
+		lblAuthenticated.setBounds(158, 43, 134, 14);
+		frame.getContentPane().add(lblAuthenticated);
 		
 		textField = new JTextField();
-		textField.setBounds(176, 99, 134, 20);
+		textField.setBounds(204, 100, 134, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
@@ -107,20 +111,19 @@ public class LoginPage {
 				try {
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 					String query = "SELECT count(password) FROM emp_cred where password =" +"'"+ password +"'" +" and email = " +"'" + em + "'";
-					System.out.println(query);
 					PreparedStatement ps = con.prepareStatement(query);
 					ResultSet rs = ps.executeQuery();
-					System.out.println("ran");
 					int x = 0;
 					while(rs.next()) {
 						x = rs.getInt(1);
 					}
-					System.out.println("ran2");
-					System.out.println(x);
-					if(x != 1) { //Open new window
+					if(x != 1) {
+						lblAuthenticated.setForeground(Color.WHITE);
 						lblError.setForeground(Color.RED);
 					} else if( x == 1) {
 						lblError.setForeground(Color.WHITE);
+						lblAuthenticated.setForeground(Color.GREEN);
+						ShiftSchedulerWindow.main();
 					}
 					
 				} catch (SQLException e) {
@@ -145,6 +148,7 @@ public class LoginPage {
 		btnForgotPassword.setBounds(292, 227, 132, 23);
 		frame.getContentPane().add(btnForgotPassword);
 		
+		
+		
 	}
-
 }
