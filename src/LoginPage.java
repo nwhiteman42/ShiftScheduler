@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -90,6 +91,7 @@ public class LoginPage {
 		lblError.setBounds(129, 68, 181, 14);
 		frame.getContentPane().add(lblError);
 		
+		
 		textField = new JTextField();
 		textField.setBounds(176, 99, 134, 20);
 		frame.getContentPane().add(textField);
@@ -98,15 +100,28 @@ public class LoginPage {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String em = textField.getText();
+				String em = textField.getText(); //Gets email
 				char[] pass = passwordField.getPassword();
+				String password = String.copyValueOf(pass); //Converts password to string.
+				
 				try {
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-					String query = "SELECT password FROM emp_cred where password =" +"'"+ pass.toString() +"'";
+					String query = "SELECT count(password) FROM emp_cred where password =" +"'"+ password +"'" +" and email = " +"'" + em + "'";
+					System.out.println(query);
 					PreparedStatement ps = con.prepareStatement(query);
 					ResultSet rs = ps.executeQuery();
-					//rs.equals( 1 );
-					lblError.setForeground(Color.RED);
+					System.out.println("ran");
+					int x = 0;
+					while(rs.next()) {
+						x = rs.getInt(1);
+					}
+					System.out.println("ran2");
+					System.out.println(x);
+					if(x != 1) { //Open new window
+						lblError.setForeground(Color.RED);
+					} else if( x == 1) {
+						lblError.setForeground(Color.WHITE);
+					}
 					
 				} catch (SQLException e) {
 					//TODO: Make exception page

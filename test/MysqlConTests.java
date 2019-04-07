@@ -13,7 +13,9 @@ public class MysqlConTests {
 	MysqlCon x = new MysqlCon();
 	@Test
 	public void insertIntoEmployeeTest() throws SQLException {
-		x.insertIntoEmployee(500, "Test", "Tester", 4);
+		//Returns false as result from ps.execute is a update number rather than result set
+		assertEquals(false,x.insertIntoEmployee(500, "Test", "Tester", 4), "Failed to execute");
+
 	}
 	@Test
 	public void removeEmployeeTest() throws SQLException {

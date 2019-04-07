@@ -53,7 +53,7 @@ class MysqlCon {
 	/*
 	 * Inserts data into the "Employee_Data" list
 	 */
-	public void insertIntoEmployee(int id, String name, String job,int seniority) throws SQLException {
+	public boolean insertIntoEmployee(int id, String name, String job,int seniority) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
 		String query = "insert into Employee_Data (Employee_ID, Employee_Name, Employee_Title, seniority )" + " values(?,?,?,?)";
@@ -63,8 +63,9 @@ class MysqlCon {
 		ps.setString(3, job);
 		ps.setInt(4, seniority);
 		
-		ps.execute();
+		boolean e = ps.execute();
 		con.close();
+		return e;
 	}
 	
 	
@@ -84,7 +85,7 @@ class MysqlCon {
 	/*
 	 * Inserts data into the "Employee_Shifts" list
 	 */
-	public void insertIntoEmployeeShift(int id, String name, String day, String startTime, String endTime) throws SQLException {
+	public boolean insertIntoEmployeeShift(int id, String name, String day, String startTime, String endTime) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
 		String query = "insert into Employee_Shifts (Employee_ID, Employee_Name, Day, Start_Time, End_Time)" + " values(?,?,?,?,?)";
@@ -95,8 +96,7 @@ class MysqlCon {
 		ps.setString(4, startTime);
 		ps.setString(5, endTime);
 		
-		ps.execute();
-		con.close();
+		return ps.execute();
 	}
 	
 	
