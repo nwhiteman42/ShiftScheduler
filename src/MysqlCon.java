@@ -5,6 +5,64 @@ import java.util.ArrayList;
 
 class MysqlCon { 
 	
+	//Gets id to assign to an employer. ID does not already exist in database
+	public int getAEmployerID() throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+		String query = "select count(*) from emp_cred";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		int id = 0;
+		while(rs.next()) {
+			id = rs.getInt(1)+1;
+		}
+		boolean exists = true;
+		while(exists == true) {
+			String query2 = "select count(emp_id) from emp_cred where emp_id = "+ id;
+			Statement stmt2 = con.createStatement();
+			ResultSet rs2 = stmt.executeQuery(query2);
+			int x = 0;
+			while(rs2.next()) {
+				x = rs2.getInt(1);
+			}
+			if(x == 0) {
+				exists = false;
+			} else {
+				id++;
+			}
+		}
+		return id;
+	}
+	
+	
+	//Gets an id to give to a new employee. The id does not already exist in the database
+	public int getAEmployeID() throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+		String query = "select count(*) from Employee_Data";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		int id = 0;
+		while(rs.next()) {
+			id = rs.getInt(1)+1;
+		}
+		boolean exists = true;
+		while(exists == true) {
+			String query2 = "select count(Employee_ID) from Employee_Data where Employee_ID = "+ id;
+			Statement stmt2 = con.createStatement();
+			ResultSet rs2 = stmt.executeQuery(query2);
+			int x = 0;
+			while(rs2.next()) {
+				x = rs2.getInt(1);
+			}
+			if(x == 0) {
+				exists = false;
+			} else {
+				id++;
+			}
+		}
+		return id;
+	}
+	
+	
 	public ArrayList<Employee> getEmployees() throws SQLException{
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		String query = "select Employee_ID, Employee_name, Employee_Title, seniority from Employee_Data";
