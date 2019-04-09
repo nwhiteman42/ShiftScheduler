@@ -128,7 +128,7 @@ public class LoginPage {
 					}
 					
 				} catch (SQLException e) {
-					//TODO: Make exception page
+					e.printStackTrace();
 				}
 				
 			}
