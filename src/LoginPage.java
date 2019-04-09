@@ -123,7 +123,8 @@ public class LoginPage {
 					} else if( x == 1) {
 						lblError.setForeground(Color.WHITE);
 						lblAuthenticated.setForeground(Color.GREEN);
-						ShiftSchedulerWindow.main();
+						ShiftSchedulerWindow.main(null);
+						frame.setVisible(false);
 					}
 					
 				} catch (SQLException e) {

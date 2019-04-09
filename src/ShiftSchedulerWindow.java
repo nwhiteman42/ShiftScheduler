@@ -21,7 +21,7 @@ public class ShiftSchedulerWindow {
 	/**
 	 * Launch the application.
 	 */
-	public static void main() {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -92,15 +92,18 @@ public class ShiftSchedulerWindow {
 		
 		JMenu mnAbout = new JMenu("About");
 		menuBar.add(mnAbout);
+		
+		JMenuItem mntmUs = new JMenuItem("Us");
+		mntmUs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AboutWindow.main(null);
+			}
+		});
+		mnAbout.add(mntmUs);
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		mnAbout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-			}
-			});
 	}
 }
