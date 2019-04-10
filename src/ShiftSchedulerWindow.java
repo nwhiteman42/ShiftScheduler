@@ -90,7 +90,26 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnEmailSchedule, "cell 0 2");
 		
 		JButton btnEditEmployee = new JButton("Edit Employee");
+		btnEditEmployee.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		frame.getContentPane().add(btnEditEmployee, "cell 4 2");
+		
+		JButton btnRemoveEmployee = new JButton("Remove Employee");
+		btnRemoveEmployee.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				RemoveEmployee.main(null);
+			}
+		});
+		frame.getContentPane().add(btnRemoveEmployee, "cell 4 3");
+		
+		JButton btnAddShift = new JButton("Add Shift");
+		frame.getContentPane().add(btnAddShift, "cell 0 4");
+		
+		JButton btnRemoveShift = new JButton("Remove Shift");
+		frame.getContentPane().add(btnRemoveShift, "cell 4 4");
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
