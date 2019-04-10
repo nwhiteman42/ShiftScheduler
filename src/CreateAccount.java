@@ -31,6 +31,8 @@ public class CreateAccount {
 	private JLabel lblCreateAccount;
 	private JTextField txtConfirmEmail;
 	private JLabel lblConfirmEmail;
+	private JTextField WorkplacetextField;
+	private JLabel lblWorkplace;
 
 	/**
 	 * Launch the application.
@@ -127,12 +129,21 @@ public class CreateAccount {
 		
 		JLabel lblPasswordsDoNot = new JLabel("Passwords do not match");
 		lblPasswordsDoNot.setForeground(Color.WHITE);
-		lblPasswordsDoNot.setBounds(86, 239, 223, 15);
+		lblPasswordsDoNot.setBounds(71, 310, 223, 15);
 		frame.getContentPane().add(lblPasswordsDoNot);
+		
+		WorkplacetextField = new JTextField();
+		WorkplacetextField.setColumns(10);
+		WorkplacetextField.setBounds(164, 255, 112, 20);
+		frame.getContentPane().add(WorkplacetextField);
+		
+		lblWorkplace = new JLabel("Workplace");
+		lblWorkplace.setBounds(164, 239, 112, 15);
+		frame.getContentPane().add(lblWorkplace);
 		
 		JLabel lblEmailsDoNot = new JLabel("Emails do not match");
 		lblEmailsDoNot.setForeground(Color.WHITE);
-		lblEmailsDoNot.setBounds(86, 266, 171, 15);
+		lblEmailsDoNot.setBounds(70, 283, 171, 15);
 		frame.getContentPane().add(lblEmailsDoNot);
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
@@ -141,6 +152,7 @@ public class CreateAccount {
 				String lName = txtLastName.getText();
 				String email = txtEmail.getText();
 				String conEmail = txtConfirmEmail.getText();
+				String workplace = WorkplacetextField.getText();
 				char[] tempPswd = pwdPassword.getPassword();
 				char[] tempConPswd = pwdconField.getPassword();
 				String pswd = String.copyValueOf(tempPswd);
@@ -154,13 +166,14 @@ public class CreateAccount {
 						Connection con;
 						try {
 						con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-						String query = "insert into emp_cred (emp_id, firstname, lastname, email, password)" + " values(?,?,?,?,?)";
+						String query = "insert into emp_cred (emp_id, firstname, lastname, email, password, workplace)" + " values(?,?,?,?,?,?)";
 						PreparedStatement ps = con.prepareStatement(query);
 						ps.setInt(1,x.getAEmployerID());
 						ps.setString(2, fName);
 						ps.setString(3, lName);
 						ps.setString(4, email);
 						ps.setString(5, pswd);
+						ps.setString(6, workplace);
 						ps.execute();
 						LoginPage.main(null);
 						frame.setVisible(false);
@@ -187,6 +200,8 @@ public class CreateAccount {
 		});
 		btnGoBack.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
+		
+		
 		
 		
 	}
