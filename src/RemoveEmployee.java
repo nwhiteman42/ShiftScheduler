@@ -5,14 +5,20 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class RemoveEmployee {
 
 	private JFrame frame;
 	private final JLabel lblRemoveEmployee = new JLabel("Remove Employee");
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtName;
 	private JTextField textField_2;
+	private JTextField txtID;
 
 	/**
 	 * Launch the application.
@@ -42,7 +48,7 @@ public class RemoveEmployee {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 439);
+		frame.setBounds(100, 100, 450, 405);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		lblRemoveEmployee.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -50,41 +56,70 @@ public class RemoveEmployee {
 		frame.getContentPane().add(lblRemoveEmployee);
 		
 		textField = new JTextField();
-		textField.setBounds(125, 204, 173, 20);
+		textField.setBounds(125, 268, 173, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblEmail.setBounds(125, 190, 64, 14);
+		lblEmail.setBounds(125, 243, 64, 14);
 		frame.getContentPane().add(lblEmail);
 		
 		JLabel lblFirstName = new JLabel("First Name:");
 		lblFirstName.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblFirstName.setBounds(125, 65, 81, 20);
+		lblFirstName.setBounds(125, 125, 81, 20);
 		frame.getContentPane().add(lblFirstName);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(125, 86, 173, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		txtName = new JTextField();
+		txtName.setBounds(125, 156, 173, 20);
+		frame.getContentPane().add(txtName);
+		txtName.setColumns(10);
 		
 		JLabel lblLastName = new JLabel("Last Name:");
 		lblLastName.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblLastName.setBounds(125, 127, 81, 14);
+		lblLastName.setBounds(125, 187, 81, 14);
 		frame.getContentPane().add(lblLastName);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(125, 148, 173, 20);
+		textField_2.setBounds(125, 212, 173, 20);
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 		
+		JLabel lblFailedToRemove = new JLabel("Failed to remove Emloyee");
+		lblFailedToRemove.setForeground(SystemColor.menu);
+		lblFailedToRemove.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblFailedToRemove.setBounds(127, 344, 186, 14);
+		frame.getContentPane().add(lblFailedToRemove);
+		
 		JButton btnRemove = new JButton("REMOVE");
-		btnRemove.setBounds(80, 295, 89, 23);
+		btnRemove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MysqlCon sql = new MysqlCon();
+				String idString = txtID.getText();
+				int idNum = Integer.parseInt(idString);
+				try {
+					sql.removeEmployee(idNum);
+				} catch (SQLException e) {
+					lblFailedToRemove.setForeground(Color.RED);
+				}
+			}
+		});
+		btnRemove.setBounds(117, 310, 89, 23);
 		frame.getContentPane().add(btnRemove);
 		
 		JButton btnCancel = new JButton("CANCEL");
-		btnCancel.setBounds(246, 295, 89, 23);
+		btnCancel.setBounds(222, 310, 89, 23);
 		frame.getContentPane().add(btnCancel);
+		
+		JLabel lblEmployeeId = new JLabel("Employee ID:");
+		lblEmployeeId.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblEmployeeId.setBounds(126, 69, 105, 14);
+		frame.getContentPane().add(lblEmployeeId);
+		
+		txtID = new JTextField();
+		txtID.setBounds(125, 94, 173, 20);
+		frame.getContentPane().add(txtID);
+		txtID.setColumns(10);
+		
 	}
 }
