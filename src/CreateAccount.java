@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class CreateAccount {
 
@@ -60,6 +61,8 @@ public class CreateAccount {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setForeground(Color.WHITE);
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 410);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -80,6 +83,7 @@ public class CreateAccount {
 		txtEmail.setColumns(10);
 		
 		pwdPassword = new JPasswordField();
+		pwdPassword.setForeground(Color.DARK_GRAY);
 		pwdPassword.setBounds(86, 207, 112, 20);
 		frame.getContentPane().add(pwdPassword);
 		
@@ -121,6 +125,15 @@ public class CreateAccount {
 		lblConfirmEmail.setBounds(208, 133, 86, 14);
 		frame.getContentPane().add(lblConfirmEmail);
 		
+		JLabel lblPasswordsDoNot = new JLabel("Passwords do not match");
+		lblPasswordsDoNot.setForeground(Color.WHITE);
+		lblPasswordsDoNot.setBounds(86, 239, 223, 15);
+		frame.getContentPane().add(lblPasswordsDoNot);
+		
+		JLabel lblEmailsDoNot = new JLabel("Emails do not match");
+		lblEmailsDoNot.setForeground(Color.WHITE);
+		lblEmailsDoNot.setBounds(86, 266, 171, 15);
+		frame.getContentPane().add(lblEmailsDoNot);
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -134,30 +147,32 @@ public class CreateAccount {
 				String conPswd = String.copyValueOf(tempConPswd);
 				
 				if(email.equals(conEmail)) {
+					lblEmailsDoNot.setForeground(Color.WHITE);
 					if(pswd.equals(conPswd)) {
+						lblPasswordsDoNot.setForeground(Color.WHITE);
 						MysqlCon x = new MysqlCon();
 						Connection con;
 						try {
-							System.out.println("ran");
-							
 						con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-						System.out.println("ran");
 						String query = "insert into emp_cred (emp_id, firstname, lastname, email, password)" + " values(?,?,?,?,?)";
 						PreparedStatement ps = con.prepareStatement(query);
-						System.out.println("ran");
 						ps.setInt(1,x.getAEmployerID());
-						System.out.println("ran");
 						ps.setString(2, fName);
 						ps.setString(3, lName);
 						ps.setString(4, email);
 						ps.setString(5, pswd);
 						ps.execute();
-						System.out.println("ran");
+						LoginPage.main(null);
+						frame.setVisible(false);
 						} catch (SQLException e1) {
 							e1.printStackTrace();
 						}
+					} else {
+						lblPasswordsDoNot.setForeground(Color.RED);
 					}
-				}			
+				} else {
+					lblEmailsDoNot.setForeground(Color.RED);
+				}
 			}
 		});
 		btnConfirm.setBounds(330, 337, 89, 23);
@@ -172,5 +187,7 @@ public class CreateAccount {
 		});
 		btnGoBack.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
+		
+		
 	}
 }
