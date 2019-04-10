@@ -129,6 +129,7 @@ public class EditEmployee {
 		textField_6.setBounds(356, 170, 124, 19);
 		frame.getContentPane().add(textField_6);
 		
+		
 		JTextArea textArea_3 = new JTextArea();
 		textArea_3.setText("Seniority");
 		textArea_3.setBounds(551, 155, 72, 15);
