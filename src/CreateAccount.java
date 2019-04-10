@@ -182,7 +182,7 @@ public class CreateAccount {
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LoginPage.main(null);
-				frame.hide();
+				frame.setVisible(false);
 			}
 		});
 		btnGoBack.setBounds(231, 337, 89, 23);

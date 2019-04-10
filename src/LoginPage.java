@@ -145,9 +145,15 @@ public class LoginPage {
 		btnCancel.setBounds(221, 180, 89, 23);
 		frame.getContentPane().add(btnCancel);
 		
-		JButton btnForgotPassword = new JButton("Forgot Password");
-		btnForgotPassword.setBounds(292, 227, 132, 23);
-		frame.getContentPane().add(btnForgotPassword);
+		JButton btnNewButton = new JButton("Create Account");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CreateAccount.main(null);
+				frame.setVisible(false);
+			}
+		});
+		btnNewButton.setBounds(280, 226, 158, 25);
+		frame.getContentPane().add(btnNewButton);
 		
 		
 		
