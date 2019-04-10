@@ -14,13 +14,9 @@ public class CreateEmployee {
 	private JTextField txtFirstName;
 	private JTextField txtLastName;
 	private JTextField txtUsername;
-	private JPasswordField pwdPassword;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
 	private JLabel lblUsername;
-	private JLabel lblPassword;
-	private JPasswordField passwordField;
-	private JLabel lblNewLabel;
 	private JLabel lblCreateAccount;
 	private JTextField textField;
 	private JLabel lblConfirmEmail;
@@ -73,10 +69,6 @@ public class CreateEmployee {
 		frame.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
-		pwdPassword = new JPasswordField();
-		pwdPassword.setBounds(86, 207, 112, 20);
-		frame.getContentPane().add(pwdPassword);
-		
 		lblFirstName = new JLabel("First name");
 		lblFirstName.setBounds(86, 75, 65, 14);
 		frame.getContentPane().add(lblFirstName);
@@ -89,19 +81,7 @@ public class CreateEmployee {
 		lblUsername.setBounds(86, 133, 65, 14);
 		frame.getContentPane().add(lblUsername);
 		
-		lblPassword = new JLabel("Password");
-		lblPassword.setBounds(86, 193, 61, 14);
-		frame.getContentPane().add(lblPassword);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(208, 207, 112, 20);
-		frame.getContentPane().add(passwordField);
-		
-		lblNewLabel = new JLabel("Confirm Password");
-		lblNewLabel.setBounds(208, 193, 112, 14);
-		frame.getContentPane().add(lblNewLabel);
-		
-		lblCreateAccount = new JLabel("Create Account");
+		lblCreateAccount = new JLabel("Create Employee");
 		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblCreateAccount.setBounds(128, 25, 166, 26);
 		frame.getContentPane().add(lblCreateAccount);
