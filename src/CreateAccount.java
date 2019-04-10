@@ -7,22 +7,28 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
 
 public class CreateAccount {
 
 	private JFrame frame;
 	private JTextField txtFirstName;
 	private JTextField txtLastName;
-	private JTextField txtUsername;
+	private JTextField txtEmail;
 	private JPasswordField pwdPassword;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
 	private JLabel lblUsername;
 	private JLabel lblPassword;
-	private JPasswordField passwordField;
+	private JPasswordField pwdconField;
 	private JLabel lblNewLabel;
 	private JLabel lblCreateAccount;
-	private JTextField textField;
+	private JTextField txtConfirmEmail;
 	private JLabel lblConfirmEmail;
 
 	/**
@@ -68,10 +74,10 @@ public class CreateAccount {
 		frame.getContentPane().add(txtLastName);
 		txtLastName.setColumns(10);
 		
-		txtUsername = new JTextField();
-		txtUsername.setBounds(86, 146, 112, 20);
-		frame.getContentPane().add(txtUsername);
-		txtUsername.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(86, 146, 112, 20);
+		frame.getContentPane().add(txtEmail);
+		txtEmail.setColumns(10);
 		
 		pwdPassword = new JPasswordField();
 		pwdPassword.setBounds(86, 207, 112, 20);
@@ -93,9 +99,9 @@ public class CreateAccount {
 		lblPassword.setBounds(86, 193, 61, 14);
 		frame.getContentPane().add(lblPassword);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(208, 207, 112, 20);
-		frame.getContentPane().add(passwordField);
+		pwdconField = new JPasswordField();
+		pwdconField.setBounds(208, 207, 112, 20);
+		frame.getContentPane().add(pwdconField);
 		
 		lblNewLabel = new JLabel("Confirm Password");
 		lblNewLabel.setBounds(208, 193, 112, 14);
@@ -106,20 +112,64 @@ public class CreateAccount {
 		lblCreateAccount.setBounds(128, 25, 166, 26);
 		frame.getContentPane().add(lblCreateAccount);
 		
-		textField = new JTextField();
-		textField.setBounds(208, 146, 112, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		txtConfirmEmail = new JTextField();
+		txtConfirmEmail.setBounds(208, 146, 112, 20);
+		frame.getContentPane().add(txtConfirmEmail);
+		txtConfirmEmail.setColumns(10);
 		
 		lblConfirmEmail = new JLabel("Confirm Email");
 		lblConfirmEmail.setBounds(208, 133, 86, 14);
 		frame.getContentPane().add(lblConfirmEmail);
 		
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String fName = txtFirstName.getText();
+				String lName = txtLastName.getText();
+				String email = txtEmail.getText();
+				String conEmail = txtConfirmEmail.getText();
+				char[] tempPswd = pwdPassword.getPassword();
+				char[] tempConPswd = pwdconField.getPassword();
+				String pswd = String.copyValueOf(tempPswd);
+				String conPswd = String.copyValueOf(tempConPswd);
+				
+				if(email.equals(conEmail)) {
+					if(pswd.equals(conPswd)) {
+						MysqlCon x = new MysqlCon();
+						Connection con;
+						try {
+							System.out.println("ran");
+							
+						con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+						System.out.println("ran");
+						String query = "insert into emp_cred (emp_id, firstname, lastname, email, password)" + " values(?,?,?,?,?)";
+						PreparedStatement ps = con.prepareStatement(query);
+						System.out.println("ran");
+						ps.setInt(1,x.getAEmployerID());
+						System.out.println("ran");
+						ps.setString(2, fName);
+						ps.setString(3, lName);
+						ps.setString(4, email);
+						ps.setString(5, pswd);
+						ps.execute();
+						System.out.println("ran");
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}			
+			}
+		});
 		btnConfirm.setBounds(330, 337, 89, 23);
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnGoBack = new JButton("Go Back");
+		btnGoBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginPage.main(null);
+				frame.hide();
+			}
+		});
 		btnGoBack.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
 	}
