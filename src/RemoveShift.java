@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RemoveShift {
 
@@ -83,6 +85,11 @@ public class RemoveShift {
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnGoBack = new JButton("Go Back");
+		btnGoBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+			}
+		});
 		btnGoBack.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
 		

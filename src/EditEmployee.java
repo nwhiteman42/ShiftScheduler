@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EditEmployee {
 
@@ -145,6 +147,11 @@ public class EditEmployee {
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+			}
+		});
 		btnCancel.setBounds(419, 243, 114, 25);
 		frame.getContentPane().add(btnCancel);
 	}
