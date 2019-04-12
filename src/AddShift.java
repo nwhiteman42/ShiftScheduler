@@ -61,7 +61,7 @@ public class AddShift {
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 410);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		txtFirstName = new JTextField();
@@ -73,9 +73,9 @@ public class AddShift {
 		lblFirstName.setBounds(101, 75, 41, 14);
 		frame.getContentPane().add(lblFirstName);
 		
-		lblCreateAccount = new JLabel("Add Shift");
+		lblCreateAccount = new JLabel("Remove Shift");
 		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblCreateAccount.setBounds(164, 25, 112, 26);
+		lblCreateAccount.setBounds(164, 25, 156, 26);
 		frame.getContentPane().add(lblCreateAccount);
 		
 		JButton btnConfirm = new JButton("Confirm");

@@ -43,7 +43,7 @@ public class AboutWindow {
 	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JCheckBox chckbxCheckThisIf = new JCheckBox("Check This If You are Cool");
 		frame.getContentPane().add(chckbxCheckThisIf, BorderLayout.SOUTH);

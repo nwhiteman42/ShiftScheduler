@@ -66,7 +66,7 @@ public class CreateAccount {
 		frame.getContentPane().setForeground(Color.WHITE);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 410);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		txtFirstName = new JTextField();

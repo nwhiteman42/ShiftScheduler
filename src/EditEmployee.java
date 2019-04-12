@@ -46,7 +46,7 @@ public class EditEmployee {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 661, 334);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JTextArea txtrOld = new JTextArea();

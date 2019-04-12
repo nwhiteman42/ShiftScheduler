@@ -49,7 +49,7 @@ public class RemoveEmployee {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 405);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		lblRemoveEmployee.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblRemoveEmployee.setBounds(113, 11, 222, 31);
