@@ -108,6 +108,11 @@ public class RemoveEmployee {
 		frame.getContentPane().add(btnRemove);
 		
 		JButton btnCancel = new JButton("CANCEL");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.hide();
+			}
+		});
 		btnCancel.setBounds(222, 310, 89, 23);
 		frame.getContentPane().add(btnCancel);
 		
