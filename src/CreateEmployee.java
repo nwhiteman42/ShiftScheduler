@@ -108,7 +108,7 @@ public class CreateEmployee {
 		
 		
 		/**
-		 * JLabels First name, Last name, Email, job title, seniority, and place of work.
+		 * JLabels First Name, Last Name, Email, job title, seniority, and place of work.
 		 */
 		lblFirstName = new JLabel("First Name");
 		lblFirstName.setBounds(86, 75, 65, 14);
