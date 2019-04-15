@@ -122,9 +122,16 @@ public class ShiftSchedulerWindow {
 		
 		JMenuItem mntmLogout = new JMenuItem("Logout");
 		mnFile.add(mntmLogout);
+		mntmLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				LoginPage.main(null);
+				frame.setVisible(false);
+			}
+		});
 		
 		JMenu mnAbout = new JMenu("About");
 		menuBar.add(mnAbout);
+		
 		
 		JMenuItem mntmUs = new JMenuItem("Us");
 		mntmUs.addActionListener(new ActionListener() {
@@ -132,6 +139,7 @@ public class ShiftSchedulerWindow {
 				AboutWindow.main(null);
 			}
 		});
+		
 		mnAbout.add(mntmUs);
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
