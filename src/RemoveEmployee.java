@@ -96,9 +96,8 @@ public class RemoveEmployee {
 			public void actionPerformed(ActionEvent arg0) {
 				MysqlCon sql = new MysqlCon();
 				String idString = txtID.getText();
-				int idNum = Integer.parseInt(idString);
 				try {
-					sql.removeEmployee(idNum);
+					sql.removeEmployee(lblEmail.getText());
 				} catch (SQLException e) {
 					lblFailedToRemove.setForeground(Color.RED);
 				}
@@ -116,15 +115,6 @@ public class RemoveEmployee {
 		btnCancel.setBounds(222, 310, 89, 23);
 		frame.getContentPane().add(btnCancel);
 		
-		JLabel lblEmployeeId = new JLabel("Employee ID:");
-		lblEmployeeId.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblEmployeeId.setBounds(126, 69, 105, 14);
-		frame.getContentPane().add(lblEmployeeId);
-		
-		txtID = new JTextField();
-		txtID.setBounds(125, 94, 173, 20);
-		frame.getContentPane().add(txtID);
-		txtID.setColumns(10);
 		
 	}
 }

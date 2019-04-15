@@ -6,6 +6,8 @@ public class Employee {
 	String job;
 	TimeEntry availability[];
 	int seniority;
+	String placeOfWork;
+	String email;
 
 	/*
 	 * Class to hold Employees, acts as User. 
@@ -16,14 +18,18 @@ public class Employee {
 		job = "Job";
 		availability = new TimeEntry[7];
 		seniority = 0;
+		placeOfWork = " ";
+		email = " ";
 	}
 
-	public Employee(int id, String name, String job, TimeEntry availability[], int seniority) {
+	public Employee(int id, String name, String job, TimeEntry availability[], int seniority, String placeOfWork, String email) {
 		this.id = id;
 		this.name = name;
 		this.job = job;
 		this.availability = availability;
 		this.seniority = seniority;
+		this.placeOfWork = placeOfWork;
+		this.email = email;
 	}
 
 	/*

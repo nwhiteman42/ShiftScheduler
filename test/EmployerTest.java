@@ -34,7 +34,7 @@ class EmployerTest {
 	void testSetSeniority() {
 		TimeEntry fillerday = new TimeEntry("Monday", 800, 1200);
 		TimeEntry[] time = new TimeEntry[] {fillerday};
-		Employee e = new Employee(1,"Ricky", "Driver", time, 0);
+		Employee e = new Employee(1,"Ricky", "Driver", time, 0, "NASCAR", "email");
 		e.setSeniority(50);
 		assertEquals(50,e.getSeniority(), "Seniority was not set correctly");
 	}
@@ -43,7 +43,7 @@ class EmployerTest {
 	void testRemoveOneEmployee( ) {
 		boolean flag = false;
 		TimeEntry[ ] times = null;
-		Employee e = new Employee(2,"Jon", "IT", times, 0 );
+		Employee e = new Employee(2,"Jon", "IT", times, 0, "Microsoft", "email");
 		testing.addEmployee( e );
 		for ( int i = 0; i < 10; i++ ) {
 			testing.addEmployee( new Employee( ) );

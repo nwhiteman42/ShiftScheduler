@@ -5,6 +5,18 @@ import java.util.ArrayList;
 
 class MysqlCon { 
 	
+	public int getACurrentEmployeeID(String email) throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+		String query = "select Employee_id from Employee_Data where email =" +"'"+email+"'";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		int id = -1;
+		while(rs.next()) {
+			id = rs.getInt(1);
+		}
+		return id;
+	}
+	
 	//Gets id to assign to an employer. ID does not already exist in database
 	public int getAEmployerID() throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
@@ -65,12 +77,14 @@ class MysqlCon {
 	
 	public ArrayList<Employee> getEmployees() throws SQLException{
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-		String query = "select Employee_ID, Employee_name, Employee_Title, seniority from Employee_Data";
+		String query = "select Employee_ID, Employee_name, Employee_Title, seniority, placeofwork, email from Employee_Data";
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
 		ArrayList<Employee> e = new ArrayList<Employee>();
-		while(rs.next()) {
-			Employee x = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), getEmployeeAval(rs.getInt(1), rs.getString(2)), rs.getInt(4));
+		MysqlCon c = new MysqlCon();
+		while(rs.next()){
+			Employee x = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), c.getEmployeeAval(rs.getInt(1), rs.getString(2)),
+					rs.getInt(4), rs.getString(5), rs.getString(6));
 			e.add(x);
 		}
 		return e;
@@ -99,10 +113,10 @@ class MysqlCon {
 	/* 
 	 * Removes data from the "Employee_Data" list
 	 */
-	public void removeEmployee(int id) throws SQLException {
+	public void removeEmployee(String email) throws SQLException {
 	Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
-		String query = "delete from Employee_Data where Employee_ID = " + id;
+		String query = "delete from Employee_Data where email = " +"'"+email+"'" ;
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.execute();
 	} 
@@ -111,15 +125,17 @@ class MysqlCon {
 	/*
 	 * Inserts data into the "Employee_Data" list
 	 */
-	public boolean insertIntoEmployee(int id, String name, String job,int seniority) throws SQLException {
+	public boolean insertIntoEmployee(int id, String name, String job,int seniority, String work, String email) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
-		String query = "insert into Employee_Data (Employee_ID, Employee_Name, Employee_Title, seniority )" + " values(?,?,?,?)";
+		String query = "insert into Employee_Data (Employee_ID, Employee_Name, Employee_Title, seniority, placeofwork, email )" + " values(?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setInt(1,id);
 		ps.setString(2, name);
 		ps.setString(3, job);
 		ps.setInt(4, seniority);
+		ps.setString(5, work);
+		ps.setString(6, email);
 		
 		boolean e = ps.execute();
 		con.close();
