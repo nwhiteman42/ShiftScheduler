@@ -22,6 +22,9 @@ public class CreateEmployee {
 	private JLabel lblCreateAccount;
 	private JTextField textField;
 	private JLabel lblConfirmEmail;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -109,5 +112,32 @@ public class CreateEmployee {
 		});
 		btnGoBack.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(86, 205, 112, 20);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblJobTitle = new JLabel("Job Title");
+		lblJobTitle.setBounds(86, 190, 46, 14);
+		frame.getContentPane().add(lblJobTitle);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(208, 205, 112, 20);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblSeniority = new JLabel("Seniority");
+		lblSeniority.setBounds(208, 190, 46, 14);
+		frame.getContentPane().add(lblSeniority);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(86, 264, 112, 20);
+		frame.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblPlaceOfWork = new JLabel("Place of Work");
+		lblPlaceOfWork.setBounds(86, 249, 98, 14);
+		frame.getContentPane().add(lblPlaceOfWork);
 	}
 }
