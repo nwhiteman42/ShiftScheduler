@@ -17,20 +17,20 @@ public class AddShift {
 	private JTextField txtFirstName;
 	private JLabel lblFirstName;
 	private JLabel lblCreateAccount;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
+	private JTextField txtSunStart;
+	private JTextField txtSunEnd;
+	private JTextField txtMonStart;
+	private JTextField txtTuesStart;
+	private JTextField txtWedStart;
+	private JTextField txtThursStart;
+	private JTextField txtFriStart;
+	private JTextField txtSatStart;
+	private JTextField txtMonEnd;
+	private JTextField txtTuesEnd;
+	private JTextField txtWedEnd;
+	private JTextField txtThursEnd;
+	private JTextField txtFriEnd;
+	private JTextField txtSatEnd;
 
 	/**
 	 * Launch the application.
@@ -80,9 +80,7 @@ public class AddShift {
 		lblCreateAccount.setBounds(164, 25, 156, 26);
 		frame.getContentPane().add(lblCreateAccount);
 		
-		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.setBounds(330, 337, 89, 23);
-		frame.getContentPane().add(btnConfirm);
+		
 		
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
@@ -93,15 +91,15 @@ public class AddShift {
 		btnGoBack.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
 		
-		textField = new JTextField();
-		textField.setBounds(190, 121, 86, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		txtSunStart = new JTextField();
+		txtSunStart.setBounds(190, 121, 86, 20);
+		frame.getContentPane().add(txtSunStart);
+		txtSunStart.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(286, 121, 86, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		txtSunEnd = new JTextField();
+		txtSunEnd.setBounds(286, 121, 86, 20);
+		frame.getContentPane().add(txtSunEnd);
+		txtSunEnd.setColumns(10);
 		
 		JLabel lblStartTime = new JLabel("Start Time");
 		lblStartTime.setBounds(200, 108, 76, 14);
@@ -115,65 +113,65 @@ public class AddShift {
 		chckbxSunday.setBounds(87, 120, 97, 23);
 		frame.getContentPane().add(chckbxSunday);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(190, 152, 86, 20);
-		frame.getContentPane().add(textField_2);
+		txtMonStart = new JTextField();
+		txtMonStart.setColumns(10);
+		txtMonStart.setBounds(190, 152, 86, 20);
+		frame.getContentPane().add(txtMonStart);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(190, 183, 86, 20);
-		frame.getContentPane().add(textField_3);
+		txtTuesStart = new JTextField();
+		txtTuesStart.setColumns(10);
+		txtTuesStart.setBounds(190, 183, 86, 20);
+		frame.getContentPane().add(txtTuesStart);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(190, 214, 86, 20);
-		frame.getContentPane().add(textField_4);
+		txtWedStart = new JTextField();
+		txtWedStart.setColumns(10);
+		txtWedStart.setBounds(190, 214, 86, 20);
+		frame.getContentPane().add(txtWedStart);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(190, 245, 86, 20);
-		frame.getContentPane().add(textField_5);
+		txtThursStart = new JTextField();
+		txtThursStart.setColumns(10);
+		txtThursStart.setBounds(190, 245, 86, 20);
+		frame.getContentPane().add(txtThursStart);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(190, 276, 86, 20);
-		frame.getContentPane().add(textField_6);
+		txtFriStart = new JTextField();
+		txtFriStart.setColumns(10);
+		txtFriStart.setBounds(190, 276, 86, 20);
+		frame.getContentPane().add(txtFriStart);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(190, 307, 86, 20);
-		frame.getContentPane().add(textField_7);
+		txtSatStart = new JTextField();
+		txtSatStart.setColumns(10);
+		txtSatStart.setBounds(190, 307, 86, 20);
+		frame.getContentPane().add(txtSatStart);
 		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(286, 152, 86, 20);
-		frame.getContentPane().add(textField_8);
+		txtMonEnd = new JTextField();
+		txtMonEnd.setColumns(10);
+		txtMonEnd.setBounds(286, 152, 86, 20);
+		frame.getContentPane().add(txtMonEnd);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(286, 183, 86, 20);
-		frame.getContentPane().add(textField_9);
+		txtTuesEnd = new JTextField();
+		txtTuesEnd.setColumns(10);
+		txtTuesEnd.setBounds(286, 183, 86, 20);
+		frame.getContentPane().add(txtTuesEnd);
 		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(286, 214, 86, 20);
-		frame.getContentPane().add(textField_10);
+		txtWedEnd = new JTextField();
+		txtWedEnd.setColumns(10);
+		txtWedEnd.setBounds(286, 214, 86, 20);
+		frame.getContentPane().add(txtWedEnd);
 		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(286, 245, 86, 20);
-		frame.getContentPane().add(textField_11);
+		txtThursEnd = new JTextField();
+		txtThursEnd.setColumns(10);
+		txtThursEnd.setBounds(286, 245, 86, 20);
+		frame.getContentPane().add(txtThursEnd);
 		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(286, 276, 86, 20);
-		frame.getContentPane().add(textField_12);
+		txtFriEnd = new JTextField();
+		txtFriEnd.setColumns(10);
+		txtFriEnd.setBounds(286, 276, 86, 20);
+		frame.getContentPane().add(txtFriEnd);
 		
-		textField_13 = new JTextField();
-		textField_13.setColumns(10);
-		textField_13.setBounds(286, 307, 86, 20);
-		frame.getContentPane().add(textField_13);
+		txtSatEnd = new JTextField();
+		txtSatEnd.setColumns(10);
+		txtSatEnd.setBounds(286, 307, 86, 20);
+		frame.getContentPane().add(txtSatEnd);
 		
 		JCheckBox chckbxMonday = new JCheckBox("Monday");
 		chckbxMonday.setBounds(86, 151, 97, 23);
@@ -198,5 +196,97 @@ public class AddShift {
 		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
 		chckbxSaturday.setBounds(86, 306, 97, 23);
 		frame.getContentPane().add(chckbxSaturday);
+	
+		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TimeEntry[] times = new TimeEntry[7];
+				//TODO: Make the database give us the old timeEntry here: 
+				TimeEntry[] oldStuff = null;
+				if( chckbxSunday.isSelected()) {
+					String start = txtSunStart.getText();
+					String end = txtSunEnd.getText();
+					start = start.replaceAll(":", "");
+					end = end.replaceAll(":", "");
+					int index = 0;
+					times[index].setDay("Sunday");
+					addTimeEntry(start, end, times, index);
+				} if( chckbxMonday.isSelected() ) {
+					String start = txtMonStart.getText();
+					String end = txtMonEnd.getText();
+					start = start.replaceAll(":", "");
+					end = end.replaceAll(":", "");
+					int index = 1; 
+					times[index].setDay("Monday");
+					addTimeEntry(start, end, times, index);
+				} if( chckbxTuesday.isSelected() ) {
+					String start = txtTuesStart.getText();
+					String end = txtTuesEnd.getText();
+					start = start.replaceAll(":", "");
+					end = end.replaceAll(":", "");
+					int index = 2; 
+					times[index].setDay("Tuesday");
+					addTimeEntry(start, end, times, index);
+				} if( chckbxWednesday.isSelected() ) {
+					String start = txtWedStart.getText();
+					String end = txtWedEnd.getText();
+					start = start.replaceAll(":", "");
+					end = end.replaceAll(":", "");
+					int index = 3; 
+					times[index].setDay("Wednesday");
+					addTimeEntry(start, end, times, index);
+				} if( chckbxThursday.isSelected() ) {
+					String start = txtThursStart.getText();
+					String end = txtThursEnd.getText();
+					start = start.replaceAll(":", "");
+					end = end.replaceAll(":", "");
+					int index = 4; 
+					times[index].setDay("Thursday");
+					addTimeEntry(start, end, times, index);
+				} if( chckbxFriday.isSelected() ) {
+					String start = txtFriStart.getText();
+					String end = txtFriEnd.getText();
+					start = start.replaceAll(":", "");
+					end = end.replaceAll(":", "");
+					int index = 5;
+					times[index].setDay("Friday"); 
+					addTimeEntry(start, end, times, index);
+				} if( chckbxSaturday.isSelected() ) {
+					String start = txtSatStart.getText();
+					String end = txtSatEnd.getText();
+					start = start.replaceAll(":", "");
+					end = end.replaceAll(":", "");
+					int index = 6; 
+					times[index].setDay("Saturday");
+					addTimeEntry(start, end, times, index);
+				}
+				
+				times = timeEntryMerge(oldStuff, times);
+				//TODO: Add pushing this to the database
+			}
+		});
+		btnConfirm.setBounds(330, 337, 89, 23);
+		frame.getContentPane().add(btnConfirm);
+		
+	}
+	
+	private void addTimeEntry(String start, String end, TimeEntry[] times, int index) {
+		int startTime = Integer.parseInt(start);
+		int endTime = Integer.parseInt(end);
+		TimeEntry newest = times[index];
+		newest.setStartTime(startTime);
+		newest.setEndTime(endTime);
+	}
+	
+	private TimeEntry[] timeEntryMerge(TimeEntry[] older, TimeEntry[] newer) {
+		TimeEntry[] merged = new TimeEntry[7];
+		for( int i = 0; i < 7; i++ ) {
+			if( newer[i] != null ) {
+				merged[i] = newer[i];
+			} else if( older[i] != null ) {
+				merged[i] = older[i];
+			}
+		}
+		return merged;
 	}
 }
