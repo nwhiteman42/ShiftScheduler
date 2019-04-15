@@ -120,6 +120,9 @@ public class ShiftSchedulerWindow {
 		mntmExit = new JMenuItem("Exit");
 		mnFile.add(mntmExit);
 		
+		JMenuItem mntmLogout = new JMenuItem("Logout");
+		mnFile.add(mntmLogout);
+		
 		JMenu mnAbout = new JMenu("About");
 		menuBar.add(mnAbout);
 		
