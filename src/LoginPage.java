@@ -41,6 +41,7 @@ public class LoginPage {
 			public void run() {
 				try {
 					LoginPage window = new LoginPage();
+					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,6 +62,7 @@ public class LoginPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
