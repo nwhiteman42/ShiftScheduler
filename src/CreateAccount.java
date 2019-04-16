@@ -42,6 +42,7 @@ public class CreateAccount {
 			public void run() {
 				try {
 					CreateAccount window = new CreateAccount();
+					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,6 +64,7 @@ public class CreateAccount {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.getContentPane().setForeground(Color.WHITE);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 410);
