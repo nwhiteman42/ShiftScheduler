@@ -75,9 +75,9 @@ public class RemoveShift {
 		lblFirstName.setBounds(101, 75, 41, 14);
 		frame.getContentPane().add(lblFirstName);
 		
-		lblCreateAccount = new JLabel("Add Shift");
+		lblCreateAccount = new JLabel("Remove Shift");
 		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblCreateAccount.setBounds(164, 25, 112, 26);
+		lblCreateAccount.setBounds(146, 23, 174, 26);
 		frame.getContentPane().add(lblCreateAccount);
 		
 		JButton btnConfirm = new JButton("Confirm");
@@ -87,6 +87,7 @@ public class RemoveShift {
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ShiftSchedulerWindow.main(null);
 				frame.setVisible(false);
 			}
 		});
