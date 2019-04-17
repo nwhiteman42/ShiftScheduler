@@ -9,9 +9,15 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
-public class AddShift {
+public class EditShift {
 
 	private JFrame frame;
 	private JTextField txtFirstName;
@@ -39,7 +45,7 @@ public class AddShift {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddShift window = new AddShift();
+					EditShift window = new EditShift();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +57,7 @@ public class AddShift {
 	/**
 	 * Create the application.
 	 */
-	public AddShift() {
+	public EditShift() {
 		initialize();
 		
 	}
@@ -75,7 +81,7 @@ public class AddShift {
 		lblFirstName.setBounds(101, 75, 41, 14);
 		frame.getContentPane().add(lblFirstName);
 		
-		lblCreateAccount = new JLabel("Remove Shift");
+		lblCreateAccount = new JLabel("Edit Shift");
 		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblCreateAccount.setBounds(164, 25, 156, 26);
 		frame.getContentPane().add(lblCreateAccount);
@@ -200,69 +206,98 @@ public class AddShift {
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TimeEntry[] times = new TimeEntry[7];
-				//TODO: Make the database give us the old timeEntry here: 
-				TimeEntry[] oldStuff = null;
-				if( chckbxSunday.isSelected()) {
-					String start = txtSunStart.getText();
-					String end = txtSunEnd.getText();
-					start = start.replaceAll(":", "");
-					end = end.replaceAll(":", "");
-					int index = 0;
-					times[index].setDay("Sunday");
-					addTimeEntry(start, end, times, index);
-				} if( chckbxMonday.isSelected() ) {
-					String start = txtMonStart.getText();
-					String end = txtMonEnd.getText();
-					start = start.replaceAll(":", "");
-					end = end.replaceAll(":", "");
-					int index = 1; 
-					times[index].setDay("Monday");
-					addTimeEntry(start, end, times, index);
-				} if( chckbxTuesday.isSelected() ) {
-					String start = txtTuesStart.getText();
-					String end = txtTuesEnd.getText();
-					start = start.replaceAll(":", "");
-					end = end.replaceAll(":", "");
-					int index = 2; 
-					times[index].setDay("Tuesday");
-					addTimeEntry(start, end, times, index);
-				} if( chckbxWednesday.isSelected() ) {
-					String start = txtWedStart.getText();
-					String end = txtWedEnd.getText();
-					start = start.replaceAll(":", "");
-					end = end.replaceAll(":", "");
-					int index = 3; 
-					times[index].setDay("Wednesday");
-					addTimeEntry(start, end, times, index);
-				} if( chckbxThursday.isSelected() ) {
-					String start = txtThursStart.getText();
-					String end = txtThursEnd.getText();
-					start = start.replaceAll(":", "");
-					end = end.replaceAll(":", "");
-					int index = 4; 
-					times[index].setDay("Thursday");
-					addTimeEntry(start, end, times, index);
-				} if( chckbxFriday.isSelected() ) {
-					String start = txtFriStart.getText();
-					String end = txtFriEnd.getText();
-					start = start.replaceAll(":", "");
-					end = end.replaceAll(":", "");
-					int index = 5;
-					times[index].setDay("Friday"); 
-					addTimeEntry(start, end, times, index);
-				} if( chckbxSaturday.isSelected() ) {
-					String start = txtSatStart.getText();
-					String end = txtSatEnd.getText();
-					start = start.replaceAll(":", "");
-					end = end.replaceAll(":", "");
-					int index = 6; 
-					times[index].setDay("Saturday");
-					addTimeEntry(start, end, times, index);
+				MysqlCon x = new MysqlCon();
+				try {
+					int id = x.getACurrentEmployeeID(txtFirstName.getText());
+					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+					String q = "select Employee_name from Employee_Data where Employee_id = "+id;
+					Statement stmt= con.createStatement();
+					ResultSet rs = stmt.executeQuery(q);
+					String name = null;
+					while(rs.next()) {
+						name = rs.getString(1);
+					}
+					
+					String query = "delete from Employee_Shifts where Employee_ID = " + id ;
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.execute();
+					
+					if(chckbxSunday.isSelected()) {
+						String qSun = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
+						PreparedStatement pSun = con.prepareStatement(qSun);
+						pSun.setInt(1, id);
+						pSun.setString(2, name);
+						pSun.setString(3, "Sunday");
+						pSun.setInt(4, Integer.parseInt(txtSunStart.getText()));
+						pSun.setInt(5, Integer.parseInt(txtSunEnd.getText()));
+						pSun.execute();
+					}
+					if(chckbxMonday.isSelected()) {
+						String qMon = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
+						PreparedStatement pMon = con.prepareStatement(qMon);
+						pMon.setInt(1, id);
+						pMon.setString(2, name);
+						pMon.setString(3, "Monday");
+						pMon.setInt(4, Integer.parseInt(txtMonStart.getText()));
+						pMon.setInt(5, Integer.parseInt(txtMonEnd.getText()));
+						pMon.execute();
+						
+					}
+					if(chckbxTuesday.isSelected()) {
+						String qTue = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
+						PreparedStatement pTue = con.prepareStatement(qTue);
+						pTue.setInt(1, id);
+						pTue.setString(2, name);
+						pTue.setString(3, "Tuesday");
+						pTue.setInt(4, Integer.parseInt(txtTuesStart.getText()));
+						pTue.setInt(5, Integer.parseInt(txtTuesEnd.getText()));
+						pTue.execute();
+					}
+					if(chckbxWednesday.isSelected()) {
+						String qWed = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
+						PreparedStatement pWed = con.prepareStatement(qWed);
+						pWed.setInt(1, id);
+						pWed.setString(2, name);
+						pWed.setString(3, "Wednesday");
+						pWed.setInt(4, Integer.parseInt(txtWedStart.getText()));
+						pWed.setInt(5, Integer.parseInt(txtWedEnd.getText()));
+						pWed.execute();
+					}
+					if(chckbxThursday.isSelected()) {
+						String qThu = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
+						PreparedStatement pThu = con.prepareStatement(qThu);
+						pThu.setInt(1, id);
+						pThu.setString(2, name);
+						pThu.setString(3, "Thursday");
+						pThu.setInt(4, Integer.parseInt(txtThursStart.getText()));
+						pThu.setInt(5, Integer.parseInt(txtThursEnd.getText()));
+						pThu.execute();
+					}
+					if(chckbxFriday.isSelected()) {
+						String qFri = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
+						PreparedStatement pFri = con.prepareStatement(qFri);
+						pFri.setInt(1, id);
+						pFri.setString(2, name);
+						pFri.setString(3, "Friday");
+						pFri.setInt(4, Integer.parseInt(txtFriStart.getText()));
+						pFri.setInt(5, Integer.parseInt(txtFriEnd.getText()));
+						pFri.execute();
+					}
+					if(chckbxSaturday.isSelected()) {
+						String qSat = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
+						PreparedStatement pSat = con.prepareStatement(qSat);
+						pSat.setInt(1, id);
+						pSat.setString(2, name);
+						pSat.setString(3, "Saturday");
+						pSat.setInt(4, Integer.parseInt(txtSatStart.getText()));
+						pSat.setInt(5, Integer.parseInt(txtSatEnd.getText()));
+						pSat.execute();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
-				
-				times = timeEntryMerge(oldStuff, times);
-				//TODO: Add pushing this to the database
+				ShiftSchedulerWindow.main(null);
+				frame.setVisible(false);
 			}
 		});
 		btnConfirm.setBounds(330, 337, 89, 23);
