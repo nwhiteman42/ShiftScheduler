@@ -82,7 +82,7 @@ public class ShiftSchedulerWindow {
 			}
 		});
 		
-		JButton btnAddEmployee = new JButton("Add Employee");
+		JButton btnAddEmployee = new JButton("Create Employee");
 		btnAddEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CreateEmployee.main(null);
