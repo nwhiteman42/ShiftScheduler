@@ -26,6 +26,7 @@ public class ShiftSchedulerWindow {
 			public void run() {
 				try {
 					ShiftSchedulerWindow window = new ShiftSchedulerWindow();
+					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,6 +47,7 @@ public class ShiftSchedulerWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[][][][][grow]", "[][][][][grow]"));
