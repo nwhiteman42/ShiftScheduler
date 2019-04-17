@@ -199,5 +199,6 @@ public class RemoveShift {
 		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
 		chckbxSaturday.setBounds(86, 306, 97, 23);
 		frame.getContentPane().add(chckbxSaturday);
+	
 	}
 }
