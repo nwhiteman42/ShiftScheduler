@@ -50,7 +50,7 @@ public class ShiftSchedulerWindow {
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[][][][][grow]", "[][][][][grow]"));
+		frame.getContentPane().setLayout(new MigLayout("", "[][][][][grow]", "[][][][][][grow]"));
 		Employer emp = new Employer();
 		JButton btnMakeSchedule = new JButton("Make Schedule");
 		btnMakeSchedule.addActionListener(new ActionListener() {
@@ -107,10 +107,12 @@ public class ShiftSchedulerWindow {
 		});
 		frame.getContentPane().add(btnRemoveEmployee, "cell 4 3");
 		
-		JButton btnAddShift = new JButton("Add Shift");
-		frame.getContentPane().add(btnAddShift, "cell 0 4");
-		
-		JButton btnRemoveShift = new JButton("Remove Shift");
+		JButton btnRemoveShift = new JButton("Edit Shift");
+		btnRemoveShift.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EditShift.main(null);
+			}
+		});
 		frame.getContentPane().add(btnRemoveShift, "cell 4 4");
 		
 		JMenuBar menuBar = new JMenuBar();
