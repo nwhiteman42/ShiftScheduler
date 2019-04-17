@@ -86,6 +86,7 @@ public class ShiftSchedulerWindow {
 		btnAddEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CreateEmployee.main(null);
+				frame.setVisible(false);
 			}
 		});
 		frame.getContentPane().add(btnAddEmployee, "cell 4 1");
@@ -95,6 +96,7 @@ public class ShiftSchedulerWindow {
 		btnEditEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EditEmployee.main(null);
+				frame.setVisible(false);
 			}
 		});
 		frame.getContentPane().add(btnEditEmployee, "cell 4 2");
@@ -103,6 +105,7 @@ public class ShiftSchedulerWindow {
 		btnRemoveEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				RemoveEmployee.main(null);
+				frame.setVisible(false);
 			}
 		});
 		frame.getContentPane().add(btnRemoveEmployee, "cell 4 3");
@@ -111,6 +114,7 @@ public class ShiftSchedulerWindow {
 		btnRemoveShift.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EditShift.main(null);
+				frame.setVisible(false);
 			}
 		});
 		frame.getContentPane().add(btnRemoveShift, "cell 4 4");
