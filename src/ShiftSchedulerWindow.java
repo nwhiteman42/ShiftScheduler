@@ -92,7 +92,7 @@ public class ShiftSchedulerWindow {
 		JButton btnEditEmployee = new JButton("Edit Employee");
 		btnEditEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				EditEmployee.main(null);
 			}
 		});
 		frame.getContentPane().add(btnEditEmployee, "cell 4 2");
