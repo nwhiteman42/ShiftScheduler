@@ -140,7 +140,7 @@ public class CreateEmployee {
 		txtConfirmEmail.setColumns(10);
 		
 		//Header
-		lblCreateAccount = new JLabel("Add Employee");
+		lblCreateAccount = new JLabel("Create Employee");
 		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblCreateAccount.setBounds(128, 25, 166, 26);
 		frame.getContentPane().add(lblCreateAccount);
@@ -204,6 +204,7 @@ public class CreateEmployee {
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ShiftSchedulerWindow.main(null);
 				frame.setVisible(false);
 			}
 		});
