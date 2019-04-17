@@ -13,7 +13,6 @@ import java.awt.Font;
 public class AboutWindow {
 
 	JFrame frame;
-
 	/**
 	 * Launch the application.
 	 */
