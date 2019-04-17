@@ -91,6 +91,7 @@ public class EditShift {
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ShiftSchedulerWindow.main(null);
 				frame.setVisible(false);
 			}
 		});
