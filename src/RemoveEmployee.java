@@ -6,6 +6,9 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -15,10 +18,14 @@ public class RemoveEmployee {
 
 	private JFrame frame;
 	private final JLabel lblRemoveEmployee = new JLabel("Remove Employee");
-	private JTextField textField;
-	private JTextField txtName;
-	private JTextField textField_2;
-	private JTextField txtID;
+	private JLabel lblFirstName;
+	private JLabel lblLastName;
+	private JLabel lblEmail;
+	private JLabel lblFailedToRemove;
+	private JTextField txtfirstname;
+	private JTextField txtlastname;
+	private JTextField txtemail;
+	
 
 	/**
 	 * Launch the application.
@@ -28,6 +35,7 @@ public class RemoveEmployee {
 			public void run() {
 				try {
 					RemoveEmployee window = new RemoveEmployee();
+					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,6 +56,7 @@ public class RemoveEmployee {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 405);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -55,37 +64,41 @@ public class RemoveEmployee {
 		lblRemoveEmployee.setBounds(113, 11, 222, 31);
 		frame.getContentPane().add(lblRemoveEmployee);
 		
-		textField = new JTextField();
-		textField.setBounds(125, 268, 173, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
 		
-		JLabel lblEmail = new JLabel("Email:");
+		
+		txtemail = new JTextField();
+		txtemail.setBounds(125, 268, 173, 20);
+		frame.getContentPane().add(txtemail);
+		txtemail.setColumns(10);
+		
+		txtfirstname = new JTextField();
+		txtfirstname.setBounds(125, 156, 173, 20);
+		frame.getContentPane().add(txtfirstname);
+		txtfirstname.setColumns(10);
+		
+		txtlastname = new JTextField();
+		txtlastname.setBounds(125, 212, 173, 20);
+		frame.getContentPane().add(txtlastname);
+		txtlastname.setColumns(10);
+		
+		
+		
+		lblEmail = new JLabel("Email:");
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblEmail.setBounds(125, 243, 64, 14);
 		frame.getContentPane().add(lblEmail);
 		
-		JLabel lblFirstName = new JLabel("First Name:");
+		lblFirstName = new JLabel("First Name:");
 		lblFirstName.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblFirstName.setBounds(125, 125, 81, 20);
 		frame.getContentPane().add(lblFirstName);
 		
-		txtName = new JTextField();
-		txtName.setBounds(125, 156, 173, 20);
-		frame.getContentPane().add(txtName);
-		txtName.setColumns(10);
-		
-		JLabel lblLastName = new JLabel("Last Name:");
+		lblLastName = new JLabel("Last Name:");
 		lblLastName.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblLastName.setBounds(125, 187, 81, 14);
 		frame.getContentPane().add(lblLastName);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(125, 212, 173, 20);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
-		
-		JLabel lblFailedToRemove = new JLabel("Failed to remove Emloyee");
+		lblFailedToRemove = new JLabel("Failed to remove Emloyee");
 		lblFailedToRemove.setForeground(SystemColor.menu);
 		lblFailedToRemove.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblFailedToRemove.setBounds(127, 344, 186, 14);
@@ -93,22 +106,36 @@ public class RemoveEmployee {
 		
 		JButton btnRemove = new JButton("REMOVE");
 		btnRemove.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				MysqlCon sql = new MysqlCon();
-				String idString = txtID.getText();
+			public void actionPerformed(ActionEvent e) {
+				String empName = txtfirstname.getText() + " " + txtlastname.getText();
+				String email = txtemail.getText();
+				
+				/**
+				 * TODO: Create a check to make throw an error if the program failed to remove someone.
+				 */
+				Connection con;
 				try {
-					sql.removeEmployee(lblEmail.getText());
-				} catch (SQLException e) {
-					lblFailedToRemove.setForeground(Color.RED);
-				}
+					con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+					String query = "DELETE FROM Employee_Data WHERE Employee_Name= " + "'" + empName + "'" + " AND email= " +  "'" + email + "'";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.executeUpdate();
+						
+					}
+					catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+					ShiftSchedulerWindow.main(null);
+					frame.setVisible(false);
 			}
 		});
+		
 		btnRemove.setBounds(117, 310, 89, 23);
 		frame.getContentPane().add(btnRemove);
 		
 		JButton btnCancel = new JButton("CANCEL");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ShiftSchedulerWindow.main(null);
 				frame.hide();
 			}
 		});
