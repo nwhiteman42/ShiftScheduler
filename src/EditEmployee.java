@@ -164,6 +164,7 @@ public class EditEmployee {
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
+				ShiftSchedulerWindow.main(workplace);
 			}
 		});
 		btnCancel.setBounds(419, 243, 114, 25);
