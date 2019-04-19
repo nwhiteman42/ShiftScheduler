@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JMenuBar;
@@ -13,7 +14,19 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 public class ShiftSchedulerWindow {
-
+	
+	//Holds the workplace of signed in employeer
+	public static String workplace = null;
+	
+	//Getter for workplace
+	public String getWorkplace() {
+		return workplace;
+	}
+	//Setter for workplace
+	public void setWorkplace(String newWorkplace) {
+		workplace = newWorkplace;
+	}
+	
 	private JFrame frame;
 	private JTable table;
 	private JMenuItem mntmExit;
@@ -21,7 +34,9 @@ public class ShiftSchedulerWindow {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String workplace) {
+		ShiftSchedulerWindow x = new ShiftSchedulerWindow();
+		x.setWorkplace(workplace); //Sets workplace to the workplace of whoever is logged in
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -55,9 +70,12 @@ public class ShiftSchedulerWindow {
 		JButton btnMakeSchedule = new JButton("Make Schedule");
 		btnMakeSchedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ShiftSchedulerTests obj = new ShiftSchedulerTests();
+				MysqlCon m = new MysqlCon();
+				ShiftScheduler x = new ShiftScheduler();
 				try {
-					obj.addDataArray();
+					System.out.println(workplace);
+					ArrayList<Employee> emps = m.getEmployees(workplace);//Pulls employees from database
+					x.makeSchedule(emps, "testShift1.csv");//Makes array
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -85,7 +103,7 @@ public class ShiftSchedulerWindow {
 		JButton btnAddEmployee = new JButton("Create Employee");
 		btnAddEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CreateEmployee.main(null);
+				CreateEmployee.main(workplace);
 				frame.setVisible(false);
 			}
 		});
@@ -95,7 +113,7 @@ public class ShiftSchedulerWindow {
 		JButton btnEditEmployee = new JButton("Edit Employee");
 		btnEditEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EditEmployee.main(null);
+				EditEmployee.main(workplace);
 				frame.setVisible(false);
 			}
 		});
@@ -104,7 +122,7 @@ public class ShiftSchedulerWindow {
 		JButton btnRemoveEmployee = new JButton("Remove Employee");
 		btnRemoveEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				RemoveEmployee.main(null);
+				RemoveEmployee.main(workplace);
 				frame.setVisible(false);
 			}
 		});
@@ -113,7 +131,7 @@ public class ShiftSchedulerWindow {
 		JButton btnRemoveShift = new JButton("Edit Shift");
 		btnRemoveShift.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EditShift.main(null);
+				EditShift.main(workplace);
 				frame.setVisible(false);
 			}
 		});
@@ -122,7 +140,7 @@ public class ShiftSchedulerWindow {
 		JButton btnNewButton = new JButton("Remove Shift");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RemoveShift.main(null);
+				RemoveShift.main(workplace);
 				frame.setVisible(false);
 			}
 		});

@@ -15,7 +15,19 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class RemoveEmployee {
-
+	
+	//Holds the workplace of signed in employeer
+		public static String workplace = null;
+		
+		//Getter for workplace
+		public String getWorkplace() {
+			return workplace;
+		}
+		//Setter for workplace
+		public void setWorkplace(String newWorkplace) {
+			workplace = newWorkplace;
+		}
+	
 	private JFrame frame;
 	private final JLabel lblRemoveEmployee = new JLabel("Remove Employee");
 	private JLabel lblFirstName;
@@ -30,7 +42,9 @@ public class RemoveEmployee {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String workplace) {
+		RemoveEmployee x = new RemoveEmployee();
+		x.setWorkplace(workplace);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -124,7 +138,7 @@ public class RemoveEmployee {
 					catch (SQLException e1) {
 						e1.printStackTrace();
 					}
-					ShiftSchedulerWindow.main(null);
+					ShiftSchedulerWindow.main(workplace);
 					frame.setVisible(false);
 			}
 		});
@@ -135,7 +149,7 @@ public class RemoveEmployee {
 		JButton btnCancel = new JButton("CANCEL");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ShiftSchedulerWindow.main(null);
+				ShiftSchedulerWindow.main(workplace);
 				frame.hide();
 			}
 		});

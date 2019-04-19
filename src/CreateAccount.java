@@ -16,7 +16,19 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class CreateAccount {
-
+	
+	//Holds the workplace of signed in employeer
+		public static String workplace = null;
+		
+		//Getter for workplace
+		public String getWorkplace() {
+			return workplace;
+		}
+		//Setter for workplace
+		public void setWorkplace(String newWorkplace) {
+			workplace = newWorkplace;
+		}
+	
 	private JFrame frame;
 	private JTextField txtFirstName;
 	private JTextField txtLastName;
@@ -37,7 +49,9 @@ public class CreateAccount {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String workplace) {
+		CreateAccount x = new CreateAccount();
+		x.setWorkplace(workplace);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -154,7 +168,7 @@ public class CreateAccount {
 				String lName = txtLastName.getText();
 				String email = txtEmail.getText();
 				String conEmail = txtConfirmEmail.getText();
-				String workplace = WorkplacetextField.getText();
+				String workplaceTemp = WorkplacetextField.getText();
 				char[] tempPswd = pwdPassword.getPassword();
 				char[] tempConPswd = pwdconField.getPassword();
 				String pswd = String.copyValueOf(tempPswd);
@@ -175,9 +189,10 @@ public class CreateAccount {
 						ps.setString(3, lName);
 						ps.setString(4, email);
 						ps.setString(5, pswd);
-						ps.setString(6, workplace);
+						ps.setString(6, workplaceTemp);
 						ps.execute();
-						LoginPage.main(null);
+						con.close();
+						LoginPage.main(workplace);
 						frame.setVisible(false);
 						} catch (SQLException e1) {
 							e1.printStackTrace();
@@ -196,7 +211,7 @@ public class CreateAccount {
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginPage.main(null);
+				LoginPage.main(workplace);
 				frame.setVisible(false);
 			}
 		});

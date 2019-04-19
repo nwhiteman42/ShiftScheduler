@@ -12,7 +12,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class RemoveShift {
-
+	//Holds the workplace of signed in employeer
+		public static String workplace = null;
+		
+		//Getter for workplace
+		public String getWorkplace() {
+			return workplace;
+		}
+		//Setter for workplace
+		public void setWorkplace(String newWorkplace) {
+			workplace = newWorkplace;
+		}
+	
 	private JFrame frame;
 	private JTextField txtFirstName;
 	private JLabel lblFirstName;
@@ -35,7 +46,9 @@ public class RemoveShift {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String workplace) {
+		RemoveShift x = new RemoveShift();
+		x.setWorkplace(workplace);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -87,7 +100,7 @@ public class RemoveShift {
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ShiftSchedulerWindow.main(null);
+				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);
 			}
 		});

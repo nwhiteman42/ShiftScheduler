@@ -17,7 +17,19 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class CreateEmployee {
-
+	
+	//Holds the workplace of signed in employeer
+	public static String workplace = null;
+	
+	//Getter for workplace
+	public String getWorkplace() {
+		return workplace;
+	}
+	//Setter for workplace
+	public void setWorkplace(String newWorkplace) {
+		workplace = newWorkplace;
+	}
+	
 	private JFrame frame;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
@@ -38,7 +50,9 @@ public class CreateEmployee {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String workplace) {
+		CreateEmployee x = new CreateEmployee();
+		x.setWorkplace(workplace);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -162,7 +176,7 @@ public class CreateEmployee {
 				String email = txtEmail.getText();
 				String conEmail = txtConfirmEmail.getText();
 				String jobtitle = txtjobTitle.getText();
-				String workplace = txtplaceofwork.getText();
+				String workplaceTemp = txtplaceofwork.getText();
 				String seniority = txtseniority.getText();
 				
 
@@ -181,15 +195,15 @@ public class CreateEmployee {
 						ps.setString(2, empName); //Employee_Name
 						ps.setString(3, jobtitle); //Employee_Title
 						ps.setString(4, seniority); //seniority
-						ps.setString(5, workplace); //placeofwork
+						ps.setString(5, workplaceTemp); //placeofwork
 						ps.setString(6, email); //email
 						ps.execute();
-						
+						con.close();
 					}
 					catch (SQLException e1) {
 						e1.printStackTrace();
 					}
-					ShiftSchedulerWindow.main(null);
+					ShiftSchedulerWindow.main(workplace);
 					frame.setVisible(false);
 				} 
 				else {
@@ -204,7 +218,7 @@ public class CreateEmployee {
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ShiftSchedulerWindow.main(null);
+				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);
 			}
 		});

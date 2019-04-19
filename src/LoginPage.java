@@ -25,7 +25,16 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class LoginPage {
-
+	
+	public static String workplace = null;
+	
+	public String getWorkplace() {
+		return workplace;
+	}
+	public void setWorkplace(String newWorkplace) {
+		workplace = newWorkplace;
+	}
+	
 	private JFrame frame;
 	private JLabel txtLogin;
 	private JLabel txtEmail;
@@ -36,7 +45,9 @@ public class LoginPage {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String workplace) {
+		LoginPage x = new LoginPage();
+		x.setWorkplace(workplace);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -125,7 +136,14 @@ public class LoginPage {
 					} else if( x == 1) {
 						lblError.setForeground(Color.WHITE);
 						lblAuthenticated.setForeground(Color.GREEN);
-						ShiftSchedulerWindow.main(null);
+						String queryWork = "SELECT Workplace FROM emp_cred where password =" +"'"+ password +"'" +" and email = " +"'" + em + "'";
+						PreparedStatement psWork = con.prepareStatement(queryWork);
+						ResultSet rsWork = psWork.executeQuery();
+						while(rsWork.next()) {
+							workplace = rsWork.getString(1);
+						}
+						con.close();
+						ShiftSchedulerWindow.main(workplace);
 						frame.setVisible(false);
 					}
 					

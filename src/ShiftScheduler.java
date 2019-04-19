@@ -62,7 +62,7 @@ public class ShiftScheduler {
 		if(file.exists()) desktop.open(file);
 	}
 	
-	public static void addDataArray(ArrayList<Employee> array, String output) throws Exception {
+	public static void makeSchedule(ArrayList<Employee> array, String output) throws Exception {
 		File file = new File(output);
 		try {
 		

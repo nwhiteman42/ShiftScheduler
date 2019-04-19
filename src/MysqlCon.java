@@ -14,6 +14,7 @@ class MysqlCon {
 		while(rs.next()) {
 			id = rs.getInt(1);
 		}
+		con.close();
 		return id;
 	}
 	
@@ -42,6 +43,7 @@ class MysqlCon {
 				id++;
 			}
 		}
+		con.close();
 		return id;
 	}
 	
@@ -71,13 +73,15 @@ class MysqlCon {
 				id++;
 			}
 		}
+		con.close();
 		return id;
 	}
 	
 	
-	public ArrayList<Employee> getEmployees() throws SQLException{
+	public ArrayList<Employee> getEmployees(String workplace) throws SQLException{
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-		String query = "select Employee_ID, Employee_name, Employee_Title, seniority, placeofwork, email from Employee_Data";
+		String query = "select Employee_ID, Employee_name, Employee_Title, seniority, placeofwork, email from Employee_Data where placeofwork = "
+				+"'"+workplace+"'";
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
 		ArrayList<Employee> e = new ArrayList<Employee>();
@@ -87,7 +91,23 @@ class MysqlCon {
 					rs.getInt(4), rs.getString(5), rs.getString(6));
 			e.add(x);
 		}
+		con.close();
 		return e;
+	}
+	
+	public String[] getEmployeesEmail(String workplace) throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+		String query = "select email from Employee_Data where placeofwork = "+"'"+workplace+"'";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		ArrayList<String> emailsTemp = new ArrayList<String>();
+		while(rs.next()){
+			emailsTemp.add(rs.getString(1));
+		}
+		String[] emails = null;
+		emailsTemp.toArray(emails);
+		con.close();
+		return emails;
 	}
 	
 	public TimeEntry[] getEmployeeAval(int id, String name) throws SQLException{
@@ -105,6 +125,7 @@ class MysqlCon {
 		for(int x = 0; x< aval.size(); x++) {
 			time[x] = aval.get(x);
 		}
+		con.close();
 		return time;	
 	}
 	
@@ -119,6 +140,7 @@ class MysqlCon {
 		String query = "delete from Employee_Data where email = " +"'"+email+"'" ;
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.execute();
+		con.close();
 	} 
 	
 	
@@ -153,6 +175,7 @@ class MysqlCon {
 		String query = "delete from Employee_Shifts where Employee_ID = " + id;
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.execute();
+		con.close();
 	}
 	
 	
@@ -169,7 +192,7 @@ class MysqlCon {
 		ps.setString(3, day);
 		ps.setString(4, startTime);
 		ps.setString(5, endTime);
-		
+		con.close();
 		return ps.execute();
 	}
 	

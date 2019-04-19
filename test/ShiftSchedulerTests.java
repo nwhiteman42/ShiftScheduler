@@ -8,11 +8,11 @@ import org.junit.Test;
 
 public class ShiftSchedulerTests {
 		
-	@Test
-	public void addDataArray() throws Exception {
-		ShiftScheduler s = new ShiftScheduler();
-		MysqlCon x = new MysqlCon();
-		ArrayList<Employee> e = x.getEmployees(); //Pulls employee data from database
-		s.addDataArray(e, "testShift1.csv");
-	} 
+//	@Test
+//	public void addDataArray() throws Exception {
+//		ShiftScheduler s = new ShiftScheduler();
+//		MysqlCon x = new MysqlCon();
+//		ArrayList<Employee> e = x.getEmployees(" "); //Pulls employee data from database
+//		s.makeSchedule(e, "testShift1.csv");
+//	} 
 }

@@ -234,10 +234,4 @@ public class Employer extends Employee {
 		}
 		return count;
 	}	
-	//TODO: editScheudle
-	//TODO: deleteUser
-
-	public ArrayList<Employee> getEmployees() {
-		return employees;
-	}
 }

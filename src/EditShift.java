@@ -18,7 +18,19 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
 public class EditShift {
-
+	
+	//Holds the workplace of signed in employeer
+		public static String workplace = null;
+		
+		//Getter for workplace
+		public String getWorkplace() {
+			return workplace;
+		}
+		//Setter for workplace
+		public void setWorkplace(String newWorkplace) {
+			workplace = newWorkplace;
+		}
+	
 	private JFrame frame;
 	private JTextField txtFirstName;
 	private JLabel lblFirstName;
@@ -41,7 +53,9 @@ public class EditShift {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String workplace) {
+		EditShift x = new EditShift();
+		x.setWorkplace(workplace);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -91,7 +105,7 @@ public class EditShift {
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ShiftSchedulerWindow.main(null);
+				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);
 			}
 		});
@@ -294,10 +308,11 @@ public class EditShift {
 						pSat.setInt(5, Integer.parseInt(txtSatEnd.getText()));
 						pSat.execute();
 					}
+					con.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				ShiftSchedulerWindow.main(null);
+				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);
 			}
 		});

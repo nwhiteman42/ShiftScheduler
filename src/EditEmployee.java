@@ -9,6 +9,18 @@ import java.awt.event.ActionEvent;
 
 public class EditEmployee {
 
+	//Holds the workplace of signed in employeer
+		public static String workplace = null;
+		
+		//Getter for workplace
+		public String getWorkplace() {
+			return workplace;
+		}
+		//Setter for workplace
+		public void setWorkplace(String newWorkplace) {
+			workplace = newWorkplace;
+		}
+	
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -22,7 +34,9 @@ public class EditEmployee {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String workplace) {
+		EditEmployee x = new EditEmployee();
+		x.setWorkplace(workplace);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
