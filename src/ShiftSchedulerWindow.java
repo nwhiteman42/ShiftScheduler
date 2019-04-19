@@ -183,6 +183,17 @@ public class ShiftSchedulerWindow {
 		});
 		
 		mnAbout.add(mntmUs);
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		
+		JMenuItem mntmHelpPage = new JMenuItem("Help Page");
+		mntmHelpPage.addActionListener(new ActionListener() {
+			public void actionPerformed( ActionEvent arg0 ) {
+				
+			}
+		});
+		mnHelp.add(mntmHelpPage);
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
