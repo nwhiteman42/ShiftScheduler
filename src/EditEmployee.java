@@ -5,6 +5,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class EditEmployee {
@@ -23,13 +27,11 @@ public class EditEmployee {
 	
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-	private JTextField textField_6;
 	private JTextField textField_7;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -61,7 +63,7 @@ public class EditEmployee {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 661, 334);
+		frame.setBounds(100, 100, 450, 292);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -71,103 +73,99 @@ public class EditEmployee {
 		frame.getContentPane().add(txtrOld);
 		
 		JTextArea txtrFirstName = new JTextArea();
-		txtrFirstName.setText("Name");
-		txtrFirstName.setBounds(57, 46, 72, 15);
+		txtrFirstName.setText("Email");
+		txtrFirstName.setBounds(45, 25, 72, 15);
 		frame.getContentPane().add(txtrFirstName);
 		
 		textField = new JTextField();
-		textField.setBounds(25, 67, 124, 19);
+		textField.setBounds(25, 51, 124, 19);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JTextArea txtrTitle = new JTextArea();
-		txtrTitle.setText("Title");
-		txtrTitle.setBounds(224, 46, 72, 15);
-		frame.getContentPane().add(txtrTitle);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(189, 67, 124, 19);
-		frame.getContentPane().add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(356, 67, 124, 19);
-		frame.getContentPane().add(textField_2);
-		
-		JTextArea txtrJob = new JTextArea();
-		txtrJob.setText("Job ");
-		txtrJob.setBounds(384, 46, 72, 15);
-		frame.getContentPane().add(txtrJob);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(515, 67, 124, 19);
-		frame.getContentPane().add(textField_3);
-		
-		JTextArea txtrSeniority = new JTextArea();
-		txtrSeniority.setText("Seniority");
-		txtrSeniority.setBounds(551, 46, 72, 15);
-		frame.getContentPane().add(txtrSeniority);
-		
 		JTextArea txtrNew = new JTextArea();
 		txtrNew.setText("New");
-		txtrNew.setBounds(12, 126, 31, 15);
+		txtrNew.setBounds(282, 12, 31, 15);
 		frame.getContentPane().add(txtrNew);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setText("Name");
-		textArea.setBounds(57, 155, 72, 15);
+		textArea.setBounds(310, 25, 72, 15);
 		frame.getContentPane().add(textArea);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(25, 170, 124, 19);
+		textField_4.setBounds(296, 51, 124, 19);
 		frame.getContentPane().add(textField_4);
 		
 		JTextArea textArea_1 = new JTextArea();
 		textArea_1.setText("Title");
-		textArea_1.setBounds(224, 155, 72, 15);
+		textArea_1.setBounds(310, 71, 72, 15);
 		frame.getContentPane().add(textArea_1);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(189, 170, 124, 19);
+		textField_5.setBounds(296, 91, 124, 19);
 		frame.getContentPane().add(textField_5);
-		
-		JTextArea textArea_2 = new JTextArea();
-		textArea_2.setText("Job ");
-		textArea_2.setBounds(384, 155, 72, 15);
-		frame.getContentPane().add(textArea_2);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(356, 170, 124, 19);
-		frame.getContentPane().add(textField_6);
 		
 		
 		JTextArea textArea_3 = new JTextArea();
 		textArea_3.setText("Seniority");
-		textArea_3.setBounds(551, 155, 72, 15);
+		textArea_3.setBounds(310, 122, 72, 15);
 		frame.getContentPane().add(textArea_3);
 		
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
-		textField_7.setBounds(515, 170, 124, 19);
+		textField_7.setBounds(296, 138, 124, 19);
 		frame.getContentPane().add(textField_7);
 		
 		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.setBounds(89, 243, 114, 25);
+		btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0){
+				MysqlCon x = new MysqlCon();
+				try {
+					int id = x.getACurrentEmployeeID(textField.getText());
+					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+					String query = "update Employee_Data set Employee_Name = '"+ textField_4.getText() + "', Employee_Title = '" + textField_5.getText() + "', seniority = '"+ textField_7.getText() + "', placeofwork = '" + textField_1.getText() + "', email = '" + textField_2.getText() + "' where Employee_ID = '" + id + "'";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.executeUpdate();
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+			}
+		});
+		btnConfirm.setBounds(35, 104, 114, 25);
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				ShiftSchedulerWindow.main(workplace);
 			}
 		});
-		btnCancel.setBounds(419, 243, 114, 25);
+		btnCancel.setBounds(35, 164, 114, 25);
 		frame.getContentPane().add(btnCancel);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(296, 190, 124, 19);
+		frame.getContentPane().add(textField_1);
+		
+		JTextArea txtrPlaceOfWork = new JTextArea();
+		txtrPlaceOfWork.setText("Place of Work");
+		txtrPlaceOfWork.setBounds(310, 169, 96, 15);
+		frame.getContentPane().add(txtrPlaceOfWork);
+		
+		JTextArea txtrEmail = new JTextArea();
+		txtrEmail.setText("Email");
+		txtrEmail.setBounds(310, 214, 96, 15);
+		frame.getContentPane().add(txtrEmail);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(296, 231, 124, 19);
+		frame.getContentPane().add(textField_2);
 	}
 }
