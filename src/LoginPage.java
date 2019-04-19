@@ -45,7 +45,7 @@ public class LoginPage {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String workplace) {
+	public static void main(String[] args) {
 		LoginPage x = new LoginPage();
 		x.setWorkplace(workplace);
 		EventQueue.invokeLater(new Runnable() {

@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
@@ -87,7 +88,13 @@ public class ShiftSchedulerWindow {
 		JButton btnEmailSchedule = new JButton("Email Schedule");
 		btnEmailSchedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String[] emails = new String[] {"mtsayles@mtu.edu", "nhwhitem@mtu.edu"};
+				MysqlCon x = new MysqlCon();
+				String[] emails = null;
+				try {
+					emails = x.getEmployeesEmail(workplace);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 				String subject = "New Schedule";
 				String body = "Here is your schdeule dummies.  Come to work!";
 				String attachment = "testShift1.csv";

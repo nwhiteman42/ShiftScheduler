@@ -192,7 +192,7 @@ public class CreateAccount {
 						ps.setString(6, workplaceTemp);
 						ps.execute();
 						con.close();
-						LoginPage.main(workplace);
+						LoginPage.main(null);
 						frame.setVisible(false);
 						} catch (SQLException e1) {
 							e1.printStackTrace();
@@ -211,7 +211,7 @@ public class CreateAccount {
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginPage.main(workplace);
+				LoginPage.main(null);
 				frame.setVisible(false);
 			}
 		});
