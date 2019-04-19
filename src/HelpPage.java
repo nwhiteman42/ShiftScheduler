@@ -126,6 +126,7 @@ public class HelpPage {
 		JLabel lblWhenAnEmployee = new JLabel("When an employee is removed from your account, the shifts are still there.");
 		lblWhenAnEmployee.setBounds(42, 506, 415, 14);
 		frame.getContentPane().add(lblWhenAnEmployee);
+		
 	}
 
 }
