@@ -100,12 +100,20 @@ class MysqlCon {
 		String query = "select email from Employee_Data where placeofwork = "+"'"+workplace+"'";
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
-		ArrayList<String> emailsTemp = new ArrayList<String>();
-		while(rs.next()){
-			emailsTemp.add(rs.getString(1));
+
+		String query2 = "select count(email) from Employee_Data where placeofwork = "+"'"+workplace+"'";
+		Statement stmt2 = con.createStatement();
+		ResultSet rs2 = stmt2.executeQuery(query2);
+		int totalEmail = 0;
+		while(rs2.next()){
+			totalEmail = rs2.getInt(1);
 		}
-		String[] emails = null;
-		emailsTemp.toArray(emails);
+		String[] emails = new String[totalEmail];
+		int count = 0;
+		while(rs.next()) {
+			emails[count] = rs.getString(1);
+			count++;
+		}
 		con.close();
 		return emails;
 	}
