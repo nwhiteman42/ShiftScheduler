@@ -2,26 +2,17 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.CardLayout;
-import java.awt.FlowLayout;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.event.ActionListener;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.awt.event.ActionEvent;
 
 public class LoginPage {
@@ -121,9 +112,12 @@ public class LoginPage {
 				char[] pass = passwordField.getPassword();
 				String password = String.copyValueOf(pass); //Converts password to string.
 				
+				//Encrypts the password and sends it to the database
+				String encodedPass = Base64.getEncoder().encodeToString(password.getBytes());
+				
 				try {
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-					String query = "SELECT count(password) FROM emp_cred where password =" +"'"+ password +"'" +" and email = " +"'" + em + "'";
+					String query = "SELECT count(password) FROM emp_cred where password =" +"'"+ encodedPass +"'" +" and email = " +"'" + em + "'";
 					PreparedStatement ps = con.prepareStatement(query);
 					ResultSet rs = ps.executeQuery();
 					int x = 0;
@@ -136,7 +130,7 @@ public class LoginPage {
 					} else if( x == 1) {
 						lblError.setForeground(Color.WHITE);
 						lblAuthenticated.setForeground(Color.GREEN);
-						String queryWork = "SELECT Workplace FROM emp_cred where password =" +"'"+ password +"'" +" and email = " +"'" + em + "'";
+						String queryWork = "SELECT Workplace FROM emp_cred where password =" +"'"+ encodedPass +"'" +" and email = " +"'" + em + "'";
 						PreparedStatement psWork = con.prepareStatement(queryWork);
 						ResultSet rsWork = psWork.executeQuery();
 						while(rsWork.next()) {

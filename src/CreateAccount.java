@@ -1,7 +1,6 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
@@ -14,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.util.Base64;
 
 public class CreateAccount {
 	
@@ -174,6 +174,10 @@ public class CreateAccount {
 				String pswd = String.copyValueOf(tempPswd);
 				String conPswd = String.copyValueOf(tempConPswd);
 				
+				//Encrypts the password and sends it to the database
+				String encodedPass = Base64.getEncoder().encodeToString(pswd.getBytes());
+				
+				
 				if(email.equals(conEmail)) {
 					lblEmailsDoNot.setForeground(Color.WHITE);
 					if(pswd.equals(conPswd)) {
@@ -188,7 +192,7 @@ public class CreateAccount {
 						ps.setString(2, fName);
 						ps.setString(3, lName);
 						ps.setString(4, email);
-						ps.setString(5, pswd);
+						ps.setString(5, encodedPass);
 						ps.setString(6, workplaceTemp);
 						ps.execute();
 						con.close();
