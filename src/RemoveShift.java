@@ -9,6 +9,10 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class RemoveShift {
@@ -25,23 +29,9 @@ public class RemoveShift {
 		}
 	
 	private JFrame frame;
-	private JTextField txtFirstName;
-	private JLabel lblFirstName;
-	private JLabel lblCreateAccount;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
+	private JTextField txtEmail;
+	private JLabel lblEmail;
+	private JLabel lblRemoveShift;
 
 	/**
 	 * Launch the application.
@@ -79,21 +69,107 @@ public class RemoveShift {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		txtFirstName = new JTextField();
-		txtFirstName.setBounds(152, 72, 112, 20);
-		frame.getContentPane().add(txtFirstName);
-		txtFirstName.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(152, 72, 112, 20);
+		frame.getContentPane().add(txtEmail);
+		txtEmail.setColumns(10);
 		
-		lblFirstName = new JLabel("Email");
-		lblFirstName.setBounds(101, 75, 41, 14);
-		frame.getContentPane().add(lblFirstName);
+		JCheckBox chckbxSunday = new JCheckBox("Sunday");
+		chckbxSunday.setBounds(87, 120, 97, 23);
+		frame.getContentPane().add(chckbxSunday);
 		
-		lblCreateAccount = new JLabel("Remove Shift");
-		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblCreateAccount.setBounds(146, 23, 174, 26);
-		frame.getContentPane().add(lblCreateAccount);
+		JCheckBox chckbxMonday = new JCheckBox("Monday");
+		chckbxMonday.setBounds(184, 120, 97, 23);
+		frame.getContentPane().add(chckbxMonday);
+		
+		JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
+		chckbxTuesday.setBounds(286, 120, 97, 23);
+		frame.getContentPane().add(chckbxTuesday);
+		
+		JCheckBox chckbxWednesday = new JCheckBox("Wednesday");
+		chckbxWednesday.setBounds(87, 171, 97, 23);
+		frame.getContentPane().add(chckbxWednesday);
+		
+		JCheckBox chckbxThursday = new JCheckBox("Thursday");
+		chckbxThursday.setBounds(184, 171, 97, 23);
+		frame.getContentPane().add(chckbxThursday);
+		
+		JCheckBox chckbxFriday = new JCheckBox("Friday");
+		chckbxFriday.setBounds(286, 171, 97, 23);
+		frame.getContentPane().add(chckbxFriday);
+		
+		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
+		chckbxSaturday.setBounds(184, 211, 97, 23);
+		frame.getContentPane().add(chckbxSaturday);
+		
+		lblEmail = new JLabel("Email");
+		lblEmail.setBounds(101, 75, 41, 14);
+		frame.getContentPane().add(lblEmail);
+		
+		lblRemoveShift = new JLabel("Remove Shift");
+		lblRemoveShift.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblRemoveShift.setBounds(146, 23, 174, 26);
+		frame.getContentPane().add(lblRemoveShift);
 		
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.addActionListener(new ActionListener() {
+			//Checks if box was ticked and if so removes that employees shift for the corresponding day.
+			public void actionPerformed(ActionEvent arg0) {
+				MysqlCon x = new MysqlCon();
+				try {
+				Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
+				int id = x.getACurrentEmployeeID(txtEmail.getText());
+				if(chckbxSunday.isSelected()) {
+					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Sunday'";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setInt(1, id);
+					ps.executeUpdate();
+				}
+				if(chckbxMonday.isSelected()) {
+					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Monday'";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setInt(1, id);
+					ps.executeUpdate();
+				}
+				if(chckbxTuesday.isSelected()) {
+					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Tuesday'";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setInt(1, id);
+					ps.executeUpdate();
+				}
+				if(chckbxWednesday.isSelected()) {
+					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Wednesday'";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setInt(1, id);
+					ps.executeUpdate();
+				}
+				if(chckbxThursday.isSelected()) {
+					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Thursday'";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setInt(1, id);
+					ps.executeUpdate();
+				}
+				if(chckbxFriday.isSelected()) {
+					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Friday'";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setInt(1, id);
+					ps.executeUpdate();
+				}
+				if(chckbxSaturday.isSelected()) {
+					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Saturday'";
+					PreparedStatement ps = con.prepareStatement(query);
+					ps.setInt(1, id);
+					ps.executeUpdate();
+				}
+				con.close();
+				ShiftSchedulerWindow.main(workplace);
+				frame.setVisible(false);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
 		btnConfirm.setBounds(330, 337, 89, 23);
 		frame.getContentPane().add(btnConfirm);
 		
@@ -107,111 +183,7 @@ public class RemoveShift {
 		btnGoBack.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
 		
-		textField = new JTextField();
-		textField.setBounds(190, 121, 86, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(286, 121, 86, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-		
-		JLabel lblStartTime = new JLabel("Start Time");
-		lblStartTime.setBounds(200, 108, 76, 14);
-		frame.getContentPane().add(lblStartTime);
-		
-		JLabel lblEndTime = new JLabel("End Time");
-		lblEndTime.setBounds(298, 108, 74, 14);
-		frame.getContentPane().add(lblEndTime);
-		
-		JCheckBox chckbxSunday = new JCheckBox("Sunday");
-		chckbxSunday.setBounds(87, 120, 97, 23);
-		frame.getContentPane().add(chckbxSunday);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(190, 152, 86, 20);
-		frame.getContentPane().add(textField_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(190, 183, 86, 20);
-		frame.getContentPane().add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(190, 214, 86, 20);
-		frame.getContentPane().add(textField_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(190, 245, 86, 20);
-		frame.getContentPane().add(textField_5);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(190, 276, 86, 20);
-		frame.getContentPane().add(textField_6);
-		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(190, 307, 86, 20);
-		frame.getContentPane().add(textField_7);
-		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(286, 152, 86, 20);
-		frame.getContentPane().add(textField_8);
-		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(286, 183, 86, 20);
-		frame.getContentPane().add(textField_9);
-		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(286, 214, 86, 20);
-		frame.getContentPane().add(textField_10);
-		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(286, 245, 86, 20);
-		frame.getContentPane().add(textField_11);
-		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(286, 276, 86, 20);
-		frame.getContentPane().add(textField_12);
-		
-		textField_13 = new JTextField();
-		textField_13.setColumns(10);
-		textField_13.setBounds(286, 307, 86, 20);
-		frame.getContentPane().add(textField_13);
-		
-		JCheckBox chckbxMonday = new JCheckBox("Monday");
-		chckbxMonday.setBounds(86, 151, 97, 23);
-		frame.getContentPane().add(chckbxMonday);
-		
-		JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
-		chckbxTuesday.setBounds(86, 182, 97, 23);
-		frame.getContentPane().add(chckbxTuesday);
-		
-		JCheckBox chckbxWednesday = new JCheckBox("Wednesday");
-		chckbxWednesday.setBounds(86, 213, 97, 23);
-		frame.getContentPane().add(chckbxWednesday);
-		
-		JCheckBox chckbxThursday = new JCheckBox("Thursday");
-		chckbxThursday.setBounds(87, 244, 97, 23);
-		frame.getContentPane().add(chckbxThursday);
-		
-		JCheckBox chckbxFriday = new JCheckBox("Friday");
-		chckbxFriday.setBounds(86, 275, 97, 23);
-		frame.getContentPane().add(chckbxFriday);
-		
-		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
-		chckbxSaturday.setBounds(86, 306, 97, 23);
-		frame.getContentPane().add(chckbxSaturday);
 	
 	}
 }

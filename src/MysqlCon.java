@@ -155,7 +155,7 @@ class MysqlCon {
 	/*
 	 * Inserts data into the "Employee_Data" list
 	 */
-	public boolean insertIntoEmployee(int id, String name, String job,int seniority, String work, String email) throws SQLException {
+	public void insertIntoEmployee(int id, String name, String job,int seniority, String work, String email) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
 		String query = "insert into Employee_Data (Employee_ID, Employee_Name, Employee_Title, seniority, placeofwork, email )" + " values(?,?,?,?,?,?)";
@@ -167,10 +167,9 @@ class MysqlCon {
 		ps.setString(5, work);
 		ps.setString(6, email);
 		
-		boolean e = ps.execute();
+		ps.execute();
 		con.close();
-		return e;
-	}
+		}
 	
 	
 	
