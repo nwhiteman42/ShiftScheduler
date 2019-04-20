@@ -121,6 +121,7 @@ public class RemoveEmployee {
 		JButton btnRemove = new JButton("REMOVE");
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Gets data from text feilds
 				String empName = txtfirstname.getText() + " " + txtlastname.getText();
 				String email = txtemail.getText();
 				
@@ -129,6 +130,7 @@ public class RemoveEmployee {
 				 */
 				Connection con;
 				try {
+					//Deletes employee from database
 					con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 					String query = "DELETE FROM Employee_Data WHERE Employee_Name= " + "'" + empName + "'" + " AND email= " +  "'" + email + "'";
 					PreparedStatement ps = con.prepareStatement(query);
@@ -138,6 +140,7 @@ public class RemoveEmployee {
 					catch (SQLException e1) {
 						e1.printStackTrace();
 					}
+					//opens main menu after the deletion
 					ShiftSchedulerWindow.main(workplace);
 					frame.setVisible(false);
 			}
@@ -148,6 +151,7 @@ public class RemoveEmployee {
 		
 		JButton btnCancel = new JButton("CANCEL");
 		btnCancel.addActionListener(new ActionListener() {
+			//Opens main menu if this is closed
 			public void actionPerformed(ActionEvent e) {
 				ShiftSchedulerWindow.main(workplace);
 				frame.hide();

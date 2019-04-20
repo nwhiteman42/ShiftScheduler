@@ -16,9 +16,9 @@ import java.util.Base64;
 import java.awt.event.ActionEvent;
 
 public class LoginPage {
-	
+	//Used to hold the workplace of a logged in user
 	public static String workplace = null;
-	
+	//Getters and Setters
 	public String getWorkplace() {
 		return workplace;
 	}
@@ -38,7 +38,7 @@ public class LoginPage {
 	 */
 	public static void main(String[] args) {
 		LoginPage x = new LoginPage();
-		x.setWorkplace(workplace);
+		x.setWorkplace(workplace); //Sets the workplace
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -116,6 +116,7 @@ public class LoginPage {
 				String encodedPass = Base64.getEncoder().encodeToString(password.getBytes());
 				
 				try {
+					//Finds if password and email combination is in database
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 					String query = "SELECT count(password) FROM emp_cred where password =" +"'"+ encodedPass +"'" +" and email = " +"'" + em + "'";
 					PreparedStatement ps = con.prepareStatement(query);
@@ -124,12 +125,13 @@ public class LoginPage {
 					while(rs.next()) {
 						x = rs.getInt(1);
 					}
-					if(x != 1) {
+					if(x != 1) {//If not authenticated through an error message
 						lblAuthenticated.setForeground(Color.WHITE);
 						lblError.setForeground(Color.RED);
-					} else if( x == 1) {
+					} else if( x == 1) {//If authenticated log in user
 						lblError.setForeground(Color.WHITE);
 						lblAuthenticated.setForeground(Color.GREEN);
+						//Get users workplace
 						String queryWork = "SELECT Workplace FROM emp_cred where password =" +"'"+ encodedPass +"'" +" and email = " +"'" + em + "'";
 						PreparedStatement psWork = con.prepareStatement(queryWork);
 						ResultSet rsWork = psWork.executeQuery();
@@ -137,6 +139,7 @@ public class LoginPage {
 							workplace = rsWork.getString(1);
 						}
 						con.close();
+						//Opens the main menu
 						ShiftSchedulerWindow.main(workplace);
 						frame.setVisible(false);
 					}
@@ -161,6 +164,7 @@ public class LoginPage {
 		
 		JButton btnNewButton = new JButton("Create Account");
 		btnNewButton.addActionListener(new ActionListener() {
+			//Opens create account page when button is pressed
 			public void actionPerformed(ActionEvent arg0) {
 				CreateAccount.main(null);
 				frame.setVisible(false);

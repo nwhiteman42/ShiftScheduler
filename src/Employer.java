@@ -202,7 +202,7 @@ public class Employer extends Employee {
 			t.connect(host, from, password);
 			
 			for(int i = 0; i < emails.length; i++) {
-			Thread.sleep(5000);
+			Thread.sleep(5000);//Pauses between emails to guarantee they all send
 			m.setRecipient(Message.RecipientType.TO, new InternetAddress(emails[i]));
 			t.sendMessage(m, m.getAllRecipients());
 			System.out.println("Message sent");

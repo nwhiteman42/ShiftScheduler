@@ -55,12 +55,11 @@ public class EditShift {
 	 */
 	public static void main(String workplace) {
 		EditShift x = new EditShift();
-		x.setWorkplace(workplace);
+		x.setWorkplace(workplace);//Sets workplace to workplace of current user
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					EditShift window = new EditShift();
-					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -83,7 +82,6 @@ public class EditShift {
 	private void initialize() {
 		
 		frame = new JFrame();
-		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 410);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -106,6 +104,7 @@ public class EditShift {
 		
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
+			//Opens main menu when "Go Back" is pressed
 			public void actionPerformed(ActionEvent e) {
 				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);
@@ -225,6 +224,7 @@ public class EditShift {
 			public void actionPerformed(ActionEvent arg0) {
 				MysqlCon x = new MysqlCon();
 				try {
+					//Gets Employee id and name from corresponding text feilds
 					int id = x.getACurrentEmployeeID(txtFirstName.getText());
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 					String q = "select Employee_name from Employee_Data where Employee_id = "+id;
@@ -234,11 +234,11 @@ public class EditShift {
 					while(rs.next()) {
 						name = rs.getString(1);
 					}
-					
+					//Removes previous shift information from database
 					String query = "delete from Employee_Shifts where Employee_ID = " + id ;
 					PreparedStatement ps = con.prepareStatement(query);
 					ps.execute();
-					
+					//Inserts shift data for Sunday if selected
 					if(chckbxSunday.isSelected()) {
 						String qSun = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pSun = con.prepareStatement(qSun);
@@ -249,6 +249,7 @@ public class EditShift {
 						pSun.setInt(5, Integer.parseInt(txtSunEnd.getText()));
 						pSun.execute();
 					}
+					//Inserts shift data for Monday if selected
 					if(chckbxMonday.isSelected()) {
 						String qMon = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pMon = con.prepareStatement(qMon);
@@ -260,6 +261,7 @@ public class EditShift {
 						pMon.execute();
 						
 					}
+					//Inserts shift data for Tuesday if selected
 					if(chckbxTuesday.isSelected()) {
 						String qTue = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pTue = con.prepareStatement(qTue);
@@ -270,6 +272,7 @@ public class EditShift {
 						pTue.setInt(5, Integer.parseInt(txtTuesEnd.getText()));
 						pTue.execute();
 					}
+					//Inserts shift data for Wednesday if selected
 					if(chckbxWednesday.isSelected()) {
 						String qWed = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pWed = con.prepareStatement(qWed);
@@ -280,6 +283,7 @@ public class EditShift {
 						pWed.setInt(5, Integer.parseInt(txtWedEnd.getText()));
 						pWed.execute();
 					}
+					//Inserts shift data for Thursday if selected
 					if(chckbxThursday.isSelected()) {
 						String qThu = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pThu = con.prepareStatement(qThu);
@@ -290,6 +294,7 @@ public class EditShift {
 						pThu.setInt(5, Integer.parseInt(txtThursEnd.getText()));
 						pThu.execute();
 					}
+					//Inserts shift data for Friday if selected
 					if(chckbxFriday.isSelected()) {
 						String qFri = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pFri = con.prepareStatement(qFri);
@@ -300,6 +305,7 @@ public class EditShift {
 						pFri.setInt(5, Integer.parseInt(txtFriEnd.getText()));
 						pFri.execute();
 					}
+					//Inserts shift data for Saturday if selected
 					if(chckbxSaturday.isSelected()) {
 						String qSat = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pSat = con.prepareStatement(qSat);
@@ -314,6 +320,7 @@ public class EditShift {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				//Opens main menu after shift information are put into database
 				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);
 			}
@@ -321,25 +328,5 @@ public class EditShift {
 		btnConfirm.setBounds(330, 337, 89, 23);
 		frame.getContentPane().add(btnConfirm);
 		
-	}
-	
-	private void addTimeEntry(String start, String end, TimeEntry[] times, int index) {
-		int startTime = Integer.parseInt(start);
-		int endTime = Integer.parseInt(end);
-		TimeEntry newest = times[index];
-		newest.setStartTime(startTime);
-		newest.setEndTime(endTime);
-	}
-	
-	private TimeEntry[] timeEntryMerge(TimeEntry[] older, TimeEntry[] newer) {
-		TimeEntry[] merged = new TimeEntry[7];
-		for( int i = 0; i < 7; i++ ) {
-			if( newer[i] != null ) {
-				merged[i] = newer[i];
-			} else if( older[i] != null ) {
-				merged[i] = older[i];
-			}
-		}
-		return merged;
 	}
 }

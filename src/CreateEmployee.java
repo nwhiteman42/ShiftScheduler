@@ -52,7 +52,7 @@ public class CreateEmployee {
 	 */
 	public static void main(String workplace) {
 		CreateEmployee x = new CreateEmployee();
-		x.setWorkplace(workplace);
+		x.setWorkplace(workplace);//Sets workplace to current users workplace
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -172,6 +172,7 @@ public class CreateEmployee {
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Gets information from the text feilds
 				String empName = txtFirstName.getText() + " " + txtLastName.getText();
 				String email = txtEmail.getText();
 				String conEmail = txtConfirmEmail.getText();
@@ -183,11 +184,12 @@ public class CreateEmployee {
 				/**
 				 * TODO: Create a check to make sure seniority is a valid int.
 				 */
-				if(email.equals(conEmail)) {
+				if(email.equals(conEmail)) {//Makes sure the emails were confirmed
 					lblEmailsDoNot.setForeground(Color.WHITE);
 					MysqlCon x = new MysqlCon();
 					Connection con;
 					try {
+						//Inserts employee into database
 						con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 						String query = "insert into Employee_Data (Employee_ID, Employee_Name, Employee_Title, seniority, placeofwork, email)" + " values(?,?,?,?,?,?)";
 						PreparedStatement ps = con.prepareStatement(query);
@@ -197,12 +199,13 @@ public class CreateEmployee {
 						ps.setString(4, seniority); //seniority
 						ps.setString(5, workplaceTemp); //placeofwork
 						ps.setString(6, email); //email
-						ps.execute();
+						ps.execute();//Executes query
 						con.close();
 					}
 					catch (SQLException e1) {
 						e1.printStackTrace();
 					}
+					//Opens shift scheduler menu 
 					ShiftSchedulerWindow.main(workplace);
 					frame.setVisible(false);
 				} 
@@ -217,6 +220,7 @@ public class CreateEmployee {
 		
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
+			//opens the shift scheduler window when this button is pushed
 			public void actionPerformed(ActionEvent e) {
 				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);

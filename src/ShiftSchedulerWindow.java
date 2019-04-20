@@ -87,11 +87,12 @@ public class ShiftSchedulerWindow {
 		
 		JButton btnEmailSchedule = new JButton("Email Schedule");
 		btnEmailSchedule.addActionListener(new ActionListener() {
+			//Send email to all employees of logged in user's workplace
 			public void actionPerformed(ActionEvent arg0) {
 				MysqlCon x = new MysqlCon();
 				String[] emails = null;
 				try {
-					emails = x.getEmployeesEmail(workplace);
+					emails = x.getEmployeesEmail(workplace); //Gets employees and puts them in a string[]
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -99,9 +100,8 @@ public class ShiftSchedulerWindow {
 				String body = "Here is your schdeule dummies.  Come to work!";
 				String attachment = "testShift1.csv";
 				try {
-					emp.massEmail(emails, attachment, subject, body);
+					emp.massEmail(emails, attachment, subject, body);//Calls mass email method
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -109,6 +109,7 @@ public class ShiftSchedulerWindow {
 		
 		JButton btnAddEmployee = new JButton("Create Employee");
 		btnAddEmployee.addActionListener(new ActionListener() {
+			//Opens create employee page 
 			public void actionPerformed(ActionEvent e) {
 				CreateEmployee.main(workplace);
 				frame.setVisible(false);
@@ -119,6 +120,7 @@ public class ShiftSchedulerWindow {
 		
 		JButton btnEditEmployee = new JButton("Edit Employee");
 		btnEditEmployee.addActionListener(new ActionListener() {
+			//Opens edit employee page
 			public void actionPerformed(ActionEvent arg0) {
 				EditEmployee.main(workplace);
 				frame.setVisible(false);
@@ -128,6 +130,7 @@ public class ShiftSchedulerWindow {
 		
 		JButton btnRemoveEmployee = new JButton("Remove Employee");
 		btnRemoveEmployee.addActionListener(new ActionListener() {
+			//Opens remove employee page
 			public void actionPerformed(ActionEvent arg0) {
 				RemoveEmployee.main(workplace);
 				frame.setVisible(false);
@@ -137,6 +140,7 @@ public class ShiftSchedulerWindow {
 		
 		JButton btnRemoveShift = new JButton("Edit Shift");
 		btnRemoveShift.addActionListener(new ActionListener() {
+			//Opens edit shift page
 			public void actionPerformed(ActionEvent arg0) {
 				EditShift.main(workplace);
 				frame.setVisible(false);
@@ -146,6 +150,7 @@ public class ShiftSchedulerWindow {
 		
 		JButton btnNewButton = new JButton("Remove Shift");
 		btnNewButton.addActionListener(new ActionListener() {
+			//Opens remove shift page
 			public void actionPerformed(ActionEvent e) {
 				RemoveShift.main(workplace);
 				frame.setVisible(false);
@@ -165,6 +170,7 @@ public class ShiftSchedulerWindow {
 		JMenuItem mntmLogout = new JMenuItem("Logout");
 		mnFile.add(mntmLogout);
 		mntmLogout.addActionListener(new ActionListener() {
+			//logs out user and opens login page
 			public void actionPerformed(ActionEvent arg0) {
 				LoginPage.main(null);
 				frame.setVisible(false);
@@ -177,6 +183,7 @@ public class ShiftSchedulerWindow {
 		
 		JMenuItem mntmUs = new JMenuItem("Us");
 		mntmUs.addActionListener(new ActionListener() {
+			//Opens about page
 			public void actionPerformed(ActionEvent arg0) {
 				AboutWindow.main(null);
 			}
@@ -189,6 +196,7 @@ public class ShiftSchedulerWindow {
 		
 		JMenuItem mntmHelpPage = new JMenuItem("Help Page");
 		mntmHelpPage.addActionListener(new ActionListener() {
+			//Opens help page
 			public void actionPerformed( ActionEvent arg0 ) {
 				HelpPage.main(null);
 			}

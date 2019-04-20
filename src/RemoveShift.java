@@ -38,12 +38,11 @@ public class RemoveShift {
 	 */
 	public static void main(String workplace) {
 		RemoveShift x = new RemoveShift();
-		x.setWorkplace(workplace);
+		x.setWorkplace(workplace);//Sets workplace to the workplace of the current user
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					RemoveShift window = new RemoveShift();
-					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +65,6 @@ public class RemoveShift {
 	private void initialize() {
 		
 		frame = new JFrame();
-		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 410);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -120,43 +118,50 @@ public class RemoveShift {
 				MysqlCon x = new MysqlCon();
 				try {
 				Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-				int id = x.getACurrentEmployeeID(txtEmail.getText());
+				int id = x.getACurrentEmployeeID(txtEmail.getText()); //Gets employee id
+				//If box is selected removes employee's shift for Sunday
 				if(chckbxSunday.isSelected()) {
 					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Sunday'";
 					PreparedStatement ps = con.prepareStatement(query);
 					ps.setInt(1, id);
 					ps.executeUpdate();
 				}
+				//If box is selected removes employee's shift for Monday
 				if(chckbxMonday.isSelected()) {
 					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Monday'";
 					PreparedStatement ps = con.prepareStatement(query);
 					ps.setInt(1, id);
 					ps.executeUpdate();
 				}
+				//If box is selected removes employee's shift for Tuesday
 				if(chckbxTuesday.isSelected()) {
 					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Tuesday'";
 					PreparedStatement ps = con.prepareStatement(query);
 					ps.setInt(1, id);
 					ps.executeUpdate();
 				}
+				//If box is selected removes employee's shift for Wednesday
 				if(chckbxWednesday.isSelected()) {
 					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Wednesday'";
 					PreparedStatement ps = con.prepareStatement(query);
 					ps.setInt(1, id);
 					ps.executeUpdate();
 				}
+				//If box is selected removes employee's shift for Thursday
 				if(chckbxThursday.isSelected()) {
 					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Thursday'";
 					PreparedStatement ps = con.prepareStatement(query);
 					ps.setInt(1, id);
 					ps.executeUpdate();
 				}
+				//If box is selected removes employee's shift for Friday
 				if(chckbxFriday.isSelected()) {
 					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Friday'";
 					PreparedStatement ps = con.prepareStatement(query);
 					ps.setInt(1, id);
 					ps.executeUpdate();
 				}
+				//If box is selected removes employee's shift for Saturday
 				if(chckbxSaturday.isSelected()) {
 					String query = "delete from Employee_Shifts where Employee_ID = ? and Day = 'Saturday'";
 					PreparedStatement ps = con.prepareStatement(query);
@@ -164,6 +169,7 @@ public class RemoveShift {
 					ps.executeUpdate();
 				}
 				con.close();
+				//Opens main menu after shifts are removed
 				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);
 				} catch (SQLException e) {
@@ -177,6 +183,7 @@ public class RemoveShift {
 		
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
+			//Opens main menu when button is pressed
 			public void actionPerformed(ActionEvent e) {
 				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);

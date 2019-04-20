@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
@@ -13,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import java.util.Base64;
 
 public class CreateAccount {
 	
@@ -164,6 +164,7 @@ public class CreateAccount {
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Gets information from the text feilds
 				String fName = txtFirstName.getText();
 				String lName = txtLastName.getText();
 				String email = txtEmail.getText();
@@ -174,13 +175,9 @@ public class CreateAccount {
 				String pswd = String.copyValueOf(tempPswd);
 				String conPswd = String.copyValueOf(tempConPswd);
 				
-				//Encrypts the password and sends it to the database
-				String encodedPass = Base64.getEncoder().encodeToString(pswd.getBytes());
-				
-				
-				if(email.equals(conEmail)) {
+				if(email.equals(conEmail)) {//Makes sure the email was confirmed
 					lblEmailsDoNot.setForeground(Color.WHITE);
-					if(pswd.equals(conPswd)) {
+					if(pswd.equals(conPswd)) {//Makes sure the password was confirmed
 						lblPasswordsDoNot.setForeground(Color.WHITE);
 						MysqlCon x = new MysqlCon();
 						Connection con;
@@ -192,9 +189,9 @@ public class CreateAccount {
 						ps.setString(2, fName);
 						ps.setString(3, lName);
 						ps.setString(4, email);
-						ps.setString(5, encodedPass);
+						ps.setString(5, pswd);
 						ps.setString(6, workplaceTemp);
-						ps.execute();
+						ps.execute(); //Executes query to insert the account into the database
 						con.close();
 						LoginPage.main(null);
 						frame.setVisible(false);
@@ -214,6 +211,7 @@ public class CreateAccount {
 		
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
+			//Goes back to login page when pressed
 			public void actionPerformed(ActionEvent e) {
 				LoginPage.main(null);
 				frame.setVisible(false);

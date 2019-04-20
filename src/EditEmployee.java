@@ -38,7 +38,7 @@ public class EditEmployee {
 	 */
 	public static void main(String workplace) {
 		EditEmployee x = new EditEmployee();
-		x.setWorkplace(workplace);
+		x.setWorkplace(workplace);//Sets workplace to current users workplace
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -123,14 +123,16 @@ public class EditEmployee {
 			public void actionPerformed(ActionEvent arg0){
 				MysqlCon x = new MysqlCon();
 				try {
+					//Updates the employee information
 					int id = x.getACurrentEmployeeID(textField.getText());
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 					String query = "update Employee_Data set Employee_Name = '"+ textField_4.getText() + "', Employee_Title = '" + textField_5.getText() + "', seniority = '"+ textField_7.getText() + "', placeofwork = '" + textField_1.getText() + "', email = '" + textField_2.getText() + "' where Employee_ID = '" + id + "'";
 					PreparedStatement ps = con.prepareStatement(query);
 					ps.executeUpdate();
 					con.close();
+					ShiftSchedulerWindow.main(workplace);
+					frame.setVisible(false);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			
@@ -141,7 +143,9 @@ public class EditEmployee {
 		
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
+			//Opens main menu when cancel is pressed
 			public void actionPerformed(ActionEvent e) {
+				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);
 			}
 		});

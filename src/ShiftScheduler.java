@@ -49,7 +49,10 @@ public class ShiftScheduler {
 			
 		}
 	}
-	
+	/*
+	 * Shows a given file if it exists
+	 * @param String fileName
+	 */
 	public static void showFile(String fileName) throws IOException {
 		File file = new File(fileName);
 		
@@ -62,6 +65,11 @@ public class ShiftScheduler {
 		if(file.exists()) desktop.open(file);
 	}
 	
+	/*
+	 * Creates an excel file containing the schedule using a CSV writer
+	 * @param array, ArrayList of employees used to make the scheduler
+	 * @param String output, the file to which the schedule will be outputted
+	 */
 	public static void makeSchedule(ArrayList<Employee> array, String output) throws Exception {
 		File file = new File(output);
 		try {
