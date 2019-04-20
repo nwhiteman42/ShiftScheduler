@@ -190,7 +190,7 @@ public class ShiftSchedulerWindow {
 		JMenuItem mntmHelpPage = new JMenuItem("Help Page");
 		mntmHelpPage.addActionListener(new ActionListener() {
 			public void actionPerformed( ActionEvent arg0 ) {
-				
+				HelpPage.main(null);
 			}
 		});
 		mnHelp.add(mntmHelpPage);

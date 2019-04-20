@@ -21,6 +21,7 @@ public class AboutWindow {
 			public void run() {
 				try {
 					AboutWindow window = new AboutWindow();
+					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,6 +42,7 @@ public class AboutWindow {
 	 */
 	public void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		

@@ -19,6 +19,7 @@ public class HelpPage {
 			public void run() {
 				try {
 					HelpPage window = new HelpPage();
+					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +41,7 @@ public class HelpPage {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 520, 577);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblMakeSchecule = new JLabel("Make Schecule - Creates a schedule in a spreadsheet for all the employees you have added.");

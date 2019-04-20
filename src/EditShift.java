@@ -60,6 +60,7 @@ public class EditShift {
 			public void run() {
 				try {
 					EditShift window = new EditShift();
+					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -82,6 +83,7 @@ public class EditShift {
 	private void initialize() {
 		
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 410);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
