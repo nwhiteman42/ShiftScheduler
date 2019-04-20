@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 class MysqlCon { 
 	
+	/*
+	 * Gets the id of an employee currently in the database.
+	 * @param String email, email of employee who's id will be received
+	 * @return int id, id of an employee
+	 */
 	public int getACurrentEmployeeID(String email) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		String query = "select Employee_id from Employee_Data where email =" +"'"+email+"'";
@@ -18,7 +23,10 @@ class MysqlCon {
 		return id;
 	}
 	
-	//Gets id to assign to an employer. ID does not already exist in database
+	/*
+	 * Gets id to assign to an employer. ID does not already exist in database
+	 * @return int id
+	 */
 	public int getAEmployerID() throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		String query = "select count(*) from emp_cred";
@@ -48,7 +56,10 @@ class MysqlCon {
 	}
 	
 	
-	//Gets an id to give to a new employee. The id does not already exist in the database
+	/*
+	 * Gets an id to give to a new employee. The id does not already exist in the database.
+	 * @returns int id
+	 */
 	public int getAEmployeID() throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		String query = "select count(*) from Employee_Data";
@@ -77,7 +88,11 @@ class MysqlCon {
 		return id;
 	}
 	
-	
+	/*
+	 * Gets all of the employees from a given workplace
+	 * @param String workplace, workplace from which to pull the employees
+	 * @return ArrayList<Employee>
+	 */
 	public ArrayList<Employee> getEmployees(String workplace) throws SQLException{
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		String query = "select Employee_ID, Employee_name, Employee_Title, seniority, placeofwork, email from Employee_Data where placeofwork = "
@@ -94,7 +109,11 @@ class MysqlCon {
 		con.close();
 		return e;
 	}
-	
+	/*
+	 * Gets all the employee emails for a given workplace
+	 * @param String workplace, workplace to pull emails from
+	 * @return, String[], an array of emails
+	 */
 	public String[] getEmployeesEmail(String workplace) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		String query = "select email from Employee_Data where placeofwork = "+"'"+workplace+"'";
@@ -117,7 +136,11 @@ class MysqlCon {
 		con.close();
 		return emails;
 	}
-	
+	/*
+	 * Gets the TimeEntry array for a given employee
+	 * @param int id, id of employee
+	 * @param String name, name of employee
+	 */
 	public TimeEntry[] getEmployeeAval(int id, String name) throws SQLException{
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		String query = "select Day, Start_Time, End_Time from Employee_Shifts where Employee_id = " + id +" and Employee_name =" +"'"+name+"'";
@@ -141,6 +164,7 @@ class MysqlCon {
 	
 	/* 
 	 * Removes data from the "Employee_Data" list
+	 * @param String email of employee to be removed
 	 */
 	public void removeEmployee(String email) throws SQLException {
 	Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
@@ -175,6 +199,7 @@ class MysqlCon {
 	
 	/*
 	 * Removes data from the "Employee_Shifts" list
+	 * @param int id, id of employee whos shift will be removed
 	 */
 	public void removeEmployeeShift(int id) throws SQLException {
 	Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
@@ -188,8 +213,13 @@ class MysqlCon {
 	
 	/*
 	 * Inserts data into the "Employee_Shifts" list
+	 * @param int id, id of the employee
+	 * @param String name, name of the employee
+	 * @param String day, day of the shift
+	 * @param startTime, startTime of shift
+	 * @param endTime, endTime of shift
 	 */
-	public boolean insertIntoEmployeeShift(int id, String name, String day, String startTime, String endTime) throws SQLException {
+	public void insertIntoEmployeeShift(int id, String name, String day, String startTime, String endTime) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 		
 		String query = "insert into Employee_Shifts (Employee_ID, Employee_Name, Day, Start_Time, End_Time)" + " values(?,?,?,?,?)";
@@ -200,13 +230,12 @@ class MysqlCon {
 		ps.setString(4, startTime);
 		ps.setString(5, endTime);
 		con.close();
-		return ps.execute();
 	}
 	
 	
 	
 	/*
-	 * Retrieves data from database and prints 
+	 *	Prints out data from both Employee_Data and Employee_Shifts from their tables in the database 
 	 */
 	public void retriveData() {
 		try {
