@@ -32,9 +32,9 @@ public class EditShift {
 		}
 	
 	private JFrame frame;
-	private JTextField txtFirstName;
-	private JLabel lblFirstName;
-	private JLabel lblCreateAccount;
+	private JTextField txtEmail;
+	private JLabel lblEmail;
+	private JLabel lblEditShift;
 	private JTextField txtSunStart;
 	private JTextField txtSunEnd;
 	private JTextField txtMonStart;
@@ -86,19 +86,19 @@ public class EditShift {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		txtFirstName = new JTextField();
-		txtFirstName.setBounds(152, 72, 112, 20);
-		frame.getContentPane().add(txtFirstName);
-		txtFirstName.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(152, 72, 112, 20);
+		frame.getContentPane().add(txtEmail);
+		txtEmail.setColumns(10);
 		
-		lblFirstName = new JLabel("Email");
-		lblFirstName.setBounds(101, 75, 41, 14);
-		frame.getContentPane().add(lblFirstName);
+		lblEmail = new JLabel("Email");
+		lblEmail.setBounds(101, 75, 41, 14);
+		frame.getContentPane().add(lblEmail);
 		
-		lblCreateAccount = new JLabel("Edit Shift");
-		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblCreateAccount.setBounds(164, 25, 156, 26);
-		frame.getContentPane().add(lblCreateAccount);
+		lblEditShift = new JLabel("Edit Shift");
+		lblEditShift.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblEditShift.setBounds(164, 25, 156, 26);
+		frame.getContentPane().add(lblEditShift);
 		
 		
 		
@@ -224,8 +224,9 @@ public class EditShift {
 			public void actionPerformed(ActionEvent arg0) {
 				MysqlCon x = new MysqlCon();
 				try {
+					System.out.println(txtEmail.getText());
 					//Gets Employee id and name from corresponding text feilds
-					int id = x.getACurrentEmployeeID(txtFirstName.getText());
+					int id = x.getACurrentEmployeeID(txtEmail.getText());
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 					String q = "select Employee_name from Employee_Data where Employee_id = "+id;
 					Statement stmt= con.createStatement();

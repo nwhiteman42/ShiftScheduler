@@ -1,7 +1,6 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
@@ -14,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.util.Base64;
 
 public class CreateAccount {
 	
@@ -51,7 +51,7 @@ public class CreateAccount {
 	 */
 	public static void main(String workplace) {
 		CreateAccount x = new CreateAccount();
-		x.setWorkplace(workplace);
+		x.setWorkplace(workplace); //Set workplace
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -164,7 +164,6 @@ public class CreateAccount {
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Gets information from the text feilds
 				String fName = txtFirstName.getText();
 				String lName = txtLastName.getText();
 				String email = txtEmail.getText();
@@ -175,13 +174,18 @@ public class CreateAccount {
 				String pswd = String.copyValueOf(tempPswd);
 				String conPswd = String.copyValueOf(tempConPswd);
 				
-				if(email.equals(conEmail)) {//Makes sure the email was confirmed
+				//Encrypts the password and sends it to the database
+				String encodedPass = Base64.getEncoder().encodeToString(pswd.getBytes());
+				
+				
+				if(email.equals(conEmail)) {//Checks that both email feilds match
 					lblEmailsDoNot.setForeground(Color.WHITE);
-					if(pswd.equals(conPswd)) {//Makes sure the password was confirmed
+					if(pswd.equals(conPswd)) { //Checks to make sure both password feilds match
 						lblPasswordsDoNot.setForeground(Color.WHITE);
 						MysqlCon x = new MysqlCon();
 						Connection con;
 						try {
+							//Inserts account into the database
 						con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 						String query = "insert into emp_cred (emp_id, firstname, lastname, email, password, workplace)" + " values(?,?,?,?,?,?)";
 						PreparedStatement ps = con.prepareStatement(query);
@@ -189,19 +193,20 @@ public class CreateAccount {
 						ps.setString(2, fName);
 						ps.setString(3, lName);
 						ps.setString(4, email);
-						ps.setString(5, pswd);
+						ps.setString(5, encodedPass);
 						ps.setString(6, workplaceTemp);
-						ps.execute(); //Executes query to insert the account into the database
+						ps.execute();
 						con.close();
+						//opens the login page after account creation
 						LoginPage.main(null);
 						frame.setVisible(false);
 						} catch (SQLException e1) {
 							e1.printStackTrace();
 						}
-					} else {
+					} else {//error message for when password feilds don't match
 						lblPasswordsDoNot.setForeground(Color.RED);
 					}
-				} else {
+				} else {//error message for when email feilds dont match
 					lblEmailsDoNot.setForeground(Color.RED);
 				}
 			}
@@ -211,8 +216,8 @@ public class CreateAccount {
 		
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
-			//Goes back to login page when pressed
 			public void actionPerformed(ActionEvent e) {
+				//Opens Login page
 				LoginPage.main(null);
 				frame.setVisible(false);
 			}
