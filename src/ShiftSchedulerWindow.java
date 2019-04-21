@@ -1,15 +1,19 @@
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 import java.awt.BorderLayout;
 import net.miginfocom.swing.MigLayout;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.border.LineBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -65,15 +69,20 @@ public class ShiftSchedulerWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(0, 191, 255));
+		frame.getContentPane().setForeground(Color.WHITE);
+		frame.getContentPane().setBackground(Color.GRAY);
+		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[][][][][grow]", "[][][][][][][grow]"));
 		Employer emp = new Employer();
+		
 		JButton btnMakeSchedule = new JButton("Make Schedule");
-		btnMakeSchedule.setForeground(new Color(0, 0, 128));
-		btnMakeSchedule.setBackground(Color.BLACK);
+		btnMakeSchedule.setBackground(Color.GRAY);
+		btnMakeSchedule.setForeground(Color.WHITE);
+		btnMakeSchedule.setBorder(new LineBorder(Color.WHITE));
+		btnMakeSchedule.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnMakeSchedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MysqlCon m = new MysqlCon();
@@ -91,8 +100,10 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnMakeSchedule, "cell 0 1");
 		
 		JButton btnEmailSchedule = new JButton("Email Schedule");
-		btnEmailSchedule.setForeground(new Color(0, 0, 128));
-		btnEmailSchedule.setBackground(new Color(0, 0, 0));
+		btnEmailSchedule.setBackground(Color.GRAY);
+		btnEmailSchedule.setForeground(Color.WHITE);
+		btnEmailSchedule.setBorder(new LineBorder(Color.WHITE));
+		btnEmailSchedule.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnEmailSchedule.addActionListener(new ActionListener() {
 			//Send email to all employees of logged in user's workplace
 			public void actionPerformed(ActionEvent arg0) {
@@ -115,8 +126,10 @@ public class ShiftSchedulerWindow {
 		});
 		
 		JButton btnAddEmployee = new JButton("Create Employee");
-		btnAddEmployee.setForeground(new Color(0, 0, 128));
-		btnAddEmployee.setBackground(new Color(0, 0, 0));
+		btnAddEmployee.setBackground(Color.GRAY);
+		btnAddEmployee.setForeground(Color.WHITE);
+		btnAddEmployee.setBorder(new LineBorder(Color.WHITE));
+		btnAddEmployee.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnAddEmployee.addActionListener(new ActionListener() {
 			//Opens create employee page 
 			public void actionPerformed(ActionEvent e) {
@@ -128,8 +141,10 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnEmailSchedule, "cell 0 2");
 		
 		JButton btnEditEmployee = new JButton("Edit Employee");
-		btnEditEmployee.setForeground(new Color(0, 0, 128));
-		btnEditEmployee.setBackground(new Color(0, 0, 0));
+		btnEditEmployee.setBackground(Color.GRAY);
+		btnEditEmployee.setForeground(Color.WHITE);
+		btnEditEmployee.setBorder(new LineBorder(Color.WHITE));
+		btnEditEmployee.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnEditEmployee.addActionListener(new ActionListener() {
 			//Opens edit employee page
 			public void actionPerformed(ActionEvent arg0) {
@@ -140,8 +155,10 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnEditEmployee, "cell 4 2");
 		
 		JButton btnRemoveEmployee = new JButton("Remove Employee");
-		btnRemoveEmployee.setForeground(new Color(0, 0, 128));
-		btnRemoveEmployee.setBackground(new Color(0, 0, 0));
+		btnRemoveEmployee.setBackground(Color.GRAY);
+		btnRemoveEmployee.setForeground(Color.WHITE);
+		btnRemoveEmployee.setBorder(new LineBorder(Color.WHITE));
+		btnRemoveEmployee.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnRemoveEmployee.addActionListener(new ActionListener() {
 			//Opens remove employee page
 			public void actionPerformed(ActionEvent arg0) {
@@ -152,8 +169,10 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnRemoveEmployee, "cell 4 3");
 		
 		JButton btnRemoveShift = new JButton("Edit Shift");
-		btnRemoveShift.setForeground(new Color(0, 0, 128));
-		btnRemoveShift.setBackground(new Color(0, 0, 0));
+		btnRemoveShift.setBackground(Color.GRAY);
+		btnRemoveShift.setForeground(Color.WHITE);
+		btnRemoveShift.setBorder(new LineBorder(Color.WHITE));
+		btnRemoveShift.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnRemoveShift.addActionListener(new ActionListener() {
 			//Opens edit shift page
 			public void actionPerformed(ActionEvent arg0) {
@@ -164,8 +183,10 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnRemoveShift, "cell 4 4");
 		
 		JButton btnNewButton = new JButton("Remove Shift");
-		btnNewButton.setForeground(new Color(0, 0, 128));
-		btnNewButton.setBackground(new Color(0, 0, 0));
+		btnNewButton.setBackground(Color.GRAY);
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBorder(new LineBorder(Color.WHITE));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnNewButton.addActionListener(new ActionListener() {
 			//Opens remove shift page
 			public void actionPerformed(ActionEvent e) {
@@ -224,5 +245,8 @@ public class ShiftSchedulerWindow {
 				System.exit(0);
 			}
 		});
+		
+		frame.setUndecorated(true);
+		
 	}
 }

@@ -180,7 +180,7 @@ public class CreateEmployee {
 		frame.getContentPane().add(lblConfirmEmail);
 		
 		JLabel lblEmailsDoNot = new JLabel("Emails do not match");
-		lblEmailsDoNot.setForeground(Color.WHITE);
+		lblEmailsDoNot.setForeground(Color.GRAY);
 		lblEmailsDoNot.setBounds(70, 283, 171, 15);
 		frame.getContentPane().add(lblEmailsDoNot);
 
