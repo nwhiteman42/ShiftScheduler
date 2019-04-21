@@ -88,7 +88,7 @@ public class LoginPage {
 		txtEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtEmail.setForeground(Color.WHITE);
 		txtEmail.setText("Email: ");
-		txtEmail.setBounds(79, 94, 43, 20);
+		txtEmail.setBounds(79, 94, 57, 20);
 		frame.getContentPane().add(txtEmail);
 		
 		passwordField = new JPasswordField();
@@ -102,7 +102,6 @@ public class LoginPage {
 		txtPassword.setBounds(48, 135, 74, 20);
 		frame.getContentPane().add(txtPassword);
 		
-
 		JLabel lblError = new JLabel("Username or password incorrect");
 		lblError.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblError.setForeground(Color.GRAY);
