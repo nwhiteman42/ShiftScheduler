@@ -102,7 +102,6 @@ public class LoginPage {
 		txtPassword.setBounds(48, 135, 74, 20);
 		frame.getContentPane().add(txtPassword);
 		
-
 		JLabel lblError = new JLabel("Username or password incorrect");
 		lblError.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblError.setForeground(Color.GRAY);
