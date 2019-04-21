@@ -2,9 +2,12 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -80,88 +83,108 @@ public class CreateAccount {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.getContentPane().setForeground(Color.WHITE);
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 450, 410);
+		frame.getContentPane().setBackground(Color.GRAY);
+		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
+		frame.setBounds(100, 100, 450, 390);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		txtFirstName = new JTextField();
-		txtFirstName.setBounds(86, 90, 112, 20);
+		txtFirstName.setBounds(95, 90, 124, 20);
 		frame.getContentPane().add(txtFirstName);
 		txtFirstName.setColumns(10);
 		
 		txtLastName = new JTextField();
-		txtLastName.setBounds(208, 90, 112, 20);
+		txtLastName.setBounds(223, 90, 124, 20);
 		frame.getContentPane().add(txtLastName);
 		txtLastName.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(86, 146, 112, 20);
+		txtEmail.setBounds(95, 146, 124, 20);
 		frame.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		pwdPassword = new JPasswordField();
 		pwdPassword.setForeground(Color.DARK_GRAY);
-		pwdPassword.setBounds(86, 207, 112, 20);
+		pwdPassword.setBounds(95, 207, 124, 20);
 		frame.getContentPane().add(pwdPassword);
 		
 		lblFirstName = new JLabel("First name");
-		lblFirstName.setBounds(86, 75, 65, 14);
+		lblFirstName.setForeground(Color.WHITE);
+		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblFirstName.setBounds(95, 75, 86, 14);
 		frame.getContentPane().add(lblFirstName);
 		
 		lblLastName = new JLabel("Last name");
-		lblLastName.setBounds(208, 75, 68, 14);
+		lblLastName.setForeground(Color.WHITE);
+		lblLastName.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblLastName.setBounds(223, 75, 68, 14);
 		frame.getContentPane().add(lblLastName);
 		
 		lblUsername = new JLabel("Email");
-		lblUsername.setBounds(86, 133, 65, 14);
+		lblUsername.setForeground(Color.WHITE);
+		lblUsername.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblUsername.setBounds(95, 133, 74, 14);
 		frame.getContentPane().add(lblUsername);
 		
 		lblPassword = new JLabel("Password");
-		lblPassword.setBounds(86, 193, 61, 14);
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblPassword.setBounds(95, 193, 74, 14);
 		frame.getContentPane().add(lblPassword);
 		
 		pwdconField = new JPasswordField();
-		pwdconField.setBounds(208, 207, 112, 20);
+		pwdconField.setBounds(223, 207, 124, 20);
 		frame.getContentPane().add(pwdconField);
 		
 		lblNewLabel = new JLabel("Confirm Password");
-		lblNewLabel.setBounds(208, 193, 112, 14);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setBounds(223, 193, 124, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		lblCreateAccount = new JLabel("Create Account");
-		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblCreateAccount.setBounds(128, 25, 166, 26);
+		lblCreateAccount.setForeground(Color.WHITE);
+		lblCreateAccount.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblCreateAccount.setBounds(158, 25, 166, 26);
 		frame.getContentPane().add(lblCreateAccount);
 		
 		txtConfirmEmail = new JTextField();
-		txtConfirmEmail.setBounds(208, 146, 112, 20);
+		txtConfirmEmail.setBounds(223, 146, 124, 20);
 		frame.getContentPane().add(txtConfirmEmail);
 		txtConfirmEmail.setColumns(10);
 		
 		lblConfirmEmail = new JLabel("Confirm Email");
-		lblConfirmEmail.setBounds(208, 133, 86, 14);
+		lblConfirmEmail.setForeground(Color.WHITE);
+		lblConfirmEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblConfirmEmail.setBounds(223, 133, 86, 14);
 		frame.getContentPane().add(lblConfirmEmail);
 		
 		JLabel lblPasswordsDoNot = new JLabel("Passwords do not match");
-		lblPasswordsDoNot.setForeground(Color.WHITE);
-		lblPasswordsDoNot.setBounds(71, 310, 223, 15);
+		lblPasswordsDoNot.setForeground(Color.GRAY);
+		lblPasswordsDoNot.setBounds(109, 286, 223, 15);
 		frame.getContentPane().add(lblPasswordsDoNot);
 		
 		WorkplacetextField = new JTextField();
 		WorkplacetextField.setColumns(10);
-		WorkplacetextField.setBounds(164, 255, 112, 20);
+		WorkplacetextField.setBounds(158, 252, 124, 20);
 		frame.getContentPane().add(WorkplacetextField);
 		
 		lblWorkplace = new JLabel("Workplace");
-		lblWorkplace.setBounds(164, 239, 112, 15);
+		lblWorkplace.setForeground(Color.WHITE);
+		lblWorkplace.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblWorkplace.setBounds(158, 238, 112, 15);
 		frame.getContentPane().add(lblWorkplace);
 		
 		JLabel lblEmailsDoNot = new JLabel("Emails do not match");
-		lblEmailsDoNot.setForeground(Color.WHITE);
+		lblEmailsDoNot.setForeground(Color.GRAY);
 		lblEmailsDoNot.setBounds(70, 283, 171, 15);
 		frame.getContentPane().add(lblEmailsDoNot);
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setBackground(Color.GRAY);
+		btnConfirm.setForeground(Color.WHITE);
+		btnConfirm.setBorder(new LineBorder(Color.WHITE));
+		btnConfirm.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String fName = txtFirstName.getText();
@@ -211,10 +234,14 @@ public class CreateAccount {
 				}
 			}
 		});
-		btnConfirm.setBounds(330, 337, 89, 23);
+		btnConfirm.setBounds(247, 306, 100, 26);
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnGoBack = new JButton("Go Back");
+		btnGoBack.setBackground(Color.GRAY);
+		btnGoBack.setForeground(Color.WHITE);
+		btnGoBack.setBorder(new LineBorder(Color.WHITE));
+		btnGoBack.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Opens Login page
@@ -222,11 +249,11 @@ public class CreateAccount {
 				frame.setVisible(false);
 			}
 		});
-		btnGoBack.setBounds(231, 337, 89, 23);
+		btnGoBack.setBounds(95, 306, 100, 26);
 		frame.getContentPane().add(btnGoBack);
 		
 		
-		
+		frame.setUndecorated(true);
 		
 	}
 }
