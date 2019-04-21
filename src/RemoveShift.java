@@ -43,6 +43,7 @@ public class RemoveShift {
 			public void run() {
 				try {
 					RemoveShift window = new RemoveShift();
+					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,6 +66,7 @@ public class RemoveShift {
 	private void initialize() {
 		
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 410);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);

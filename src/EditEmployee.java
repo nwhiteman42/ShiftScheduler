@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -26,6 +27,14 @@ public class EditEmployee {
 		}
 	
 	private JFrame frame;
+	private JLabel txtrFirstName;
+	private JLabel txtrOld;
+	private JLabel txtrNew;
+	private JLabel textArea;
+	private JLabel textArea_1;
+	private JLabel textArea_3;
+	private JLabel txtrPlaceOfWork;
+	private JLabel txtrEmail;
 	private JTextField textField;
 	private JTextField textField_4;
 	private JTextField textField_5;
@@ -43,6 +52,7 @@ public class EditEmployee {
 			public void run() {
 				try {
 					EditEmployee window = new EditEmployee();
+					window.frame.setLocationRelativeTo(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,17 +73,16 @@ public class EditEmployee {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 292);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JTextArea txtrOld = new JTextArea();
-		txtrOld.setText("Old");
+		txtrOld = new JLabel("Old");
 		txtrOld.setBounds(12, 12, 31, 15);
 		frame.getContentPane().add(txtrOld);
 		
-		JTextArea txtrFirstName = new JTextArea();
-		txtrFirstName.setText("Email");
+		txtrFirstName = new JLabel("Email");
 		txtrFirstName.setBounds(45, 25, 72, 15);
 		frame.getContentPane().add(txtrFirstName);
 		
@@ -82,13 +91,11 @@ public class EditEmployee {
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JTextArea txtrNew = new JTextArea();
-		txtrNew.setText("New");
+		txtrNew = new JLabel("New");
 		txtrNew.setBounds(282, 12, 31, 15);
 		frame.getContentPane().add(txtrNew);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setText("Name");
+		textArea = new JLabel("Name");
 		textArea.setBounds(310, 25, 72, 15);
 		frame.getContentPane().add(textArea);
 		
@@ -97,8 +104,7 @@ public class EditEmployee {
 		textField_4.setBounds(296, 51, 124, 19);
 		frame.getContentPane().add(textField_4);
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setText("Title");
+		textArea_1 = new JLabel("Title");
 		textArea_1.setBounds(310, 71, 72, 15);
 		frame.getContentPane().add(textArea_1);
 		
@@ -108,8 +114,7 @@ public class EditEmployee {
 		frame.getContentPane().add(textField_5);
 		
 		
-		JTextArea textArea_3 = new JTextArea();
-		textArea_3.setText("Seniority");
+		textArea_3 = new JLabel("Seniority");
 		textArea_3.setBounds(310, 122, 72, 15);
 		frame.getContentPane().add(textArea_3);
 		
@@ -157,13 +162,11 @@ public class EditEmployee {
 		textField_1.setBounds(296, 190, 124, 19);
 		frame.getContentPane().add(textField_1);
 		
-		JTextArea txtrPlaceOfWork = new JTextArea();
-		txtrPlaceOfWork.setText("Place of Work");
+		txtrPlaceOfWork = new JLabel("Place of Work");
 		txtrPlaceOfWork.setBounds(310, 169, 96, 15);
 		frame.getContentPane().add(txtrPlaceOfWork);
 		
-		JTextArea txtrEmail = new JTextArea();
-		txtrEmail.setText("Email");
+		txtrEmail = new JLabel("Email");
 		txtrEmail.setBounds(310, 214, 96, 15);
 		frame.getContentPane().add(txtrEmail);
 		
