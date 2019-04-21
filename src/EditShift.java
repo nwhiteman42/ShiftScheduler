@@ -2,6 +2,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
@@ -16,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class EditShift {
 	
@@ -49,6 +52,7 @@ public class EditShift {
 	private JTextField txtThursEnd;
 	private JTextField txtFriEnd;
 	private JTextField txtSatEnd;
+	private JLabel lblInvalidInput;
 
 	/**
 	 * Launch the application.
@@ -83,6 +87,7 @@ public class EditShift {
 	private void initialize() {
 		
 		frame = new JFrame();
+		frame.getContentPane().setForeground(SystemColor.menu);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 410);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -221,12 +226,20 @@ public class EditShift {
 		chckbxSaturday.setBounds(86, 306, 97, 23);
 		frame.getContentPane().add(chckbxSaturday);
 	
+		lblInvalidInput = new JLabel("Invalid input");
+		lblInvalidInput.setForeground(SystemColor.menu);
+		lblInvalidInput.setBounds(38, 346, 89, 14);
+		frame.getContentPane().add(lblInvalidInput);
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MysqlCon x = new MysqlCon();
 				try {
-					System.out.println(txtEmail.getText());
+					if(txtEmail.getText().isEmpty()) {
+						lblInvalidInput.setForeground(Color.RED);
+						return;
+					}
+					lblInvalidInput.setForeground(Color.LIGHT_GRAY);
 					//Gets Employee id and name from corresponding text feilds
 					int id = x.getACurrentEmployeeID(txtEmail.getText());
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
@@ -243,6 +256,10 @@ public class EditShift {
 					ps.execute();
 					//Inserts shift data for Sunday if selected
 					if(chckbxSunday.isSelected()) {
+						if(txtSunStart.getText().isEmpty()||txtSunEnd.getText().isEmpty()) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qSun = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pSun = con.prepareStatement(qSun);
 						pSun.setInt(1, id);
@@ -254,6 +271,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Monday if selected
 					if(chckbxMonday.isSelected()) {
+						if(txtMonStart.getText().isEmpty()||txtMonEnd.getText().isEmpty()) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qMon = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pMon = con.prepareStatement(qMon);
 						pMon.setInt(1, id);
@@ -266,6 +287,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Tuesday if selected
 					if(chckbxTuesday.isSelected()) {
+						if(txtTuesStart.getText().isEmpty() || txtTuesEnd.getText().isEmpty()) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qTue = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pTue = con.prepareStatement(qTue);
 						pTue.setInt(1, id);
@@ -277,6 +302,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Wednesday if selected
 					if(chckbxWednesday.isSelected()) {
+						if(txtWedStart.getText().isEmpty() || txtWedEnd.getText().isEmpty()) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qWed = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pWed = con.prepareStatement(qWed);
 						pWed.setInt(1, id);
@@ -288,6 +317,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Thursday if selected
 					if(chckbxThursday.isSelected()) {
+						if(txtThursStart.getText().isEmpty() || txtThursEnd.getText().isEmpty()) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qThu = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pThu = con.prepareStatement(qThu);
 						pThu.setInt(1, id);
@@ -299,6 +332,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Friday if selected
 					if(chckbxFriday.isSelected()) {
+						if(txtFriStart.getText().isEmpty() || txtFriEnd.getText().isEmpty()) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qFri = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pFri = con.prepareStatement(qFri);
 						pFri.setInt(1, id);
@@ -310,6 +347,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Saturday if selected
 					if(chckbxSaturday.isSelected()) {
+						if(txtSatStart.getText().isEmpty() || txtSatEnd.getText().isEmpty()) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qSat = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pSat = con.prepareStatement(qSat);
 						pSat.setInt(1, id);
@@ -326,10 +367,13 @@ public class EditShift {
 				//Opens main menu after shift information are put into database
 				ShiftSchedulerWindow.main(workplace);
 				frame.setVisible(false);
+				
 			}
 		});
 		btnConfirm.setBounds(330, 337, 89, 23);
 		frame.getContentPane().add(btnConfirm);
+		
+		
 		
 	}
 }
