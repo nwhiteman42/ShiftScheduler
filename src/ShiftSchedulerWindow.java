@@ -13,6 +13,8 @@ import javax.swing.JTable;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class ShiftSchedulerWindow {
 	
@@ -63,12 +65,15 @@ public class ShiftSchedulerWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(0, 191, 255));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[][][][][grow]", "[][][][][][][grow]"));
 		Employer emp = new Employer();
 		JButton btnMakeSchedule = new JButton("Make Schedule");
+		btnMakeSchedule.setForeground(new Color(0, 0, 128));
+		btnMakeSchedule.setBackground(Color.BLACK);
 		btnMakeSchedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MysqlCon m = new MysqlCon();
@@ -86,6 +91,8 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnMakeSchedule, "cell 0 1");
 		
 		JButton btnEmailSchedule = new JButton("Email Schedule");
+		btnEmailSchedule.setForeground(new Color(0, 0, 128));
+		btnEmailSchedule.setBackground(new Color(0, 0, 0));
 		btnEmailSchedule.addActionListener(new ActionListener() {
 			//Send email to all employees of logged in user's workplace
 			public void actionPerformed(ActionEvent arg0) {
@@ -108,6 +115,8 @@ public class ShiftSchedulerWindow {
 		});
 		
 		JButton btnAddEmployee = new JButton("Create Employee");
+		btnAddEmployee.setForeground(new Color(0, 0, 128));
+		btnAddEmployee.setBackground(new Color(0, 0, 0));
 		btnAddEmployee.addActionListener(new ActionListener() {
 			//Opens create employee page 
 			public void actionPerformed(ActionEvent e) {
@@ -119,6 +128,8 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnEmailSchedule, "cell 0 2");
 		
 		JButton btnEditEmployee = new JButton("Edit Employee");
+		btnEditEmployee.setForeground(new Color(0, 0, 128));
+		btnEditEmployee.setBackground(new Color(0, 0, 0));
 		btnEditEmployee.addActionListener(new ActionListener() {
 			//Opens edit employee page
 			public void actionPerformed(ActionEvent arg0) {
@@ -129,6 +140,8 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnEditEmployee, "cell 4 2");
 		
 		JButton btnRemoveEmployee = new JButton("Remove Employee");
+		btnRemoveEmployee.setForeground(new Color(0, 0, 128));
+		btnRemoveEmployee.setBackground(new Color(0, 0, 0));
 		btnRemoveEmployee.addActionListener(new ActionListener() {
 			//Opens remove employee page
 			public void actionPerformed(ActionEvent arg0) {
@@ -139,6 +152,8 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnRemoveEmployee, "cell 4 3");
 		
 		JButton btnRemoveShift = new JButton("Edit Shift");
+		btnRemoveShift.setForeground(new Color(0, 0, 128));
+		btnRemoveShift.setBackground(new Color(0, 0, 0));
 		btnRemoveShift.addActionListener(new ActionListener() {
 			//Opens edit shift page
 			public void actionPerformed(ActionEvent arg0) {
@@ -149,6 +164,8 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().add(btnRemoveShift, "cell 4 4");
 		
 		JButton btnNewButton = new JButton("Remove Shift");
+		btnNewButton.setForeground(new Color(0, 0, 128));
+		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			//Opens remove shift page
 			public void actionPerformed(ActionEvent e) {
