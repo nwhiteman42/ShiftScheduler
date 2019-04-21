@@ -240,4 +240,5 @@ public class RemoveShift {
 		frame.setUndecorated(true);
 		
 	}
+	
 }
