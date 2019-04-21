@@ -3,11 +3,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
 import java.awt.BorderLayout;
-import javax.swing.JTextArea;
 import javax.swing.JCheckBox;
-import java.awt.TextArea;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.Font;
 
 public class AboutWindow {

@@ -1,12 +1,10 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;

@@ -2,8 +2,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JFrame;
-import javax.swing.JRadioButton;
-import java.awt.BorderLayout;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.BorderFactory;
@@ -18,7 +16,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
-import java.awt.SystemColor;
 
 public class ShiftSchedulerWindow {
 	

@@ -15,8 +15,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Base64;
 import java.awt.event.ActionEvent;
-import java.awt.SystemColor;
-import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 import java.awt.Font;

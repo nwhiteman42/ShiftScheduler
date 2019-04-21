@@ -40,7 +40,7 @@ class MysqlCon {
 		while(exists == true) {
 			String query2 = "select count(emp_id) from emp_cred where emp_id = "+ id;
 			Statement stmt2 = con.createStatement();
-			ResultSet rs2 = stmt.executeQuery(query2);
+			ResultSet rs2 = stmt2.executeQuery(query2);
 			int x = 0;
 			while(rs2.next()) {
 				x = rs2.getInt(1);
@@ -73,7 +73,7 @@ class MysqlCon {
 		while(exists == true) {
 			String query2 = "select count(Employee_ID) from Employee_Data where Employee_ID = "+ id;
 			Statement stmt2 = con.createStatement();
-			ResultSet rs2 = stmt.executeQuery(query2);
+			ResultSet rs2 = stmt2.executeQuery(query2);
 			int x = 0;
 			while(rs2.next()) {
 				x = rs2.getInt(1);
@@ -230,36 +230,6 @@ class MysqlCon {
 		ps.setString(4, startTime);
 		ps.setString(5, endTime);
 		con.close();
-	}
-	
-	
-	
-	/*
-	 *	Prints out data from both Employee_Data and Employee_Shifts from their tables in the database 
-	 */
-	public void retriveData() {
-		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-			
-			Statement stmt = con.createStatement();
-			Statement stmt2 = con.createStatement();
-			Statement stmt3 = con.createStatement(); 
-
-			ResultSet rs = stmt.executeQuery("select * from Employee_Data");
-			ResultSet rb = stmt2.executeQuery("select * from Employee_Shifts");
-
-
-			while(rs.next())
-				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
-
-			while(rb.next())
-				System.out.println(rb.getInt(1) + "  " + rb.getString(2) + "  " + rb.getString(3) + "  " + rb.getString(4) + "  " + rb.getString(5));
-
-			con.close();
-		}
-		catch(Exception e) {
-			System.out.println(e);
-		}
 	}
 	
 	

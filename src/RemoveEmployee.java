@@ -11,7 +11,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
 import java.awt.SystemColor;
 
 public class RemoveEmployee {
