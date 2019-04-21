@@ -181,6 +181,7 @@ public class CreateAccount {
 		lblEmailsDoNot.setForeground(Color.GRAY);
 		lblEmailsDoNot.setBounds(70, 283, 171, 15);
 		frame.getContentPane().add(lblEmailsDoNot);
+		
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.setBackground(Color.GRAY);
 		btnConfirm.setForeground(Color.WHITE);
