@@ -254,7 +254,6 @@ public class CreateEmployee {
 		frame.getContentPane().add(btnGoBack);
 		
 		frame.setUndecorated(true);
-		
-		
+
 	}
 }
