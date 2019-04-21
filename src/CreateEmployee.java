@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -81,7 +82,7 @@ public class CreateEmployee {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.getContentPane().setForeground(Color.WHITE);
-		frame.getContentPane().setBackground(Color.WHITE);
+		frame.getContentPane().setBackground(Color.GRAY);
 		frame.setBounds(100, 100, 450, 410);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -125,26 +126,38 @@ public class CreateEmployee {
 		 * JLabels First Name, Last Name, Email, job title, seniority, and place of work.
 		 */
 		lblFirstName = new JLabel("First Name");
-		lblFirstName.setBounds(86, 75, 65, 14);
+		lblFirstName.setForeground(Color.WHITE);
+		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblFirstName.setBounds(86, 75, 112, 14);
 		frame.getContentPane().add(lblFirstName);
 		
 		lblLastName = new JLabel("Last Name");
-		lblLastName.setBounds(208, 75, 68, 14);
+		lblLastName.setForeground(Color.WHITE);
+		lblLastName.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblLastName.setBounds(208, 75, 112, 14);
 		frame.getContentPane().add(lblLastName);
 		
 		lblUsername = new JLabel("Email");
-		lblUsername.setBounds(86, 133, 65, 14);
+		lblUsername.setForeground(Color.WHITE);
+		lblUsername.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblUsername.setBounds(86, 133, 112, 14);
 		frame.getContentPane().add(lblUsername);
 		
 		lblJobTitle = new JLabel("Job Title");
+		lblJobTitle.setForeground(Color.WHITE);
+		lblJobTitle.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblJobTitle.setBounds(86, 190, 98, 14);
 		frame.getContentPane().add(lblJobTitle);
 		
 		lblSeniority = new JLabel("Seniority");
-		lblSeniority.setBounds(208, 190, 98, 14);
+		lblSeniority.setForeground(Color.WHITE);
+		lblSeniority.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblSeniority.setBounds(208, 190, 112, 14);
 		frame.getContentPane().add(lblSeniority);
 		
 		lblPlaceOfWork = new JLabel("Place of Work");
+		lblPlaceOfWork.setForeground(Color.WHITE);
+		lblPlaceOfWork.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblPlaceOfWork.setBounds(86, 249, 98, 14);
 		frame.getContentPane().add(lblPlaceOfWork);
 		
@@ -155,12 +168,15 @@ public class CreateEmployee {
 		
 		//Header
 		lblCreateAccount = new JLabel("Create Employee");
-		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblCreateAccount.setForeground(Color.WHITE);
+		lblCreateAccount.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblCreateAccount.setBounds(128, 25, 166, 26);
 		frame.getContentPane().add(lblCreateAccount);
 		
 		lblConfirmEmail = new JLabel("Confirm Email");
-		lblConfirmEmail.setBounds(208, 133, 86, 14);
+		lblConfirmEmail.setForeground(Color.WHITE);
+		lblConfirmEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblConfirmEmail.setBounds(208, 133, 112, 14);
 		frame.getContentPane().add(lblConfirmEmail);
 		
 		JLabel lblEmailsDoNot = new JLabel("Emails do not match");
@@ -170,6 +186,10 @@ public class CreateEmployee {
 
 		
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnConfirm.setForeground(Color.WHITE);
+		btnConfirm.setBackground(Color.GRAY);
+		btnConfirm.setBorder(new LineBorder(Color.WHITE));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Gets information from the text feilds
@@ -219,6 +239,10 @@ public class CreateEmployee {
 		
 		
 		JButton btnGoBack = new JButton("Go Back");
+		btnGoBack.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnGoBack.setForeground(Color.WHITE);
+		btnGoBack.setBackground(Color.GRAY);
+		btnGoBack.setBorder(new LineBorder(Color.WHITE));
 		btnGoBack.addActionListener(new ActionListener() {
 			//opens the shift scheduler window when this button is pushed
 			public void actionPerformed(ActionEvent e) {
@@ -228,6 +252,8 @@ public class CreateEmployee {
 		});
 		btnGoBack.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
+		
+		frame.setUndecorated(true);
 		
 		
 	}

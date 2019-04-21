@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -14,6 +15,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class RemoveShift {
 	//Holds the workplace of signed in employeer
@@ -66,6 +68,7 @@ public class RemoveShift {
 	private void initialize() {
 		
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.GRAY);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 410);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -77,43 +80,79 @@ public class RemoveShift {
 		txtEmail.setColumns(10);
 		
 		JCheckBox chckbxSunday = new JCheckBox("Sunday");
-		chckbxSunday.setBounds(87, 120, 97, 23);
+		chckbxSunday.setBackground(Color.GRAY);
+		chckbxSunday.setForeground(Color.WHITE);
+		chckbxSunday.setFont(new Font("Tahoma", Font.BOLD, 13));
+		chckbxSunday.setBorder(new LineBorder(Color.WHITE));
+		chckbxSunday.setBounds(35, 120, 115, 23);
 		frame.getContentPane().add(chckbxSunday);
 		
 		JCheckBox chckbxMonday = new JCheckBox("Monday");
-		chckbxMonday.setBounds(184, 120, 97, 23);
+		chckbxMonday.setBackground(Color.GRAY);
+		chckbxMonday.setFont(new Font("Tahoma", Font.BOLD, 13));
+		chckbxMonday.setForeground(Color.WHITE);
+		chckbxMonday.setBorder(new LineBorder(Color.WHITE));
+		chckbxMonday.setBounds(152, 120, 112, 23);
 		frame.getContentPane().add(chckbxMonday);
 		
 		JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
-		chckbxTuesday.setBounds(286, 120, 97, 23);
+		chckbxTuesday.setBackground(Color.GRAY);
+		chckbxTuesday.setForeground(Color.WHITE);
+		chckbxTuesday.setFont(new Font("Tahoma", Font.BOLD, 13));
+		chckbxTuesday.setBorder(new LineBorder(Color.WHITE));
+		chckbxTuesday.setBounds(266, 120, 97, 23);
 		frame.getContentPane().add(chckbxTuesday);
 		
 		JCheckBox chckbxWednesday = new JCheckBox("Wednesday");
-		chckbxWednesday.setBounds(87, 171, 97, 23);
+		chckbxWednesday.setBackground(Color.GRAY);
+		chckbxWednesday.setForeground(Color.WHITE);
+		chckbxWednesday.setFont(new Font("Tahoma", Font.BOLD, 13));
+		chckbxWednesday.setBorder(new LineBorder(Color.WHITE));
+		chckbxWednesday.setBounds(35, 171, 115, 23);
 		frame.getContentPane().add(chckbxWednesday);
 		
 		JCheckBox chckbxThursday = new JCheckBox("Thursday");
-		chckbxThursday.setBounds(184, 171, 97, 23);
+		chckbxThursday.setBackground(Color.GRAY);
+		chckbxThursday.setForeground(Color.WHITE);
+		chckbxThursday.setFont(new Font("Tahoma", Font.BOLD, 13));
+		chckbxThursday.setBorder(new LineBorder(Color.WHITE));
+		chckbxThursday.setBounds(152, 171, 112, 23);
 		frame.getContentPane().add(chckbxThursday);
 		
 		JCheckBox chckbxFriday = new JCheckBox("Friday");
-		chckbxFriday.setBounds(286, 171, 97, 23);
+		chckbxFriday.setBackground(Color.GRAY);
+		chckbxFriday.setForeground(Color.WHITE);
+		chckbxFriday.setFont(new Font("Tahoma", Font.BOLD, 13));
+		chckbxFriday.setBorder(new LineBorder(Color.WHITE));
+		chckbxFriday.setBounds(266, 171, 97, 23);
 		frame.getContentPane().add(chckbxFriday);
 		
 		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
-		chckbxSaturday.setBounds(184, 211, 97, 23);
+		chckbxSaturday.setBackground(Color.GRAY);
+		chckbxSaturday.setForeground(Color.WHITE);
+		chckbxSaturday.setFont(new Font("Tahoma", Font.BOLD, 13));
+		chckbxSaturday.setBorder(new LineBorder(Color.WHITE));
+		chckbxSaturday.setBounds(152, 215, 112, 23);
 		frame.getContentPane().add(chckbxSaturday);
 		
 		lblEmail = new JLabel("Email");
-		lblEmail.setBounds(101, 75, 41, 14);
+		lblEmail.setForeground(Color.WHITE);
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblEmail.setBounds(98, 73, 44, 16);
 		frame.getContentPane().add(lblEmail);
 		
 		lblRemoveShift = new JLabel("Remove Shift");
-		lblRemoveShift.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblRemoveShift.setForeground(Color.WHITE);
+		lblRemoveShift.setBackground(Color.BLACK);
+		lblRemoveShift.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblRemoveShift.setBounds(146, 23, 174, 26);
 		frame.getContentPane().add(lblRemoveShift);
 		
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnConfirm.setForeground(Color.WHITE);
+		btnConfirm.setBackground(Color.GRAY);
+		btnConfirm.setBorder(new LineBorder(Color.WHITE));
 		btnConfirm.addActionListener(new ActionListener() {
 			//Checks if box was ticked and if so removes that employees shift for the corresponding day.
 			public void actionPerformed(ActionEvent arg0) {
@@ -184,6 +223,10 @@ public class RemoveShift {
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnGoBack = new JButton("Go Back");
+		btnGoBack.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnGoBack.setForeground(Color.WHITE);
+		btnGoBack.setBackground(Color.GRAY);
+		btnGoBack.setBorder(new LineBorder(Color.WHITE));
 		btnGoBack.addActionListener(new ActionListener() {
 			//Opens main menu when button is pressed
 			public void actionPerformed(ActionEvent e) {
@@ -194,7 +237,7 @@ public class RemoveShift {
 		btnGoBack.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
 		
+		frame.setUndecorated(true);
 		
-	
 	}
 }
