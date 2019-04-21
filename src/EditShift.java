@@ -336,8 +336,8 @@ public class EditShift {
 						pTue.setInt(1, id);
 						pTue.setString(2, name);
 						pTue.setString(3, "Tuesday");
-						pTue.setInt(4, y.getTime(WedStartComboBox.getSelectedItem().toString()));
-						pTue.setInt(5, y.getTime(WedStartComboBox.getSelectedItem().toString()));
+						pTue.setInt(4, y.getTime(TuesStartcomboBox.getSelectedItem().toString()));
+						pTue.setInt(5, y.getTime(TuesEndcomboBox.getSelectedItem().toString()));
 						pTue.execute();
 					}
 					//Inserts shift data for Wednesday if selected
@@ -370,7 +370,7 @@ public class EditShift {
 						pFri.setString(2, name);
 						pFri.setString(3, "Friday");
 						pFri.setInt(4, y.getTime(FriStartComboBox.getSelectedItem().toString()));
-						pFri.setInt(5, y.getTime(FriStartComboBox.getSelectedItem().toString()));
+						pFri.setInt(5, y.getTime(FriEndComboBox.getSelectedItem().toString()));
 						pFri.execute();
 					}
 					//Inserts shift data for Saturday if selected

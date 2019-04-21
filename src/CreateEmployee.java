@@ -199,9 +199,7 @@ public class CreateEmployee {
 				String seniority = txtseniority.getText();
 				
 
-				/**
-				 * TODO: Create a check to make sure seniority is a valid int.
-				 */
+			
 				if(email.equals(conEmail)) {//Makes sure the emails were confirmed
 					lblEmailsDoNot.setForeground(Color.WHITE);
 					MysqlCon x = new MysqlCon();

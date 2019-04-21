@@ -138,10 +138,13 @@ public class RemoveEmployee {
 				//Gets data from text fields
 				String empName = txtfirstname.getText() + " " + txtlastname.getText();
 				String email = txtemail.getText();
-				
-				/**
-				 * TODO: Create a check to make throw an error if the program failed to remove someone.
-				 */
+				MysqlCon x = new MysqlCon();
+				int id = -1;
+				try {
+					id = x.getACurrentEmployeeID(email);
+				} catch (SQLException e2) {
+					e2.printStackTrace();
+				}
 				Connection con;
 				try {
 					//Deletes employee from database
@@ -149,6 +152,10 @@ public class RemoveEmployee {
 					String query = "DELETE FROM Employee_Data WHERE Employee_Name= " + "'" + empName + "'" + " AND email= " +  "'" + email + "'";
 					PreparedStatement ps = con.prepareStatement(query);
 					ps.executeUpdate();
+					
+					String query2 = "DELETE FROM Employee_Shifts WHERE Employee_ID =" +id;
+					PreparedStatement ps2 = con.prepareStatement(query2);
+					ps2.executeUpdate();
 						
 					}
 					catch (SQLException e1) {
