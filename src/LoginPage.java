@@ -88,7 +88,7 @@ public class LoginPage {
 		txtEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtEmail.setForeground(Color.WHITE);
 		txtEmail.setText("Email: ");
-		txtEmail.setBounds(79, 94, 43, 20);
+		txtEmail.setBounds(79, 94, 57, 20);
 		frame.getContentPane().add(txtEmail);
 		
 		passwordField = new JPasswordField();
