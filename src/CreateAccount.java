@@ -48,6 +48,7 @@ public class CreateAccount {
 	private JLabel lblConfirmEmail;
 	private JTextField WorkplacetextField;
 	private JLabel lblWorkplace;
+	private JLabel lblInvalidInput;
 
 	/**
 	 * Launch the application.
@@ -197,6 +198,10 @@ public class CreateAccount {
 				String pswd = String.copyValueOf(tempPswd);
 				String conPswd = String.copyValueOf(tempConPswd);
 				
+				if(fName.isEmpty() || lName.isEmpty() || email.isEmpty() || workplaceTemp.isEmpty() || pswd.isEmpty()) {
+					lblInvalidInput.setForeground(Color.RED);
+					return;
+				}
 				//Encrypts the password and sends it to the database
 				String encodedPass = Base64.getEncoder().encodeToString(pswd.getBytes());
 				
@@ -251,6 +256,11 @@ public class CreateAccount {
 		});
 		btnGoBack.setBounds(95, 306, 100, 26);
 		frame.getContentPane().add(btnGoBack);
+		
+		lblInvalidInput = new JLabel("Invalid Input");
+		lblInvalidInput.setForeground(Color.GRAY);
+		lblInvalidInput.setBounds(36, 255, 86, 14);
+		frame.getContentPane().add(lblInvalidInput);
 		
 		
 		frame.setUndecorated(true);
