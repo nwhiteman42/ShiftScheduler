@@ -153,7 +153,7 @@ class MysqlCon {
 			aval.add(x);
 		}
 		TimeEntry[] time = new TimeEntry[aval.size()];
-		for(int x = 0; x< aval.size(); x++) {
+		for(int x = 0; x < aval.size(); x++) {
 			time[x] = aval.get(x);
 		}
 		con.close();

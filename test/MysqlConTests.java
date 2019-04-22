@@ -52,5 +52,34 @@ public class MysqlConTests {
 		}
 		assertEquals(true, allIn, "Did not get all employees");
 	}
-
+	
+	@Test
+	public void getEmails() throws SQLException {
+		MysqlCon x = new MysqlCon();
+		String[] e = {"1","4","22","33"};
+		String[] de = x.getEmployeesEmail("TestCase");
+		boolean allIn = true;
+		for(int z = 0; z < 4; z++) {
+			if(!de[z].equals(e[z])) {
+				allIn = false;
+			}
+		}
+		assertEquals(true, allIn, "Did not retrive all employee emails");
+	}
+	
+	@Test
+	public void getAval() throws SQLException {
+		MysqlCon x = new MysqlCon();
+		TimeEntry[] t = x.getEmployeeAval(10, "2 2");
+		boolean allIn = true;
+		TimeEntry t1 = t[0];
+		if(!t1.getDay().equals("Wednesday")) {
+			allIn = false;
+		}
+		if(t1.getStartTime() != 1000) {
+			allIn = false;
+		}
+		if(t1.getEndTime() != 1800)
+		assertEquals(true, allIn, "Did not properly get employee time avalability");
+	}
 }
