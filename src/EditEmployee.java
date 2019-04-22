@@ -126,7 +126,7 @@ public class EditEmployee {
 		
 		lblInvalidInput = new JLabel("Invalid Input");
 		lblInvalidInput.setForeground(Color.GRAY);
-		lblInvalidInput.setBounds(41, 252, 82, 14);
+		lblInvalidInput.setBounds(41, 252, 100, 14);
 		frame.getContentPane().add(lblInvalidInput);
 		
 		JButton btnConfirm = new JButton("Confirm");
