@@ -215,6 +215,8 @@ class MysqlCon {
 	
 	
 	public static void main(String args[]) throws SQLException {
+		MysqlCon x = new MysqlCon();
+		x.removeEmployeeShift(500);
 		
 	}
 }

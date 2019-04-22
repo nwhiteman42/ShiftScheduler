@@ -158,7 +158,7 @@ public class CreateAccount {
 		lblConfirmEmail = new JLabel("Confirm Email");
 		lblConfirmEmail.setForeground(Color.WHITE);
 		lblConfirmEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblConfirmEmail.setBounds(223, 130, 86, 14);
+		lblConfirmEmail.setBounds(223, 130, 133, 14);
 		frame.getContentPane().add(lblConfirmEmail);
 		
 		JLabel lblPasswordsDoNot = new JLabel("Passwords do not match!");

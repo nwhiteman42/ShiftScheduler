@@ -104,7 +104,7 @@ public class CreateEmployee {
 		txtEmail.setColumns(10);
 		
 		txtjobTitle = new JTextField();
-		txtjobTitle.setBounds(174, 206, 124, 20);
+		txtjobTitle.setBounds(150, 203, 124, 20);
 		frame.getContentPane().add(txtjobTitle);
 		txtjobTitle.setColumns(10);
 		
@@ -133,7 +133,7 @@ public class CreateEmployee {
 		lblJobTitle = new JLabel("Job Title");
 		lblJobTitle.setForeground(Color.WHITE);
 		lblJobTitle.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblJobTitle.setBounds(174, 192, 112, 14);
+		lblJobTitle.setBounds(150, 189, 112, 14);
 		frame.getContentPane().add(lblJobTitle);
 		
 		txtConfirmEmail = new JTextField();

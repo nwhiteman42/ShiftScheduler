@@ -88,7 +88,7 @@ public class EditEmployee {
 		txtrOld = new JLabel("Old Employee Data:");
 		txtrOld.setForeground(Color.WHITE);
 		txtrOld.setFont(new Font("Tahoma", Font.BOLD, 15));
-		txtrOld.setBounds(41, 39, 146, 15);
+		txtrOld.setBounds(40, 39, 175, 15);
 		frame.getContentPane().add(txtrOld);
 		
 		txtEmail = new JLabel("Email");
@@ -230,7 +230,7 @@ public class EditEmployee {
 		JLabel lblFirstName = new JLabel("First Name");
 		lblFirstName.setForeground(Color.WHITE);
 		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblFirstName.setBounds(237, 66, 72, 15);
+		lblFirstName.setBounds(237, 66, 124, 15);
 		frame.getContentPane().add(lblFirstName);
 		
 		lblLastName = new JLabel("Last Name");
