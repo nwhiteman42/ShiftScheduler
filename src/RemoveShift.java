@@ -151,7 +151,7 @@ public class RemoveShift {
 		
 		JLabel lblInvalidInput = new JLabel("Invalid Input");
 		lblInvalidInput.setForeground(Color.GRAY);
-		lblInvalidInput.setBounds(10, 300, 89, 14);
+		lblInvalidInput.setBounds(10, 300, 120, 14);
 		frame.getContentPane().add(lblInvalidInput);
 		
 		JButton btnConfirm = new JButton("Confirm");

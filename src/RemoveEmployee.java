@@ -131,7 +131,7 @@ public class RemoveEmployee {
 		
 		lblInvalidInput = new JLabel("Invalid Input");
 		lblInvalidInput.setForeground(Color.GRAY);
-		lblInvalidInput.setBounds(27, 267, 81, 14);
+		lblInvalidInput.setBounds(150, 75, 114, 14);
 		frame.getContentPane().add(lblInvalidInput);
 		
 		JButton btnRemove = new JButton("Remove");

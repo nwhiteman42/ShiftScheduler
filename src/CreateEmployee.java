@@ -161,7 +161,7 @@ public class CreateEmployee {
 
 			lblInvalidInput = new JLabel("Invalid Input");
 		lblInvalidInput.setForeground(Color.GRAY);
-		lblInvalidInput.setBounds(95, 209, 69, 14);
+		lblInvalidInput.setBounds(160, 235, 124, 14);
 		frame.getContentPane().add(lblInvalidInput);
 		
 		JButton btnConfirm = new JButton("Confirm");

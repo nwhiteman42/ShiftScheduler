@@ -260,7 +260,7 @@ public class CreateAccount {
 		
 		lblInvalidInput = new JLabel("Invalid Input");
 		lblInvalidInput.setForeground(Color.GRAY);
-		lblInvalidInput.setBounds(36, 255, 86, 14);
+		lblInvalidInput.setBounds(101, 284, 118, 14);
 		frame.getContentPane().add(lblInvalidInput);
 		
 		
