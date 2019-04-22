@@ -70,8 +70,9 @@ public class ShiftScheduler {
 	 * @param array, ArrayList of employees used to make the scheduler
 	 * @param String output, the file to which the schedule will be outputted
 	 */
-	public static void makeSchedule(ArrayList<Employee> array, String output) throws Exception {
+	public static boolean makeSchedule(ArrayList<Employee> array, String output) throws Exception {
 		File file = new File(output);
+		boolean ran = false;
 		try {
 		
 			FileWriter outputFile = new FileWriter(file);
@@ -161,7 +162,7 @@ public class ShiftScheduler {
 						} else {
 							data[timeStart][index2] = data[timeStart][index2] + " // " + name;
 							timeStart++;
-						}
+						} 
 					}
 				}
 			}
@@ -169,13 +170,15 @@ public class ShiftScheduler {
 			for ( int i = 0; i < 25; i++ ) {
 				csv.writeNext(data[i]);
 			}
+			ran = true;
 			
 			csv.close();
-			
 			showFile(output);
-			
+			return ran;
 		} catch ( IOException e ) {
 			e.printStackTrace();
+			ran = false;
+			return ran;
 		}
 	}
 	

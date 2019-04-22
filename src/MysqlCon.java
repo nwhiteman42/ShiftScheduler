@@ -33,7 +33,7 @@ class MysqlCon {
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
 		int id = 0;
-		while(rs.next()) {
+		while(rs.next()) { 
 			id = rs.getInt(1)+1;
 		}
 		boolean exists = true;
@@ -206,7 +206,7 @@ class MysqlCon {
 		
 		String query = "delete from Employee_Shifts where Employee_ID = " + id;
 		PreparedStatement ps = con.prepareStatement(query);
-		ps.execute();
+		ps.executeUpdate();
 		con.close();
 	}
 	
@@ -219,16 +219,16 @@ class MysqlCon {
 	 * @param startTime, startTime of shift
 	 * @param endTime, endTime of shift
 	 */
-	public void insertIntoEmployeeShift(int id, String name, String day, String startTime, String endTime) throws SQLException {
+	public void insertIntoEmployeeShift(int id, String name, String day, int startTime, int endTime) throws SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-		
 		String query = "insert into Employee_Shifts (Employee_ID, Employee_Name, Day, Start_Time, End_Time)" + " values(?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setInt(1,id);
 		ps.setString(2, name);
 		ps.setString(3, day);
-		ps.setString(4, startTime);
-		ps.setString(5, endTime);
+		ps.setInt(4, startTime);
+		ps.setInt(5, endTime);
+		ps.executeUpdate(query);
 		con.close();
 	}
 	

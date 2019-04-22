@@ -49,7 +49,7 @@ class TimeEntryTest {
 	@Test
 	void testGetStartTimeFail() {
 		try {
-			test = new TimeEntry("Friday", 2400, 300);
+			test = new TimeEntry("Friday", 2401, 300);
 			fail("Expected an IndexOutOfBoundsException to be thrown");
 		} catch (IndexOutOfBoundsException e) {	
 		}
@@ -76,7 +76,7 @@ class TimeEntryTest {
 	@Test
 	void testGetEndTimeFail() {
 		try {
-			test = new TimeEntry("Friday", 2300, 2400);
+			test = new TimeEntry("Friday", 2300, 2401);
 			fail("Expected an IndexOutOfBoundsException to be thrown");
 		} catch (IndexOutOfBoundsException e) {
 			

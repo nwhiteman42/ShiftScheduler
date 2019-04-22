@@ -28,7 +28,7 @@ import javax.swing.JList;
 public class EditShift {
 	
 	//Holds the workplace of signed in employeer
-		public static String workplace = null;
+		public static String workplace = null; 
 		
 		//Getter for workplace
 		public String getWorkplace() {
@@ -93,7 +93,7 @@ public class EditShift {
 			} else if (time.equals("23:00")) {
 				timeData = 2300;
 			} else if (time.equals("24:00")) {
-				timeData = 2359;
+				timeData = 2400;
 			}
 			return timeData;
 		}

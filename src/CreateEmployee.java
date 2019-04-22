@@ -30,7 +30,7 @@ public class CreateEmployee {
 	public void setWorkplace(String newWorkplace) {
 		workplace = newWorkplace;
 	}
-	
+	 
 	private JFrame frame;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;

@@ -17,11 +17,11 @@ public class TimeEntry {
 	public TimeEntry(String day, int startTime, int endTime) {
 		this.day = day;
 		this.startTime = startTime;
-		if( startTime < 0 || startTime > 2359) {
+		if( startTime < 0 || startTime > 2400) {
 			throw new IndexOutOfBoundsException("Invalid Time Inputted ");
-		}
+		} 
 		this.endTime = endTime;
-		if( endTime < 0 || endTime > 2359) {
+		if( endTime < 0 || endTime > 2400) {
 			throw new IndexOutOfBoundsException("Invalid Time Inputted ");
 		}
 	}
