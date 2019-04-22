@@ -35,8 +35,6 @@ public class CreateEmployee {
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
 	private JLabel lblUsername;
-	private JLabel lblSeniority;
-	private JLabel lblPlaceOfWork;
 	private JLabel lblJobTitle;
 	private JLabel lblConfirmEmail;
 	private JLabel lblCreateAccount;
@@ -44,8 +42,6 @@ public class CreateEmployee {
 	private JTextField txtLastName;
 	private JTextField txtEmail;
 	private JTextField txtjobTitle;
-	private JTextField txtseniority;
-	private JTextField txtplaceofwork;
 	private JTextField txtConfirmEmail;
 
 	/**
@@ -107,19 +103,9 @@ public class CreateEmployee {
 		txtEmail.setColumns(10);
 		
 		txtjobTitle = new JTextField();
-		txtjobTitle.setBounds(95, 207, 124, 20);
+		txtjobTitle.setBounds(174, 206, 124, 20);
 		frame.getContentPane().add(txtjobTitle);
 		txtjobTitle.setColumns(10);
-		
-		txtseniority = new JTextField();
-		txtseniority.setBounds(297, 359, 124, 20);
-		frame.getContentPane().add(txtseniority);
-		txtseniority.setColumns(10);
-		
-		txtplaceofwork = new JTextField();
-		txtplaceofwork.setBounds(223, 207, 124, 20);
-		frame.getContentPane().add(txtplaceofwork);
-		txtplaceofwork.setColumns(10);
 		
 		
 		/**
@@ -146,20 +132,8 @@ public class CreateEmployee {
 		lblJobTitle = new JLabel("Job Title");
 		lblJobTitle.setForeground(Color.WHITE);
 		lblJobTitle.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblJobTitle.setBounds(95, 190, 112, 14);
+		lblJobTitle.setBounds(174, 192, 112, 14);
 		frame.getContentPane().add(lblJobTitle);
-		
-		lblSeniority = new JLabel("Seniority");
-		lblSeniority.setForeground(Color.WHITE);
-		lblSeniority.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblSeniority.setBounds(297, 342, 112, 14);
-		frame.getContentPane().add(lblSeniority);
-		
-		lblPlaceOfWork = new JLabel("Place of Work");
-		lblPlaceOfWork.setForeground(Color.WHITE);
-		lblPlaceOfWork.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblPlaceOfWork.setBounds(223, 190, 112, 14);
-		frame.getContentPane().add(lblPlaceOfWork);
 		
 		txtConfirmEmail = new JTextField();
 		txtConfirmEmail.setBounds(223, 146, 124, 20);
@@ -197,8 +171,6 @@ public class CreateEmployee {
 				String email = txtEmail.getText();
 				String conEmail = txtConfirmEmail.getText();
 				String jobtitle = txtjobTitle.getText();
-				String workplaceTemp = txtplaceofwork.getText();
-				String seniority = txtseniority.getText();
 				
 
 			
@@ -214,8 +186,8 @@ public class CreateEmployee {
 						ps.setInt(1,x.getAEmployeID()); //Employee_ID
 						ps.setString(2, empName); //Employee_Name
 						ps.setString(3, jobtitle); //Employee_Title
-						ps.setString(4, seniority); //seniority
-						ps.setString(5, workplaceTemp); //placeofwork
+						ps.setInt(4, 1); //seniority
+						ps.setString(5, workplace); //placeofwork
 						ps.setString(6, email); //email
 						ps.execute();//Executes query
 						con.close();
