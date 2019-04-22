@@ -43,6 +43,7 @@ public class CreateEmployee {
 	private JTextField txtEmail;
 	private JTextField txtjobTitle;
 	private JTextField txtConfirmEmail;
+	private JLabel lblInvalidInput;
 
 	/**
 	 * Launch the application.
@@ -158,6 +159,10 @@ public class CreateEmployee {
 		lblEmailsDoNot.setBounds(176, 251, 171, 15);
 		frame.getContentPane().add(lblEmailsDoNot);
 
+			lblInvalidInput = new JLabel("Invalid Input");
+		lblInvalidInput.setForeground(Color.GRAY);
+		lblInvalidInput.setBounds(95, 209, 69, 14);
+		frame.getContentPane().add(lblInvalidInput);
 		
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -172,7 +177,11 @@ public class CreateEmployee {
 				String conEmail = txtConfirmEmail.getText();
 				String jobtitle = txtjobTitle.getText();
 				
-
+				if(txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty() || email.isEmpty() ||
+						jobtitle.isEmpty()) {
+					lblInvalidInput.setForeground(Color.RED);
+					return;
+				}
 			
 				if(email.equals(conEmail)) {//Makes sure the emails were confirmed
 					lblEmailsDoNot.setForeground(Color.WHITE);
@@ -223,6 +232,7 @@ public class CreateEmployee {
 		btnGoBack.setBounds(95, 285, 100, 26);
 		frame.getContentPane().add(btnGoBack);
 		
+	
 		frame.setUndecorated(true);
 
 	}

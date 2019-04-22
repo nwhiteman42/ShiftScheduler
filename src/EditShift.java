@@ -332,7 +332,7 @@ public class EditShift {
 						lblInvalidInput.setForeground(Color.RED);
 						return;
 					}
-					lblInvalidInput.setForeground(Color.LIGHT_GRAY);
+					lblInvalidInput.setForeground(Color.GRAY);
 					//Gets Employee id and name from corresponding text fields
 					int id = x.getACurrentEmployeeID(txtEmail.getText());
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");

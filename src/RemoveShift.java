@@ -149,6 +149,11 @@ public class RemoveShift {
 		lblRemoveShift.setBounds(146, 23, 174, 26);
 		frame.getContentPane().add(lblRemoveShift);
 		
+		JLabel lblInvalidInput = new JLabel("Invalid Input");
+		lblInvalidInput.setForeground(Color.GRAY);
+		lblInvalidInput.setBounds(10, 300, 89, 14);
+		frame.getContentPane().add(lblInvalidInput);
+		
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnConfirm.setForeground(Color.WHITE);
@@ -159,6 +164,10 @@ public class RemoveShift {
 			public void actionPerformed(ActionEvent arg0) {
 				MysqlCon x = new MysqlCon();
 				try {
+					if(txtEmail.getText().isEmpty()) {
+						lblInvalidInput.setForeground(Color.RED);
+						return;
+					}
 				Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 				int id = x.getACurrentEmployeeID(txtEmail.getText()); //Gets employee id
 				//If box is selected removes employee's shift for Sunday
@@ -237,6 +246,8 @@ public class RemoveShift {
 		});
 		btnGoBack.setBounds(87, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
+		
+		
 		
 		frame.setUndecorated(true);
 		

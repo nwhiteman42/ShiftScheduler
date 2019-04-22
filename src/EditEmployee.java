@@ -43,6 +43,7 @@ public class EditEmployee {
 	private JTextField textField_5;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JLabel lblInvalidInput;
 
 	/**
 	 * Launch the application.
@@ -128,6 +129,11 @@ public class EditEmployee {
 		textField_5.setBounds(237, 136, 124, 20);
 		frame.getContentPane().add(textField_5);
 		
+		lblInvalidInput = new JLabel("Invalid Input");
+		lblInvalidInput.setForeground(Color.GRAY);
+		lblInvalidInput.setBounds(41, 252, 82, 14);
+		frame.getContentPane().add(lblInvalidInput);
+		
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.setBackground(Color.GRAY);
 		btnConfirm.setForeground(Color.WHITE);
@@ -135,8 +141,14 @@ public class EditEmployee {
 		btnConfirm.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnConfirm.addActionListener(new ActionListener() {
 		
-			public void actionPerformed(ActionEvent arg0){
+			
+		public void actionPerformed(ActionEvent arg0){
 				MysqlCon x = new MysqlCon();
+				if(textField_1.getText().isEmpty() || textField_5.getText().isEmpty() || textField.getText().isEmpty()||
+					textField_4.getText().isEmpty() || textField_2.getText().isEmpty()) {
+					lblInvalidInput.setForeground(Color.RED);
+					return;
+				}
 				try {
 					//Updates the employee information
 					int id = x.getACurrentEmployeeID(textField.getText());
@@ -213,6 +225,8 @@ public class EditEmployee {
 		textField_2.setColumns(10);
 		textField_2.setBounds(237, 249, 124, 20);
 		frame.getContentPane().add(textField_2);
+		
+		
 		
 		frame.setUndecorated(true);
 	}

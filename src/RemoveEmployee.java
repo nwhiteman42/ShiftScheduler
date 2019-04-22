@@ -39,6 +39,7 @@ public class RemoveEmployee {
 	private JTextField txtfirstname;
 	private JTextField txtlastname;
 	private JTextField txtemail;
+	private JLabel lblInvalidInput;
 	
 
 	/**
@@ -128,6 +129,11 @@ public class RemoveEmployee {
 		lblFailedToRemove.setBounds(137, 266, 196, 14);
 		frame.getContentPane().add(lblFailedToRemove);
 		
+		lblInvalidInput = new JLabel("Invalid Input");
+		lblInvalidInput.setForeground(Color.GRAY);
+		lblInvalidInput.setBounds(27, 267, 81, 14);
+		frame.getContentPane().add(lblInvalidInput);
+		
 		JButton btnRemove = new JButton("Remove");
 		btnRemove.setBackground(Color.GRAY);
 		btnRemove.setForeground(Color.WHITE);
@@ -135,6 +141,10 @@ public class RemoveEmployee {
 		btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(txtfirstname.getText().isEmpty() || txtlastname.getText().isEmpty() || txtemail.getText().isEmpty()) {
+					lblInvalidInput.setForeground(Color.RED);
+					return;
+				}
 				//Gets data from text fields
 				String empName = txtfirstname.getText() + " " + txtlastname.getText();
 				String email = txtemail.getText();
@@ -184,6 +194,8 @@ public class RemoveEmployee {
 		});
 		btnCancel.setBounds(119, 286, 89, 23);
 		frame.getContentPane().add(btnCancel);
+		
+	
 		
 		frame.setUndecorated(true);
 	}

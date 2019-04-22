@@ -16,6 +16,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
+import javax.swing.JLabel;
 
 public class ShiftSchedulerWindow {
 	
@@ -135,35 +136,7 @@ public class ShiftSchedulerWindow {
 				RemoveEmployee.main(workplace);
 				frame.setVisible(false);
 			}
-		});
-		
-		JButton btnEmailSchedule = new JButton("Email Schedule");
-		btnEmailSchedule.setBackground(Color.GRAY);
-		btnEmailSchedule.setForeground(Color.WHITE);
-		btnEmailSchedule.setBorder(new LineBorder(Color.WHITE));
-		btnEmailSchedule.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnEmailSchedule.addActionListener(new ActionListener() {
-			//Send email to all employees of logged in user's workplace
-			public void actionPerformed(ActionEvent arg0) {
-				MysqlCon x = new MysqlCon();
-				String[] emails = null;
-				try {
-					emails = x.getEmployeesEmail(workplace); //Gets employees and puts them in a string[]
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-				String subject = "New Schedule";
-				String body = "Here is your schdeule dummies.  Come to work!";
-				String attachment = "testShift1.csv";
-				try {
-					emp.massEmail(emails, attachment, subject, body);//Calls mass email method
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		frame.getContentPane().add(btnEmailSchedule, "cell 1 3,grow");
-		frame.getContentPane().add(btnRemoveEmployee, "cell 3 3,grow");
+		});	
 		
 		JButton btnRemoveShift = new JButton("Edit Shift");
 		btnRemoveShift.setBackground(Color.GRAY);
@@ -177,7 +150,46 @@ public class ShiftSchedulerWindow {
 				frame.setVisible(false);
 			}
 		});
+		
+		
+     	JLabel lblEmailsSent = new JLabel("  Emails Sent");
+		lblEmailsSent.setForeground(Color.GRAY);
+		frame.getContentPane().add(lblEmailsSent, "cell 1 4");
 		frame.getContentPane().add(btnRemoveShift, "cell 3 4,grow");
+		
+		JButton btnEmailSchedule = new JButton("Email Schedule");
+		btnEmailSchedule.setBackground(Color.GRAY);
+		btnEmailSchedule.setForeground(Color.WHITE);
+		btnEmailSchedule.setBorder(new LineBorder(Color.WHITE));
+		btnEmailSchedule.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnEmailSchedule.addActionListener(new ActionListener() {
+			//Send email to all employees of logged in user's workplace
+			public void actionPerformed(ActionEvent arg0) {
+				MysqlCon x = new MysqlCon();
+				String[] emails = null;
+				try {
+					emails = x.getEmployeesEmail(workplace); //Gets employees and puts them in a string[]
+					lblEmailsSent.setForeground(Color.GREEN);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				String subject = "New Schedule";
+				String body = "Here is your schdeule dummies.  Come to work!";
+				String attachment = "testShift1.csv";
+				try {
+					emp.massEmail(emails, attachment, subject, body);//Calls mass email method
+					
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		frame.getContentPane().add(btnEmailSchedule, "cell 1 3,grow");
+		frame.getContentPane().add(btnRemoveEmployee, "cell 3 3,grow");
+		
+	
+		
+	
 		
 		JButton btnNewButton = new JButton("Remove Shift");
 		btnNewButton.setBackground(Color.GRAY);
