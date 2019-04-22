@@ -93,7 +93,7 @@ public class EditShift {
 			} else if (time.equals("23:00")) {
 				timeData = 2300;
 			} else if (time.equals("24:00")) {
-				timeData = 2400;
+				timeData = 2400; 
 			}
 			return timeData;
 		}
@@ -349,6 +349,10 @@ public class EditShift {
 					ps.execute();
 					//Inserts shift data for Sunday if selected
 					if(chckbxSunday.isSelected()) {
+						if(y.getTime(SunComboBox.getSelectedItem().toString()) > y.getTime(SunEndcomboBox.getSelectedItem().toString())) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qSun = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pSun = con.prepareStatement(qSun);
 						pSun.setInt(1, id);
@@ -360,6 +364,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Monday if selected
 					if(chckbxMonday.isSelected()) {
+						if(y.getTime(MonStartComboBox.getSelectedItem().toString()) > y.getTime(MonEndcomboBox.getSelectedItem().toString())) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qMon = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pMon = con.prepareStatement(qMon);
 						pMon.setInt(1, id);
@@ -372,6 +380,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Tuesday if selected
 					if(chckbxTuesday.isSelected()) {
+						if(y.getTime(TuesStartcomboBox.getSelectedItem().toString()) > y.getTime(TuesEndcomboBox.getSelectedItem().toString())) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qTue = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pTue = con.prepareStatement(qTue);
 						pTue.setInt(1, id);
@@ -383,6 +395,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Wednesday if selected
 					if(chckbxWednesday.isSelected()) {
+						if(y.getTime(WedStartComboBox.getSelectedItem().toString()) > y.getTime(WedEndComboBox.getSelectedItem().toString())) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qWed = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pWed = con.prepareStatement(qWed);
 						pWed.setInt(1, id);
@@ -394,6 +410,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Thursday if selected
 					if(chckbxThursday.isSelected()) {
+						if(y.getTime(ThurStartComboBox.getSelectedItem().toString()) > y.getTime(ThurEndComboBox.getSelectedItem().toString())) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qThu = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pThu = con.prepareStatement(qThu);
 						pThu.setInt(1, id);
@@ -405,6 +425,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Friday if selected
 					if(chckbxFriday.isSelected()) {
+						if(y.getTime(FriStartComboBox.getSelectedItem().toString()) > y.getTime(FriEndComboBox.getSelectedItem().toString())) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qFri = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pFri = con.prepareStatement(qFri);
 						pFri.setInt(1, id);
@@ -416,6 +440,10 @@ public class EditShift {
 					}
 					//Inserts shift data for Saturday if selected
 					if(chckbxSaturday.isSelected()) {
+						if(y.getTime(SatStartComboBox.getSelectedItem().toString()) > y.getTime(SatEndComboBox.getSelectedItem().toString())) {
+							lblInvalidInput.setForeground(Color.RED);
+							return;
+						}
 						String qSat = "insert into Employee_Shifts (Employee_id, Employee_name, Day, Start_Time, End_Time) values (?,?,?,?,?)";
 						PreparedStatement pSat = con.prepareStatement(qSat);
 						pSat.setInt(1, id);
