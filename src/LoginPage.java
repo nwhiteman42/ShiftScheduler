@@ -144,7 +144,7 @@ public class LoginPage {
 						lblAuthenticated.setForeground(Color.GRAY);
 						lblError.setForeground(Color.RED);
 					} else if( x == 1) {//If authenticated log in user
-						lblError.setForeground(Color.WHITE);
+						lblError.setForeground(Color.GRAY);
 						lblAuthenticated.setForeground(Color.GREEN);
 						//Get users workplace
 						String queryWork = "SELECT Workplace FROM emp_cred where password =" +"'"+ encodedPass +"'" +" and email = " +"'" + em + "'";
