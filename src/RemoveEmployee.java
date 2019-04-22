@@ -76,59 +76,59 @@ public class RemoveEmployee {
 		frame.getContentPane().setBackground(Color.GRAY);
 		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 450, 405);
+		frame.setBounds(100, 100, 425, 405);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		lblRemoveEmployee.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblRemoveEmployee.setBounds(113, 11, 222, 31);
+		lblRemoveEmployee.setFont(new Font("Tahoma", Font.BOLD, 21));
+		lblRemoveEmployee.setBounds(117, 24, 211, 37);
 		lblRemoveEmployee.setForeground(Color.WHITE);
 		frame.getContentPane().add(lblRemoveEmployee);
 		
 		
 		
 		txtemail = new JTextField();
-		txtemail.setBounds(125, 268, 173, 20);
+		txtemail.setBounds(127, 233, 173, 22);
 		frame.getContentPane().add(txtemail);
 		txtemail.setColumns(10);
 		
 		txtfirstname = new JTextField();
-		txtfirstname.setBounds(125, 156, 173, 20);
+		txtfirstname.setBounds(127, 118, 173, 22);
 		frame.getContentPane().add(txtfirstname);
 		txtfirstname.setColumns(10);
 		
 		txtlastname = new JTextField();
-		txtlastname.setBounds(125, 212, 173, 20);
+		txtlastname.setBounds(127, 175, 173, 22);
 		frame.getContentPane().add(txtlastname);
 		txtlastname.setColumns(10);
 		
 		
 		
-		lblEmail = new JLabel("Email:");
+		lblEmail = new JLabel("Email");
 		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblEmail.setBounds(125, 243, 64, 14);
+		lblEmail.setBounds(127, 219, 64, 14);
 		frame.getContentPane().add(lblEmail);
 		
-		lblFirstName = new JLabel("First Name:");
+		lblFirstName = new JLabel("First Name");
 		lblFirstName.setForeground(Color.WHITE);
 		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblFirstName.setBounds(125, 125, 81, 20);
+		lblFirstName.setBounds(127, 101, 81, 20);
 		frame.getContentPane().add(lblFirstName);
 		
-		lblLastName = new JLabel("Last Name:");
+		lblLastName = new JLabel("Last Name");
 		lblLastName.setForeground(Color.WHITE);
 		lblLastName.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblLastName.setBounds(125, 187, 81, 14);
+		lblLastName.setBounds(127, 161, 81, 14);
 		frame.getContentPane().add(lblLastName);
 		
-		lblFailedToRemove = new JLabel("Failed to remove Emloyee");
+		lblFailedToRemove = new JLabel("Failed to remove Employee!");
 		lblFailedToRemove.setForeground(Color.GRAY);
-		lblFailedToRemove.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblFailedToRemove.setBounds(127, 344, 186, 14);
+		lblFailedToRemove.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblFailedToRemove.setBounds(137, 266, 196, 14);
 		frame.getContentPane().add(lblFailedToRemove);
 		
-		JButton btnRemove = new JButton("REMOVE");
+		JButton btnRemove = new JButton("Remove");
 		btnRemove.setBackground(Color.GRAY);
 		btnRemove.setForeground(Color.WHITE);
 		btnRemove.setBorder(new LineBorder(Color.WHITE));
@@ -167,10 +167,10 @@ public class RemoveEmployee {
 			}
 		});
 		
-		btnRemove.setBounds(117, 310, 89, 23);
+		btnRemove.setBounds(224, 286, 89, 23);
 		frame.getContentPane().add(btnRemove);
 		
-		JButton btnCancel = new JButton("CANCEL");
+		JButton btnCancel = new JButton("Go Back");
 		btnCancel.setBackground(Color.GRAY);
 		btnCancel.setForeground(Color.WHITE);
 		btnCancel.setBorder(new LineBorder(Color.WHITE));
@@ -182,7 +182,7 @@ public class RemoveEmployee {
 				frame.hide();
 			}
 		});
-		btnCancel.setBounds(222, 310, 89, 23);
+		btnCancel.setBounds(119, 286, 89, 23);
 		frame.getContentPane().add(btnCancel);
 		
 		frame.setUndecorated(true);

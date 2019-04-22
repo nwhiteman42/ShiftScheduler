@@ -77,9 +77,9 @@ public class LoginPage {
 		
 		txtLogin = new JLabel();
 		txtLogin.setForeground(Color.WHITE);
-		txtLogin.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtLogin.setFont(new Font("Tahoma", Font.BOLD, 20));
 		txtLogin.setText("User Login");
-		txtLogin.setBounds(169, 25, 112, 20);
+		txtLogin.setBounds(172, 25, 112, 33);
 		frame.getContentPane().add(txtLogin);
 		
 		txtEmail = new JLabel();

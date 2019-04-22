@@ -5,6 +5,8 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
@@ -67,13 +69,14 @@ public class RemoveShift {
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.GRAY);
+		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 450, 410);
+		frame.setBounds(100, 100, 425, 430);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(152, 72, 112, 20);
+		txtEmail.setBounds(155, 89, 120, 20);
 		frame.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
@@ -82,7 +85,7 @@ public class RemoveShift {
 		chckbxSunday.setForeground(Color.WHITE);
 		chckbxSunday.setFont(new Font("Tahoma", Font.BOLD, 13));
 		chckbxSunday.setBorder(new LineBorder(Color.WHITE));
-		chckbxSunday.setBounds(35, 120, 115, 23);
+		chckbxSunday.setBounds(165, 115, 115, 23);
 		frame.getContentPane().add(chckbxSunday);
 		
 		JCheckBox chckbxMonday = new JCheckBox("Monday");
@@ -90,7 +93,7 @@ public class RemoveShift {
 		chckbxMonday.setFont(new Font("Tahoma", Font.BOLD, 13));
 		chckbxMonday.setForeground(Color.WHITE);
 		chckbxMonday.setBorder(new LineBorder(Color.WHITE));
-		chckbxMonday.setBounds(152, 120, 112, 23);
+		chckbxMonday.setBounds(165, 145, 112, 23);
 		frame.getContentPane().add(chckbxMonday);
 		
 		JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
@@ -98,7 +101,7 @@ public class RemoveShift {
 		chckbxTuesday.setForeground(Color.WHITE);
 		chckbxTuesday.setFont(new Font("Tahoma", Font.BOLD, 13));
 		chckbxTuesday.setBorder(new LineBorder(Color.WHITE));
-		chckbxTuesday.setBounds(266, 120, 97, 23);
+		chckbxTuesday.setBounds(165, 175, 100, 23);
 		frame.getContentPane().add(chckbxTuesday);
 		
 		JCheckBox chckbxWednesday = new JCheckBox("Wednesday");
@@ -106,7 +109,7 @@ public class RemoveShift {
 		chckbxWednesday.setForeground(Color.WHITE);
 		chckbxWednesday.setFont(new Font("Tahoma", Font.BOLD, 13));
 		chckbxWednesday.setBorder(new LineBorder(Color.WHITE));
-		chckbxWednesday.setBounds(35, 171, 115, 23);
+		chckbxWednesday.setBounds(165, 205, 115, 23);
 		frame.getContentPane().add(chckbxWednesday);
 		
 		JCheckBox chckbxThursday = new JCheckBox("Thursday");
@@ -114,7 +117,7 @@ public class RemoveShift {
 		chckbxThursday.setForeground(Color.WHITE);
 		chckbxThursday.setFont(new Font("Tahoma", Font.BOLD, 13));
 		chckbxThursday.setBorder(new LineBorder(Color.WHITE));
-		chckbxThursday.setBounds(152, 171, 112, 23);
+		chckbxThursday.setBounds(165, 235, 136, 23);
 		frame.getContentPane().add(chckbxThursday);
 		
 		JCheckBox chckbxFriday = new JCheckBox("Friday");
@@ -122,7 +125,7 @@ public class RemoveShift {
 		chckbxFriday.setForeground(Color.WHITE);
 		chckbxFriday.setFont(new Font("Tahoma", Font.BOLD, 13));
 		chckbxFriday.setBorder(new LineBorder(Color.WHITE));
-		chckbxFriday.setBounds(266, 171, 97, 23);
+		chckbxFriday.setBounds(165, 265, 100, 23);
 		frame.getContentPane().add(chckbxFriday);
 		
 		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
@@ -130,19 +133,19 @@ public class RemoveShift {
 		chckbxSaturday.setForeground(Color.WHITE);
 		chckbxSaturday.setFont(new Font("Tahoma", Font.BOLD, 13));
 		chckbxSaturday.setBorder(new LineBorder(Color.WHITE));
-		chckbxSaturday.setBounds(152, 215, 112, 23);
+		chckbxSaturday.setBounds(165, 295, 115, 23);
 		frame.getContentPane().add(chckbxSaturday);
 		
-		lblEmail = new JLabel("Email");
+		lblEmail = new JLabel("Employee's Email");
 		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblEmail.setBounds(98, 73, 44, 16);
+		lblEmail.setBounds(155, 72, 162, 16);
 		frame.getContentPane().add(lblEmail);
 		
 		lblRemoveShift = new JLabel("Remove Shift");
 		lblRemoveShift.setForeground(Color.WHITE);
 		lblRemoveShift.setBackground(Color.BLACK);
-		lblRemoveShift.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblRemoveShift.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblRemoveShift.setBounds(146, 23, 174, 26);
 		frame.getContentPane().add(lblRemoveShift);
 		
@@ -217,7 +220,7 @@ public class RemoveShift {
 				
 			}
 		});
-		btnConfirm.setBounds(330, 337, 89, 23);
+		btnConfirm.setBounds(231, 337, 89, 23);
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnGoBack = new JButton("Go Back");
@@ -232,7 +235,7 @@ public class RemoveShift {
 				frame.setVisible(false);
 			}
 		});
-		btnGoBack.setBounds(231, 337, 89, 23);
+		btnGoBack.setBounds(87, 337, 89, 23);
 		frame.getContentPane().add(btnGoBack);
 		
 		frame.setUndecorated(true);

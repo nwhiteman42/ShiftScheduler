@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -79,9 +81,9 @@ public class CreateEmployee {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.getContentPane().setForeground(Color.WHITE);
+		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		frame.getContentPane().setBackground(Color.GRAY);
-		frame.setBounds(100, 100, 450, 410);
+		frame.setBounds(100, 100, 450, 390);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -90,32 +92,32 @@ public class CreateEmployee {
 		 * TextFields First name, Last name, Email, job title, seniority, and place of work.
 		 */
 		txtFirstName = new JTextField();
-		txtFirstName.setBounds(86, 90, 112, 20);
+		txtFirstName.setBounds(95, 90, 124, 20);
 		frame.getContentPane().add(txtFirstName);
 		txtFirstName.setColumns(10);
 		
 		txtLastName = new JTextField();
-		txtLastName.setBounds(208, 90, 112, 20);
+		txtLastName.setBounds(223, 90, 124, 20);
 		frame.getContentPane().add(txtLastName);
 		txtLastName.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(86, 146, 112, 20);
+		txtEmail.setBounds(95, 146, 124, 20);
 		frame.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		txtjobTitle = new JTextField();
-		txtjobTitle.setBounds(86, 205, 112, 20);
+		txtjobTitle.setBounds(95, 207, 124, 20);
 		frame.getContentPane().add(txtjobTitle);
 		txtjobTitle.setColumns(10);
 		
 		txtseniority = new JTextField();
-		txtseniority.setBounds(208, 205, 112, 20);
+		txtseniority.setBounds(297, 359, 124, 20);
 		frame.getContentPane().add(txtseniority);
 		txtseniority.setColumns(10);
 		
 		txtplaceofwork = new JTextField();
-		txtplaceofwork.setBounds(86, 264, 112, 20);
+		txtplaceofwork.setBounds(223, 207, 124, 20);
 		frame.getContentPane().add(txtplaceofwork);
 		txtplaceofwork.setColumns(10);
 		
@@ -126,41 +128,41 @@ public class CreateEmployee {
 		lblFirstName = new JLabel("First Name");
 		lblFirstName.setForeground(Color.WHITE);
 		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblFirstName.setBounds(86, 75, 112, 14);
+		lblFirstName.setBounds(95, 75, 124, 14);
 		frame.getContentPane().add(lblFirstName);
 		
 		lblLastName = new JLabel("Last Name");
 		lblLastName.setForeground(Color.WHITE);
 		lblLastName.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblLastName.setBounds(208, 75, 112, 14);
+		lblLastName.setBounds(223, 75, 124, 14);
 		frame.getContentPane().add(lblLastName);
 		
 		lblUsername = new JLabel("Email");
 		lblUsername.setForeground(Color.WHITE);
 		lblUsername.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblUsername.setBounds(86, 133, 112, 14);
+		lblUsername.setBounds(95, 130, 124, 14);
 		frame.getContentPane().add(lblUsername);
 		
 		lblJobTitle = new JLabel("Job Title");
 		lblJobTitle.setForeground(Color.WHITE);
 		lblJobTitle.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblJobTitle.setBounds(86, 190, 98, 14);
+		lblJobTitle.setBounds(95, 190, 112, 14);
 		frame.getContentPane().add(lblJobTitle);
 		
 		lblSeniority = new JLabel("Seniority");
 		lblSeniority.setForeground(Color.WHITE);
 		lblSeniority.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblSeniority.setBounds(208, 190, 112, 14);
+		lblSeniority.setBounds(297, 342, 112, 14);
 		frame.getContentPane().add(lblSeniority);
 		
 		lblPlaceOfWork = new JLabel("Place of Work");
 		lblPlaceOfWork.setForeground(Color.WHITE);
 		lblPlaceOfWork.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblPlaceOfWork.setBounds(86, 249, 98, 14);
+		lblPlaceOfWork.setBounds(223, 190, 112, 14);
 		frame.getContentPane().add(lblPlaceOfWork);
 		
 		txtConfirmEmail = new JTextField();
-		txtConfirmEmail.setBounds(208, 146, 112, 20);
+		txtConfirmEmail.setBounds(223, 146, 124, 20);
 		frame.getContentPane().add(txtConfirmEmail);
 		txtConfirmEmail.setColumns(10);
 		
@@ -168,18 +170,18 @@ public class CreateEmployee {
 		lblCreateAccount = new JLabel("Create Employee");
 		lblCreateAccount.setForeground(Color.WHITE);
 		lblCreateAccount.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblCreateAccount.setBounds(128, 25, 166, 26);
+		lblCreateAccount.setBounds(150, 25, 171, 26);
 		frame.getContentPane().add(lblCreateAccount);
 		
 		lblConfirmEmail = new JLabel("Confirm Email");
 		lblConfirmEmail.setForeground(Color.WHITE);
 		lblConfirmEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblConfirmEmail.setBounds(208, 133, 112, 14);
+		lblConfirmEmail.setBounds(223, 130, 124, 14);
 		frame.getContentPane().add(lblConfirmEmail);
 		
-		JLabel lblEmailsDoNot = new JLabel("Emails do not match");
+		JLabel lblEmailsDoNot = new JLabel("Emails do not match!");
 		lblEmailsDoNot.setForeground(Color.GRAY);
-		lblEmailsDoNot.setBounds(70, 283, 171, 15);
+		lblEmailsDoNot.setBounds(176, 251, 171, 15);
 		frame.getContentPane().add(lblEmailsDoNot);
 
 		
@@ -230,7 +232,7 @@ public class CreateEmployee {
 				}
 			}
 		});
-		btnConfirm.setBounds(330, 337, 89, 23);
+		btnConfirm.setBounds(247, 285, 100, 26);
 		frame.getContentPane().add(btnConfirm);
 		
 		
@@ -246,7 +248,7 @@ public class CreateEmployee {
 				frame.setVisible(false);
 			}
 		});
-		btnGoBack.setBounds(231, 337, 89, 23);
+		btnGoBack.setBounds(95, 285, 100, 26);
 		frame.getContentPane().add(btnGoBack);
 		
 		frame.setUndecorated(true);

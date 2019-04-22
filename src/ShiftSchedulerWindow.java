@@ -70,9 +70,9 @@ public class ShiftSchedulerWindow {
 		frame.getContentPane().setBackground(Color.GRAY);
 		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 425, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[][][][][grow]", "[][][][][][][grow]"));
+		frame.getContentPane().setLayout(new MigLayout("", "[][118.00][][118.00,grow][57.00]", "[][30.00][28.00][30.00][28.00][28.00][grow]"));
 		Employer emp = new Employer();
 		
 		JButton btnMakeSchedule = new JButton("Make Schedule");
@@ -94,7 +94,48 @@ public class ShiftSchedulerWindow {
 				}
 			}
 		});
-		frame.getContentPane().add(btnMakeSchedule, "cell 0 1");
+		frame.getContentPane().add(btnMakeSchedule, "cell 1 1,grow");
+		
+		JButton btnAddEmployee = new JButton("Create Employee");
+		btnAddEmployee.setBackground(Color.GRAY);
+		btnAddEmployee.setForeground(Color.WHITE);
+		btnAddEmployee.setBorder(new LineBorder(Color.WHITE));
+		btnAddEmployee.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnAddEmployee.addActionListener(new ActionListener() {
+			//Opens create employee page 
+			public void actionPerformed(ActionEvent e) {
+				CreateEmployee.main(workplace);
+				frame.setVisible(false);
+			}
+		});
+		frame.getContentPane().add(btnAddEmployee, "cell 3 1,grow");
+		
+		JButton btnEditEmployee = new JButton("Edit Employee");
+		btnEditEmployee.setBackground(Color.GRAY);
+		btnEditEmployee.setForeground(Color.WHITE);
+		btnEditEmployee.setBorder(new LineBorder(Color.WHITE));
+		btnEditEmployee.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnEditEmployee.addActionListener(new ActionListener() {
+			//Opens edit employee page
+			public void actionPerformed(ActionEvent arg0) {
+				EditEmployee.main(workplace);
+				frame.setVisible(false);
+			}
+		});
+		frame.getContentPane().add(btnEditEmployee, "cell 3 2,grow");
+		
+		JButton btnRemoveEmployee = new JButton("Remove Employee");
+		btnRemoveEmployee.setBackground(Color.GRAY);
+		btnRemoveEmployee.setForeground(Color.WHITE);
+		btnRemoveEmployee.setBorder(new LineBorder(Color.WHITE));
+		btnRemoveEmployee.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnRemoveEmployee.addActionListener(new ActionListener() {
+			//Opens remove employee page
+			public void actionPerformed(ActionEvent arg0) {
+				RemoveEmployee.main(workplace);
+				frame.setVisible(false);
+			}
+		});
 		
 		JButton btnEmailSchedule = new JButton("Email Schedule");
 		btnEmailSchedule.setBackground(Color.GRAY);
@@ -121,49 +162,8 @@ public class ShiftSchedulerWindow {
 				}
 			}
 		});
-		
-		JButton btnAddEmployee = new JButton("Create Employee");
-		btnAddEmployee.setBackground(Color.GRAY);
-		btnAddEmployee.setForeground(Color.WHITE);
-		btnAddEmployee.setBorder(new LineBorder(Color.WHITE));
-		btnAddEmployee.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnAddEmployee.addActionListener(new ActionListener() {
-			//Opens create employee page 
-			public void actionPerformed(ActionEvent e) {
-				CreateEmployee.main(workplace);
-				frame.setVisible(false);
-			}
-		});
-		frame.getContentPane().add(btnAddEmployee, "cell 4 1");
-		frame.getContentPane().add(btnEmailSchedule, "cell 0 2");
-		
-		JButton btnEditEmployee = new JButton("Edit Employee");
-		btnEditEmployee.setBackground(Color.GRAY);
-		btnEditEmployee.setForeground(Color.WHITE);
-		btnEditEmployee.setBorder(new LineBorder(Color.WHITE));
-		btnEditEmployee.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnEditEmployee.addActionListener(new ActionListener() {
-			//Opens edit employee page
-			public void actionPerformed(ActionEvent arg0) {
-				EditEmployee.main(workplace);
-				frame.setVisible(false);
-			}
-		});
-		frame.getContentPane().add(btnEditEmployee, "cell 4 2");
-		
-		JButton btnRemoveEmployee = new JButton("Remove Employee");
-		btnRemoveEmployee.setBackground(Color.GRAY);
-		btnRemoveEmployee.setForeground(Color.WHITE);
-		btnRemoveEmployee.setBorder(new LineBorder(Color.WHITE));
-		btnRemoveEmployee.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnRemoveEmployee.addActionListener(new ActionListener() {
-			//Opens remove employee page
-			public void actionPerformed(ActionEvent arg0) {
-				RemoveEmployee.main(workplace);
-				frame.setVisible(false);
-			}
-		});
-		frame.getContentPane().add(btnRemoveEmployee, "cell 4 3");
+		frame.getContentPane().add(btnEmailSchedule, "cell 1 3,grow");
+		frame.getContentPane().add(btnRemoveEmployee, "cell 3 3,grow");
 		
 		JButton btnRemoveShift = new JButton("Edit Shift");
 		btnRemoveShift.setBackground(Color.GRAY);
@@ -177,7 +177,7 @@ public class ShiftSchedulerWindow {
 				frame.setVisible(false);
 			}
 		});
-		frame.getContentPane().add(btnRemoveShift, "cell 4 4");
+		frame.getContentPane().add(btnRemoveShift, "cell 3 4,grow");
 		
 		JButton btnNewButton = new JButton("Remove Shift");
 		btnNewButton.setBackground(Color.GRAY);
@@ -191,18 +191,23 @@ public class ShiftSchedulerWindow {
 				frame.setVisible(false);
 			}
 		});
-		frame.getContentPane().add(btnNewButton, "cell 4 5");
+		frame.getContentPane().add(btnNewButton, "cell 3 5,grow");
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(Color.LIGHT_GRAY);
 		frame.setJMenuBar(menuBar);
 		
 		JMenu mnFile = new JMenu("File");
+		mnFile.setForeground(Color.BLACK);
+		mnFile.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		menuBar.add(mnFile);
 		
 		mntmExit = new JMenuItem("Exit");
+		mntmExit.setFont(new Font("Tahoma", Font.BOLD, 12));
 		mnFile.add(mntmExit);
 		
 		JMenuItem mntmLogout = new JMenuItem("Logout");
+		mntmLogout.setFont(new Font("Tahoma", Font.BOLD, 12));
 		mnFile.add(mntmLogout);
 		mntmLogout.addActionListener(new ActionListener() {
 			//logs out user and opens login page
@@ -213,10 +218,13 @@ public class ShiftSchedulerWindow {
 		});
 		
 		JMenu mnAbout = new JMenu("About");
+		mnAbout.setForeground(Color.BLACK);
+		mnAbout.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		menuBar.add(mnAbout);
 		
 		
 		JMenuItem mntmUs = new JMenuItem("Us");
+		mntmUs.setFont(new Font("Tahoma", Font.BOLD, 12));
 		mntmUs.addActionListener(new ActionListener() {
 			//Opens about page
 			public void actionPerformed(ActionEvent arg0) {
@@ -227,9 +235,12 @@ public class ShiftSchedulerWindow {
 		mnAbout.add(mntmUs);
 		
 		JMenu mnHelp = new JMenu("Help");
+		mnHelp.setForeground(Color.BLACK);
+		mnHelp.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		menuBar.add(mnHelp);
 		
 		JMenuItem mntmHelpPage = new JMenuItem("Help Page");
+		mntmHelpPage.setFont(new Font("Tahoma", Font.BOLD, 12));
 		mntmHelpPage.addActionListener(new ActionListener() {
 			//Opens help page
 			public void actionPerformed( ActionEvent arg0 ) {

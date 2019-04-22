@@ -3,8 +3,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JCheckBox;
 import java.awt.Font;
+import java.awt.Point;
+import java.awt.Toolkit;
 
 public class AboutWindow {
 
@@ -17,7 +21,11 @@ public class AboutWindow {
 			public void run() {
 				try {
 					AboutWindow window = new AboutWindow();
-					window.frame.setLocationRelativeTo(null);
+					Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+					Point middle = new Point(screenSize.width / 2, screenSize.height / 2);
+					Point newLocation = new Point(middle.x - (window.frame.getWidth() + 300), 
+					                              middle.y - (window.frame.getHeight() / 2));
+					window.frame.setLocation(newLocation);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

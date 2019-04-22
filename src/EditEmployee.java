@@ -79,53 +79,53 @@ public class EditEmployee {
 		frame.getContentPane().setBackground(Color.GRAY);
 		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 450, 292);
+		frame.setBounds(100, 100, 425, 390);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		txtrOld = new JLabel("Old");
+		txtrOld = new JLabel("Old Employee Data:");
 		txtrOld.setForeground(Color.WHITE);
-		txtrOld.setFont(new Font("Tahoma", Font.BOLD, 13));
-		txtrOld.setBounds(12, 12, 31, 15);
+		txtrOld.setFont(new Font("Tahoma", Font.BOLD, 15));
+		txtrOld.setBounds(41, 39, 146, 15);
 		frame.getContentPane().add(txtrOld);
 		
 		txtEmail = new JLabel("Email");
 		txtEmail.setForeground(Color.WHITE);
 		txtEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
-		txtEmail.setBounds(45, 25, 72, 15);
+		txtEmail.setBounds(51, 65, 72, 15);
 		frame.getContentPane().add(txtEmail);
 		
 		textField = new JTextField();
-		textField.setBounds(25, 51, 124, 19);
+		textField.setBounds(51, 79, 124, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		txtrNew = new JLabel("New");
+		txtrNew = new JLabel("New Employee Data:");
 		txtrNew.setForeground(Color.WHITE);
-		txtrNew.setFont(new Font("Tahoma", Font.BOLD, 13));
-		txtrNew.setBounds(282, 12, 31, 15);
+		txtrNew.setFont(new Font("Tahoma", Font.BOLD, 15));
+		txtrNew.setBounds(227, 39, 173, 15);
 		frame.getContentPane().add(txtrNew);
 		
 		textArea = new JLabel("Name");
 		textArea.setForeground(Color.WHITE);
 		textArea.setFont(new Font("Tahoma", Font.BOLD, 13));
-		textArea.setBounds(310, 25, 72, 15);
+		textArea.setBounds(237, 65, 72, 15);
 		frame.getContentPane().add(textArea);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(296, 51, 124, 19);
+		textField_4.setBounds(237, 79, 124, 20);
 		frame.getContentPane().add(textField_4);
 		
 		textArea_1 = new JLabel("Title");
 		textArea_1.setForeground(Color.WHITE);
 		textArea_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		textArea_1.setBounds(310, 71, 72, 15);
+		textArea_1.setBounds(237, 121, 72, 15);
 		frame.getContentPane().add(textArea_1);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(296, 91, 124, 19);
+		textField_5.setBounds(237, 136, 124, 20);
 		frame.getContentPane().add(textField_5);
 		
 		JButton btnConfirm = new JButton("Confirm");
@@ -174,10 +174,10 @@ public class EditEmployee {
 			
 			}
 		});
-		btnConfirm.setBounds(35, 104, 114, 25);
+		btnConfirm.setBounds(227, 329, 114, 25);
 		frame.getContentPane().add(btnConfirm);
 		
-		JButton btnCancel = new JButton("Cancel");
+		JButton btnCancel = new JButton("Go Back");
 		btnCancel.setBackground(Color.GRAY);
 		btnCancel.setForeground(Color.WHITE);
 		btnCancel.setBorder(new LineBorder(Color.WHITE));
@@ -189,29 +189,29 @@ public class EditEmployee {
 				frame.setVisible(false);
 			}
 		});
-		btnCancel.setBounds(35, 164, 114, 25);
+		btnCancel.setBounds(86, 329, 114, 25);
 		frame.getContentPane().add(btnCancel);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(296, 138, 124, 19);
+		textField_1.setBounds(237, 191, 124, 20);
 		frame.getContentPane().add(textField_1);
 		
 		txtrPlaceOfWork = new JLabel("Place of Work");
 		txtrPlaceOfWork.setForeground(Color.WHITE);
 		txtrPlaceOfWork.setFont(new Font("Tahoma", Font.BOLD, 13));
-		txtrPlaceOfWork.setBounds(306, 122, 96, 15);
+		txtrPlaceOfWork.setBounds(237, 176, 96, 15);
 		frame.getContentPane().add(txtrPlaceOfWork);
 		
 		txtrEmail = new JLabel("Email");
 		txtrEmail.setForeground(Color.WHITE);
 		txtrEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
-		txtrEmail.setBounds(310, 169, 96, 15);
+		txtrEmail.setBounds(237, 235, 96, 15);
 		frame.getContentPane().add(txtrEmail);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(296, 183, 124, 19);
+		textField_2.setBounds(237, 249, 124, 20);
 		frame.getContentPane().add(textField_2);
 		
 		frame.setUndecorated(true);

@@ -5,9 +5,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
@@ -149,29 +152,37 @@ public class EditShift {
 	private void initialize() {
 		
 		frame = new JFrame();
-		frame.getContentPane().setForeground(SystemColor.menu);
+		frame.getContentPane().setBackground(Color.GRAY);
+		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 410);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(152, 72, 112, 20);
+		txtEmail.setBounds(152, 72, 140, 20);
 		frame.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		lblEmail = new JLabel("Email");
+		lblEmail.setForeground(Color.WHITE);
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblEmail.setBounds(101, 75, 41, 14);
 		frame.getContentPane().add(lblEmail);
 		
 		lblEditShift = new JLabel("Edit Shift");
-		lblEditShift.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblEditShift.setForeground(Color.WHITE);
+		lblEditShift.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lblEditShift.setBounds(164, 25, 156, 26);
 		frame.getContentPane().add(lblEditShift);
 		
 		
 		
 		JButton btnGoBack = new JButton("Go Back");
+		btnGoBack.setForeground(Color.WHITE);
+		btnGoBack.setBackground(Color.GRAY);
+		btnGoBack.setBorder(new LineBorder(Color.WHITE));
+		btnGoBack.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnGoBack.addActionListener(new ActionListener() {
 			//Opens main menu when "Go Back" is pressed
 			public void actionPerformed(ActionEvent e) {
@@ -179,109 +190,139 @@ public class EditShift {
 				frame.setVisible(false);
 			}
 		});
-		btnGoBack.setBounds(231, 337, 89, 23);
+		btnGoBack.setBounds(117, 336, 89, 23);
 		frame.getContentPane().add(btnGoBack);
 		
 		JLabel lblStartTime = new JLabel("Start Time");
-		lblStartTime.setBounds(200, 108, 76, 14);
+		lblStartTime.setForeground(Color.WHITE);
+		lblStartTime.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblStartTime.setBounds(188, 103, 76, 14);
 		frame.getContentPane().add(lblStartTime);
 		
 		JLabel lblEndTime = new JLabel("End Time");
-		lblEndTime.setBounds(288, 108, 84, 14);
+		lblEndTime.setForeground(Color.WHITE);
+		lblEndTime.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblEndTime.setBounds(286, 103, 84, 14);
 		frame.getContentPane().add(lblEndTime);
 		
 		JCheckBox chckbxSunday = new JCheckBox("Sunday");
+		chckbxSunday.setForeground(Color.WHITE);
+		chckbxSunday.setFont(new Font("Tahoma", Font.BOLD, 12));
+		chckbxSunday.setBackground(Color.GRAY);
 		chckbxSunday.setBounds(87, 120, 97, 23);
 		frame.getContentPane().add(chckbxSunday);
 		
 		JCheckBox chckbxMonday = new JCheckBox("Monday");
-		chckbxMonday.setBounds(86, 151, 97, 23);
+		chckbxMonday.setForeground(Color.WHITE);
+		chckbxMonday.setBackground(Color.GRAY);
+		chckbxMonday.setFont(new Font("Tahoma", Font.BOLD, 12));
+		chckbxMonday.setBounds(87, 150, 97, 23);
 		frame.getContentPane().add(chckbxMonday);
 		
 		JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
-		chckbxTuesday.setBounds(86, 182, 97, 23);
+		chckbxTuesday.setForeground(Color.WHITE);
+		chckbxTuesday.setBackground(Color.GRAY);
+		chckbxTuesday.setFont(new Font("Tahoma", Font.BOLD, 12));
+		chckbxTuesday.setBounds(87, 180, 97, 23);
 		frame.getContentPane().add(chckbxTuesday);
 		
 		JCheckBox chckbxWednesday = new JCheckBox("Wednesday");
-		chckbxWednesday.setBounds(86, 213, 97, 23);
+		chckbxWednesday.setBackground(Color.GRAY);
+		chckbxWednesday.setForeground(Color.WHITE);
+		chckbxWednesday.setFont(new Font("Tahoma", Font.BOLD, 12));
+		chckbxWednesday.setBounds(87, 210, 97, 23);
 		frame.getContentPane().add(chckbxWednesday);
 		
 		JCheckBox chckbxThursday = new JCheckBox("Thursday");
-		chckbxThursday.setBounds(87, 244, 97, 23);
+		chckbxThursday.setBackground(Color.GRAY);
+		chckbxThursday.setForeground(Color.WHITE);
+		chckbxThursday.setFont(new Font("Tahoma", Font.BOLD, 12));
+		chckbxThursday.setBounds(87, 240, 97, 23);
 		frame.getContentPane().add(chckbxThursday);
 		
 		JCheckBox chckbxFriday = new JCheckBox("Friday");
-		chckbxFriday.setBounds(86, 275, 97, 23);
+		chckbxFriday.setForeground(Color.WHITE);
+		chckbxFriday.setFont(new Font("Tahoma", Font.BOLD, 12));
+		chckbxFriday.setBackground(Color.GRAY);
+		chckbxFriday.setBounds(87, 270, 97, 23);
 		frame.getContentPane().add(chckbxFriday);
 		
 		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
-		chckbxSaturday.setBounds(86, 306, 97, 23);
+		chckbxSaturday.setBackground(Color.GRAY);
+		chckbxSaturday.setForeground(Color.WHITE);
+		chckbxSaturday.setFont(new Font("Tahoma", Font.BOLD, 12));
+		chckbxSaturday.setBounds(87, 300, 97, 23);
 		frame.getContentPane().add(chckbxSaturday);
 	
 		String[] times = {"0:00", "1:00", "2:00", "3:00" ,"4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00",
 				"13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00","22:00","23:00","24:00"};
 		
 		SunComboBox = new JComboBox(times);
-		SunComboBox.setBounds(192, 121, 82, 24);
+		SunComboBox.setBounds(190, 120, 85, 25);
 		frame.getContentPane().add(SunComboBox);
 	
 		SunEndcomboBox = new JComboBox(times);
-		SunEndcomboBox.setBounds(286, 121, 86, 24);
+		SunEndcomboBox.setBounds(290, 120, 85, 25);
 		frame.getContentPane().add(SunEndcomboBox);
 		
 		MonStartComboBox = new JComboBox(times);
-		MonStartComboBox.setBounds(190, 151, 86, 24);
+		MonStartComboBox.setBounds(190, 150, 85, 25);
 		frame.getContentPane().add(MonStartComboBox);
 		
 		MonEndcomboBox = new JComboBox(times);
-		MonEndcomboBox.setBounds(288, 151, 83, 24);
+		MonEndcomboBox.setBounds(290, 150, 85, 25);
 		frame.getContentPane().add(MonEndcomboBox);
 		
 		TuesStartcomboBox = new JComboBox(times);
-		TuesStartcomboBox.setBounds(190, 181, 86, 24);
+		TuesStartcomboBox.setBounds(190, 180, 85, 25);
 		frame.getContentPane().add(TuesStartcomboBox);
 		
 		TuesEndcomboBox = new JComboBox(times);
-		TuesEndcomboBox.setBounds(286, 181, 86, 24);
+		TuesEndcomboBox.setBounds(290, 180, 85, 25);
 		frame.getContentPane().add(TuesEndcomboBox);
 		
 		WedStartComboBox = new JComboBox(times);
-		WedStartComboBox.setBounds(190, 212, 86, 24);
+		WedStartComboBox.setBounds(190, 210, 85, 25);
 		frame.getContentPane().add(WedStartComboBox);
 		
 		WedEndComboBox = new JComboBox(times);
-		WedEndComboBox.setBounds(286, 212, 86, 24);
+		WedEndComboBox.setBounds(290, 210, 85, 25);
 		frame.getContentPane().add(WedEndComboBox);
 		
 		ThurStartComboBox = new JComboBox(times);
-		ThurStartComboBox.setBounds(190, 244, 86, 24);
+		ThurStartComboBox.setBounds(190, 240, 85, 25);
 		frame.getContentPane().add(ThurStartComboBox);
 		
 		ThurEndComboBox = new JComboBox(times);
-		ThurEndComboBox.setBounds(288, 244, 86, 24);
+		ThurEndComboBox.setBounds(290, 240, 85, 25);
 		frame.getContentPane().add(ThurEndComboBox);
 		
 		FriStartComboBox = new JComboBox(times);
-		FriStartComboBox.setBounds(190, 274, 86, 24);
+		FriStartComboBox.setBounds(190, 270, 85, 25);
 		frame.getContentPane().add(FriStartComboBox);
 		
 		FriEndComboBox = new JComboBox(times);
-		FriEndComboBox.setBounds(288, 274, 86, 24);
+		FriEndComboBox.setBounds(290, 270, 85, 25);
 		frame.getContentPane().add(FriEndComboBox);
 		
 		SatStartComboBox = new JComboBox(times);
-		SatStartComboBox.setBounds(190, 301, 86, 24);
+		SatStartComboBox.setBounds(190, 300, 85, 25);
 		frame.getContentPane().add(SatStartComboBox);
 		
 		SatEndComboBox = new JComboBox(times);
-		SatEndComboBox.setBounds(288, 305, 86, 24);
+		SatEndComboBox.setBounds(290, 300, 85, 25);
 		frame.getContentPane().add(SatEndComboBox);
 		
 		lblInvalidInput = new JLabel("Invalid input");
-		lblInvalidInput.setForeground(SystemColor.menu);
-		lblInvalidInput.setBounds(38, 346, 89, 14);
+		lblInvalidInput.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblInvalidInput.setForeground(Color.GRAY);
+		lblInvalidInput.setBounds(175, 370, 134, 29);
 		frame.getContentPane().add(lblInvalidInput);
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setForeground(Color.WHITE);
+		btnConfirm.setBackground(Color.GRAY);
+		btnConfirm.setBorder(new LineBorder(Color.WHITE));
+		btnConfirm.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MysqlCon x = new MysqlCon();
@@ -292,7 +333,7 @@ public class EditShift {
 						return;
 					}
 					lblInvalidInput.setForeground(Color.LIGHT_GRAY);
-					//Gets Employee id and name from corresponding text feilds
+					//Gets Employee id and name from corresponding text fields
 					int id = x.getACurrentEmployeeID(txtEmail.getText());
 					Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
 					String q = "select Employee_name from Employee_Data where Employee_id = "+id;
@@ -394,9 +435,10 @@ public class EditShift {
 				
 			}
 		});
-		btnConfirm.setBounds(330, 337, 89, 23);
+		btnConfirm.setBounds(231, 336, 89, 23);
 		frame.getContentPane().add(btnConfirm);
 		
+		frame.setUndecorated(true);
 	
 	}
 }

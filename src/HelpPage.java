@@ -1,4 +1,7 @@
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Point;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,7 +18,11 @@ public class HelpPage {
 			public void run() {
 				try {
 					HelpPage window = new HelpPage();
-					window.frame.setLocationRelativeTo(null);
+					Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+					Point middle = new Point(screenSize.width / 2, screenSize.height / 2);
+					Point newLocation = new Point(middle.x - (window.frame.getWidth() + 300), 
+					                              middle.y - (window.frame.getHeight() / 2));
+					window.frame.setLocation(newLocation);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,6 +43,7 @@ public class HelpPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 629, 577);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);

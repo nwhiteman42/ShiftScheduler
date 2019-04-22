@@ -113,25 +113,25 @@ public class CreateAccount {
 		lblFirstName = new JLabel("First name");
 		lblFirstName.setForeground(Color.WHITE);
 		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblFirstName.setBounds(95, 75, 86, 14);
+		lblFirstName.setBounds(95, 75, 124, 14);
 		frame.getContentPane().add(lblFirstName);
 		
 		lblLastName = new JLabel("Last name");
 		lblLastName.setForeground(Color.WHITE);
 		lblLastName.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblLastName.setBounds(223, 75, 68, 14);
+		lblLastName.setBounds(223, 75, 124, 14);
 		frame.getContentPane().add(lblLastName);
 		
 		lblUsername = new JLabel("Email");
 		lblUsername.setForeground(Color.WHITE);
 		lblUsername.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblUsername.setBounds(95, 133, 74, 14);
+		lblUsername.setBounds(95, 130, 124, 14);
 		frame.getContentPane().add(lblUsername);
 		
 		lblPassword = new JLabel("Password");
 		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblPassword.setBounds(95, 193, 74, 14);
+		lblPassword.setBounds(95, 190, 124, 14);
 		frame.getContentPane().add(lblPassword);
 		
 		pwdconField = new JPasswordField();
@@ -141,13 +141,13 @@ public class CreateAccount {
 		lblNewLabel = new JLabel("Confirm Password");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel.setBounds(223, 193, 124, 14);
+		lblNewLabel.setBounds(223, 190, 133, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		lblCreateAccount = new JLabel("Create Account");
 		lblCreateAccount.setForeground(Color.WHITE);
 		lblCreateAccount.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblCreateAccount.setBounds(158, 25, 166, 26);
+		lblCreateAccount.setBounds(150, 25, 171, 26);
 		frame.getContentPane().add(lblCreateAccount);
 		
 		txtConfirmEmail = new JTextField();
@@ -158,12 +158,12 @@ public class CreateAccount {
 		lblConfirmEmail = new JLabel("Confirm Email");
 		lblConfirmEmail.setForeground(Color.WHITE);
 		lblConfirmEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblConfirmEmail.setBounds(223, 133, 86, 14);
+		lblConfirmEmail.setBounds(223, 130, 86, 14);
 		frame.getContentPane().add(lblConfirmEmail);
 		
-		JLabel lblPasswordsDoNot = new JLabel("Passwords do not match");
+		JLabel lblPasswordsDoNot = new JLabel("Passwords do not match!");
 		lblPasswordsDoNot.setForeground(Color.GRAY);
-		lblPasswordsDoNot.setBounds(109, 286, 223, 15);
+		lblPasswordsDoNot.setBounds(298, 238, 152, 15);
 		frame.getContentPane().add(lblPasswordsDoNot);
 		
 		WorkplacetextField = new JTextField();
@@ -171,15 +171,15 @@ public class CreateAccount {
 		WorkplacetextField.setBounds(158, 252, 124, 20);
 		frame.getContentPane().add(WorkplacetextField);
 		
-		lblWorkplace = new JLabel("Workplace");
+		lblWorkplace = new JLabel("Place of Work");
 		lblWorkplace.setForeground(Color.WHITE);
 		lblWorkplace.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblWorkplace.setBounds(158, 238, 112, 15);
+		lblWorkplace.setBounds(158, 238, 133, 15);
 		frame.getContentPane().add(lblWorkplace);
 		
-		JLabel lblEmailsDoNot = new JLabel("Emails do not match");
+		JLabel lblEmailsDoNot = new JLabel("Emails do not match!");
 		lblEmailsDoNot.setForeground(Color.GRAY);
-		lblEmailsDoNot.setBounds(70, 283, 171, 15);
+		lblEmailsDoNot.setBounds(298, 175, 152, 15);
 		frame.getContentPane().add(lblEmailsDoNot);
 		
 		JButton btnConfirm = new JButton("Confirm");
