@@ -22,7 +22,7 @@ public class CreateAccount {
 	
 	//Holds the workplace of signed in employeer
 		public static String workplace = null;
-		
+		 
 		//Getter for workplace
 		public String getWorkplace() {
 			return workplace;
@@ -208,9 +208,9 @@ public class CreateAccount {
 				
 				
 				if(email.equals(conEmail)) {//Checks that both email feilds match
-					lblEmailsDoNot.setForeground(Color.WHITE);
+					lblEmailsDoNot.setForeground(Color.GRAY);
 					if(pswd.equals(conPswd)) { //Checks to make sure both password feilds match
-						lblPasswordsDoNot.setForeground(Color.WHITE);
+						lblPasswordsDoNot.setForeground(Color.GRAY);
 						MysqlCon x = new MysqlCon();
 						Connection con;
 						try {

@@ -189,18 +189,8 @@ public class CreateEmployee {
 					Connection con;
 					try {
 						//Inserts employee into database
-						con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-						String query = "insert into Employee_Data (Employee_ID, Employee_Name, Employee_Title, seniority, placeofwork, email)" + " values(?,?,?,?,?,?)";
-						PreparedStatement ps = con.prepareStatement(query);
-						ps.setInt(1,x.getAEmployeID()); //Employee_ID
-						ps.setString(2, empName); //Employee_Name
-						ps.setString(3, jobtitle); //Employee_Title
-						ps.setInt(4, 1); //seniority
-						ps.setString(5, workplace); //placeofwork
-						ps.setString(6, email); //email
-						ps.execute();//Executes query
-						con.close();
-					}
+						x.insertIntoEmployee(x.getAEmployeID(), empName, jobtitle, 1, workplace, email);
+					} 
 					catch (SQLException e1) {
 						e1.printStackTrace();
 					}
