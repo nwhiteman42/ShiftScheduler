@@ -87,7 +87,7 @@ class MysqlCon {
 		con.close();
 		return id;
 	}
-	
+	 
 	/*
 	 * Gets all of the employees from a given workplace
 	 * @param String workplace, workplace from which to pull the employees
@@ -211,26 +211,7 @@ class MysqlCon {
 	}
 	
 	
-	/*
-	 * Inserts data into the "Employee_Shifts" list
-	 * @param int id, id of the employee
-	 * @param String name, name of the employee
-	 * @param String day, day of the shift
-	 * @param startTime, startTime of shift
-	 * @param endTime, endTime of shift
-	 */
-	public void insertIntoEmployeeShift(int id, String name, String day, int startTime, int endTime) throws SQLException {
-		Connection con = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/DRZ3zhCKwK","DRZ3zhCKwK","JLKYtPKkBL");
-		String query = "insert into Employee_Shifts (Employee_ID, Employee_Name, Day, Start_Time, End_Time)" + " values(?,?,?,?,?)";
-		PreparedStatement ps = con.prepareStatement(query);
-		ps.setInt(1,id);
-		ps.setString(2, name);
-		ps.setString(3, day);
-		ps.setInt(4, startTime);
-		ps.setInt(5, endTime);
-		ps.executeUpdate(query);
-		con.close();
-	}
+
 	
 	
 	public static void main(String args[]) throws SQLException {
